@@ -8,6 +8,7 @@ import { OurWorks } from './components/OurWorks';
 import { HowWeWork } from './components/HowWeWork';
 import { TalentShowcase } from './components/TalentShowcase';
 import { Testimonials } from './components/Testimonials';
+import { WhyChooseUs } from './components/WhyChooseUs';
 import { WhatWeDo } from './components/WhatWeDo';
 import { Footer } from './components/Footer';
 
@@ -27,6 +28,7 @@ function App() {
         <HowWeWork />
         <TalentShowcase />
         <Testimonials />
+        <WhyChooseUs />
       
       </main>
       <Footer />

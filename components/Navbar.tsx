@@ -31,9 +31,9 @@ export const Navbar: React.FC = () => {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 text-2xl font-bold font-sans tracking-tight">
           <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center">
-            <span className="text-sm font-serif italic">bg</span>
+            <span className="text-sm font-serif italic">Sl</span>
           </div>
-          <span>brandGeko</span>
+          <span>sleeka</span>
         </a>
 
         {/* Desktop Nav */}
