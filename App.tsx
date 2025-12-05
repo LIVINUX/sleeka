@@ -12,11 +12,14 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { WhatWeDo } from './components/WhatWeDo';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
+import { Preloader } from './components/Preloader';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <>
+      <Preloader />
+      <div className="min-h-screen bg-white">
+        <Navbar />
       <main>
         <div className="relative">
           <Hero />
@@ -30,10 +33,16 @@ function App() {
         <TalentShowcase />
         <Testimonials />
         <WhyChooseUs />
-        {/* <CTASection /> */}
+        <CTASection />
       </main>
       <Footer />
+      
+      {/* Floating Language Switcher Mockup */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-l-xl shadow-xl z-50 cursor-pointer hover:pr-4 transition-all border border-gray-100 hidden md:block">
+         <span className="font-bold text-teal-600">文A</span>
+      </div>
     </div>
+    </>
   );
 }
 

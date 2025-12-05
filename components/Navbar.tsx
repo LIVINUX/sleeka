@@ -30,7 +30,7 @@ export const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between text-white">
         {/* Logo */}
         <a href="#" className="flex items-center">
-          <img src="/assets/1.png" alt="Sleeka" className="h-8 md:h-14 w-auto" />
+          <img src="/assets/1.png" alt="Sleeka" className="h-8 md:h-16 w-auto" />
         </a>
 
         {/* Desktop Nav */}
