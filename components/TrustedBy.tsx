@@ -40,7 +40,7 @@ export const TrustedBy: React.FC = () => {
         <div className="flex w-max animate-marquee items-center">
           {logos.map((logo, index) => (
             <div key={index} className="mx-8 md:mx-12 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-default">
-               <img src={logo} alt={`Client ${index + 1}`} className="h-16 md:h-20 w-auto object-contain" />
+               <img src={logo} alt={`Client ${index + 1}`} className="h-24 md:h-24 w-auto object-contain" />
             </div>
           ))}
         </div>

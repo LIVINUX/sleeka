@@ -9,6 +9,22 @@ const reviews = [
     logo: "Felicia Transport",
     rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+    {
+    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
+    author: "Emmanuel Okoye",
+    role: "CEO, Felicia Transport",
+    logo: "Felicia Transport",
+    rating: 5,
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+    {
+    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
+    author: "Emmanuel Okoye",
+    role: "CEO, Felicia Transport",
+    logo: "Felicia Transport",
+    rating: 5,
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   }
 ];
 
