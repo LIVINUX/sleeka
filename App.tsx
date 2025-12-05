@@ -33,7 +33,7 @@ function App() {
         <TalentShowcase />
         <Testimonials />
         <WhyChooseUs />
-        <CTASection />
+        {/* <CTASection /> */}
       </main>
       <Footer />
       
