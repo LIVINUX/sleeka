@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, TrendingUp, ArrowRight } from 'lucide-react';
+import { Zap, TrendingUp } from 'lucide-react';
 
 const features = [
   {
@@ -65,15 +65,9 @@ export const WhyChooseUs: React.FC = () => {
                   {feature.title}
                 </h3>
 
-                <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 flex-grow">
+                <p className="text-white/80 text-base md:text-lg leading-relaxed flex-grow">
                   {feature.description}
                 </p>
-
-                {/* Optional 'Read More' indicator */}
-                <div className="flex items-center gap-2 text-[#47ff01] font-semibold text-sm opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                   <span>Learn more</span>
-                   <ArrowRight size={16} />
-                </div>
               </div>
             </div>
           ))}

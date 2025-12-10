@@ -3,31 +3,31 @@ import { ArrowUpRight } from 'lucide-react';
 
 const talents = [
   {
-    name: "Sarah Jenkins",
-    role: "Visual & Motion Designer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop",
-    skills: "Brand Identity • After Effects • Figma",
-    available: true
-  },
-  {
-    name: "David Chen",
-    role: "Product & UI Designer",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
-    skills: "UI/UX • Prototyping • Webflow",
-    available: true
-  },
-  {
-    name: "Elena Rodriguez",
+    name: "Blossom Uzoho",
     role: "Creative Generalist",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
-    skills: "Illustration • Animation • Social",
-    available: false
+    image: "/assets/Blossom Uzoho.jpg",
+    skills: "Design • Video Editing • 2D Animation",
+    available: true
   },
   {
-    name: "Michael Ross",
-    role: "Senior Art Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop",
-    skills: "Art Direction • Strategy • 3D",
+    name: "Dusom Oputa",
+    role: "AI Animator & Social Media Manager",
+    image: "/assets/Dusom Oputa.jpg",
+    skills: "AI Animation • Social",
+    available: true
+  },
+  {
+    name: "Caleb Ohiro",
+    role: "Visual and Motion Designer",
+    image: "/assets/Caleb Ohiro.jpg",
+    skills: "UI/UX • Design • Motion Graphics",
+    available: true
+  },
+  {
+    name: "Peter Samuel",
+    role: "Creative Generalist",
+    image: "/assets/Peter Samuel.jpg",
+    skills: "Design • Video Editing • Animation",
     available: true
   }
 ];

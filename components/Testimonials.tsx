@@ -3,26 +3,18 @@ import { Star, Play, X } from 'lucide-react';
 
 const reviews = [
   {
-    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
-    author: "Emmanuel Okoye",
-    role: "CEO, Felicia Transport",
-    logo: "Felicia Transport",
+    text: "Our engagement rate jumped by 38% after Sleeka took over design and motion graphics. Reliable turnaround, zero creative burnout on our end.",
+    author: "Joy Chinwe",
+    role: "Growth Manager, Atlas",
+    logo: "Atlas",
     rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
-    {
-    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
-    author: "Emmanuel Okoye",
-    role: "CEO, Felicia Transport",
-    logo: "Felicia Transport",
-    rating: 5,
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  },
-    {
-    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
-    author: "Emmanuel Okoye",
-    role: "CEO, Felicia Transport",
-    logo: "Felicia Transport",
+  {
+    text: "We scaled our creative output overnight. No hiring stress, no onboarding delays — Sleeka just plugged in and executed. In just 45 days, our output doubled, and conversions jumped 23%, adding $25,000 in Q3 revenue.",
+    author: "Adelewa Segun",
+    role: "Head of Marketing, Cardiff",
+    logo: "Cardiff",
     rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   }
