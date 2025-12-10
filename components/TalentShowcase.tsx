@@ -77,7 +77,7 @@ export const TalentShowcase: React.FC = () => {
 
                 {/* Typography */}
                 <div className="space-y-1">
-                   <h3 className="text-2xl font-serif font-bold text-geko-dark group-hover:text-geko-accent transition-colors">{talent.name}</h3>
+                   <h3 className="text-2xl font-serif font-bold text-[#5c0386]">{talent.name}</h3>
                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">{talent.role}</p>
                    <p className="text-xs text-gray-400 pt-2 border-t border-gray-200 mt-3 inline-block w-full">
                      {talent.skills}
