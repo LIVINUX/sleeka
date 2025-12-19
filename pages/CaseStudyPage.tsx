@@ -34,12 +34,15 @@ export const CaseStudyPage: React.FC = () => {
       <Navbar />
       <CaseStudyDetail
         title={caseStudy.title}
+        subtitle={caseStudy.subtitle}
         tags={caseStudy.tags}
         overview={caseStudy.overview}
         problem={caseStudy.problem}
         solution={caseStudy.solution}
         results={caseStudy.results}
         image={caseStudy.image}
+        businessImpact={caseStudy.businessImpact}
+        additionalSections={caseStudy.additionalSections}
       />
       <Footer />
     </>

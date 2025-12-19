@@ -1,35 +1,76 @@
 export interface CaseStudy {
   id: string;
   title: string;
+  subtitle: string;
   tags: string;
   overview: string;
   problem: string;
   solution: string;
   results: string[];
   image: string;
+  businessImpact?: string;
+  additionalSections?: {
+    title: string;
+    description: string;
+    images: string[];
+  }[];
 }
 
 export const caseStudies: CaseStudy[] = [
   {
     id: 'felicia-transport',
     title: 'Felicia Transport',
+    subtitle: 'Building Public Trust and Market Credibility from Day One',
     tags: 'Branding, Identity design, Merchandise',
     overview:
-      'Felicia Transport is a public transport company in Nigeria, focused on reliable, safe, and modern mobility. They needed a strong brand identity to stand out and earn public trust.',
+      'Felicia Transport is a Nigerian public transportation company focused on delivering safe, reliable, and modern mobility at scale. As a new company, Felicia needed more than visibility — it needed instant credibility, public trust, and a brand system capable of supporting long-term growth.',
     problem:
-      'As a new company, Felicia lacked a recognizable image. Without strong branding, it risked being overlooked in a competitive market and missing early adoption momentum.',
+      'Entering a highly competitive and trust-sensitive market, Felicia faced a critical risk: without a strong and coherent brand system, the company could struggle to earn public confidence, attract early adopters, and position itself as a serious operator from launch. For a transport company, perception directly impacts adoption. Trust is not optional.',
     solution:
-      'We created a complete brand identity system, logo, colors, and visual assets, reflecting motion, trust, and innovation. The branding was applied across buses, uniforms, signage, and digital platforms, ensuring consistent visibility and recognition.',
+      'Sleeka designed and deployed a complete brand identity system including the logo, visual language, and brand applications across fleet, uniforms, signage, and digital platforms, built for consistency, recognition, and scale.',
     results: [
-      'The launch went viral across local media and social platforms.',
-      'Over 42,000 organic impressions within 48 hours of the brand reveal.',
-      'A 35% spike in web traffic during the launch week.',
+      'The launch went viral: 42,000+ organic impressions within 48 hours of the brand reveal.',
+      'Over 1,200 positive engagements across social platforms during launch.',
+      'A 35% increase in website traffic within the first week.',
     ],
-    image: '/assets/works/VanDesign.jpg',
+    businessImpact:
+      'Felicia entered the market with legitimacy from day one, reducing adoption risk and positioning the company for long-term growth.',
+    image: '/assets/Felicia/1.jpg',
+    additionalSections: [
+      {
+        title: 'Logo design',
+        description:
+          'Concept: A bold, expressive combination mark inspired by the letter F, a road, and a forward-driven arrow. These elements flow seamlessly to convey motion, direction, and speed.',
+        images: [
+          '/assets/Felicia/2.jpg',
+          '/assets/Felicia/3.jpg',
+          '/assets/Felicia/4.jpg'
+        ],
+      },
+      {
+        title: 'Fresh Colors',
+        description:
+          'While many Nigerian brands rely on blue and red, we chose a bolder path. A fresh, modern palette anchored by green symbolizing growth, movement, and reliability.',
+        images: ['/assets/Felicia/6.jpg'],
+      },
+      {
+        title: 'Our Font Choices',
+        description:
+          'We paired Galano Grotesque with Montserrat to create a clean, modern typographic system, bold enough for visibility and refined enough for clarity across all touchpoints.',
+        images: ['/assets/Felicia/7.jpg'],
+      },
+      {
+        title: 'Visual Outlook',
+        description:
+          'A glimpse of the brand in action across mockups and merchandise, showing its presence, personality, and impact.',
+        images: ['/assets/Felicia/Mockups.jpg'],
+      },
+    ],
   },
   {
     id: 'premiabn',
     title: 'PremiaBN',
+    subtitle: 'Simplifying Complex Services Through Visual Storytelling',
     tags: 'Illustration, Animated explainer video',
     overview:
       'PremiaBN needed engaging visual content to explain their complex services in a simple, memorable way.',
@@ -47,6 +88,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'bluechip-technologies',
     title: 'Bluechip Technologies',
+    subtitle: 'Elevating Brand Presence Through Professional Video Content',
     tags: 'Motion, Video editing',
     overview:
       'Bluechip Technologies required professional video content to showcase their tech solutions and establish thought leadership in the industry.',
@@ -64,6 +106,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'emsxchange',
     title: 'EmsXchange',
+    subtitle: 'Creating Visual Consistency Across All Touchpoints',
     tags: 'Design, Motion, Video editing',
     overview:
       'EmsXchange needed a complete visual overhaul to match their innovative platform with equally innovative creative content.',
