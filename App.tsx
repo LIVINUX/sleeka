@@ -14,6 +14,7 @@ import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
 import { CaseStudyPage } from './pages/CaseStudyPage';
+import { CreativeInfrastructurePage } from './pages/CreativeInfrastructurePage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -23,6 +24,8 @@ function App() {
       const hash = window.location.hash;
       if (hash.startsWith('#/case-study/')) {
         setCurrentPage('case-study');
+      } else if (hash === '#/creative-infrastructure') {
+        setCurrentPage('creative-infrastructure');
       } else {
         setCurrentPage('home');
       }
@@ -37,37 +40,40 @@ function App() {
     return <CaseStudyPage />;
   }
 
+  if (currentPage === 'creative-infrastructure') {
+    return <CreativeInfrastructurePage />;
+  }
+
   return (
     <>
       <Preloader />
       <div className="min-h-screen bg-white">
         <Navbar />
-      <main>
-        <div id="home" className="relative">
-          <Hero />
-          {/* Video Section acts as the bridge between Hero and TrustedBy */}
-          <VideoSection />
-          <TrustedBy />
-        </div>
-        <div id="about">
-          <AgencyDescription />
-        </div>
-        <div id="work">
-          <OurWorks />
-        </div>
-        <div id="services">
-          <HowWeWork />
-        </div>
-        <div id="talent">
-          <TalentShowcase />
-        </div>
-        <Testimonials />
-        <WhyChooseUs />
-        {/* <CTASection /> */}
-      </main>
-      <Footer />
-      
-    </div>
+        <main>
+          <div id="home" className="relative">
+            <Hero />
+            {/* Video Section acts as the bridge between Hero and TrustedBy */}
+            <VideoSection />
+            <TrustedBy />
+          </div>
+          <div id="about">
+            <AgencyDescription />
+          </div>
+          <div id="work">
+            <OurWorks />
+          </div>
+          <div id="services">
+            <HowWeWork />
+          </div>
+          <div id="talent">
+            <TalentShowcase />
+          </div>
+          <Testimonials />
+          <WhyChooseUs />
+          {/* <CTASection /> */}
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
