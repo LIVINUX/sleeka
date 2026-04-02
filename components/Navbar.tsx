@@ -9,22 +9,27 @@ const navLinks = [
   { label: 'About', href: '#about' },
 ];
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  /** When true the navbar is always solid (dark bg), ignoring scroll state */
+  forceColored?: boolean;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ forceColored = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isColored = forceColored || isScrolled;
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-geko-dark/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
+        isColored ? 'bg-geko-dark/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between text-white">
@@ -48,11 +53,11 @@ export const Navbar: React.FC = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <a 
-            href="https://calendar.app.google/2nWbeLXuC52dvZtq5" 
-            target="_blank" 
+          <a
+            href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+            target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2 group shadow-lg hover:shadow-xl hover:scale-105 duration-300" 
+            className="px-6 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2 group shadow-lg hover:shadow-xl hover:scale-105 duration-300"
             style={{ backgroundColor: '#47ff01', color: '#000' }}
           >
             Book a Discovery Call
