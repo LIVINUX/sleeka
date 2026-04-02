@@ -21,14 +21,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const savedScrollPos = useRef<number>(0);
 
-  // Only handle hash routing for case-study (keep existing behaviour)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash.startsWith('#/case-study/')) {
         setCurrentPage('case-study');
       } else if (currentPage === 'case-study') {
-        // Hash changed away from case-study → go home
         setCurrentPage('home');
       }
     };
@@ -40,13 +38,11 @@ function App() {
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('creative-infrastructure');
-    // Instant scroll to top — no jarring animation
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
   const goBackFromCreativeInfra = () => {
     setCurrentPage('home');
-    // After React re-renders the home page, restore the scroll position
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         window.scrollTo({ top: savedScrollPos.current, behavior: 'instant' as ScrollBehavior });
@@ -54,10 +50,7 @@ function App() {
     });
   };
 
-  if (currentPage === 'case-study') {
-    return <CaseStudyPage />;
-  }
-
+  if (currentPage === 'case-study') return <CaseStudyPage />;
   if (currentPage === 'creative-infrastructure') {
     return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} />;
   }
@@ -73,18 +66,12 @@ function App() {
             <VideoSection />
             <TrustedBy />
           </div>
-          <div id="about">
-            <AgencyDescription />
-          </div>
-          <div id="work">
-            <OurWorks />
-          </div>
+          <div id="about"><AgencyDescription /></div>
+          <div id="work"><OurWorks /></div>
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
-          <div id="talent">
-            <TalentShowcase />
-          </div>
+          <div id="talent"><TalentShowcase /></div>
           <Testimonials />
           <WhyChooseUs />
           {/* <CTASection /> */}
