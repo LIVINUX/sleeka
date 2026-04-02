@@ -9,15 +9,15 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
-/* ── U-curve divider — identical to HowWeWork ─────────────────────────── */
-const UCurveDivider: React.FC = () => (
+/* Same subtle bow as HowWeWork — 20px gentle downward curve */
+const BowDivider: React.FC = () => (
   <svg
-    viewBox="0 0 400 48"
+    viewBox="0 0 400 20"
     preserveAspectRatio="none"
-    style={{ width: '100%', height: '48px', display: 'block', marginBottom: '-1px' }}
+    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
     aria-hidden="true"
   >
-    <path d="M0,8 Q200,48 400,8 L400,48 L0,48 Z" fill="#5c0386" />
+    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
   </svg>
 );
 
@@ -39,7 +39,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
       <style>{`
         @keyframes slk-pulse {
           0%,100% { box-shadow: 0 0 0 0 rgba(71,255,1,0.55), 0 6px 20px rgba(71,255,1,0.22); }
-          60%      { box-shadow: 0 0 0 10px rgba(71,255,1,0),  0 6px 20px rgba(71,255,1,0.22); }
+          60%      { box-shadow: 0 0 0 10px rgba(71,255,1,0), 0 6px 20px rgba(71,255,1,0.22); }
         }
         .slk-btn-cta {
           animation: slk-pulse 2.2s ease-in-out infinite;
@@ -55,63 +55,50 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         }
         .pkg-panel.open   { max-height: 2400px; opacity: 1; }
         .pkg-panel.closed { max-height: 0;       opacity: 0; }
-
-        /* Prevent any horizontal overflow on the CI page */
-        .ci-page-root { overflow-x: hidden; max-width: 100vw; }
+        .ci-root { overflow-x: hidden; max-width: 100vw; }
       `}</style>
 
-      {/* Navbar — completely unmodified, same as home page */}
-      <Navbar />
+      {/* forceColored=true — always solid dark bg, matching scrolled state on home */}
+      <Navbar forceColored />
 
-      <main className="ci-page-root min-h-screen bg-white">
+      <main className="ci-root min-h-screen bg-white">
 
-        {/* ── HERO CARD — same structure as home page cards ── */}
-        {/*
-          pt-24 gives clearance below the fixed navbar (navbar is ~64–72px tall).
-          The card itself is NOT full-bleed — it sits inside the container with
-          the same padding as the rest of the page, matching the home page feel.
-        */}
-        <div className="pt-24 pb-0 bg-white">
+        {/* Spacer so content clears the fixed navbar */}
+        <div className="pt-24 bg-white">
           <div className="container mx-auto px-6 md:px-12">
 
-            {/* Back button — clearly below navbar */}
+            {/* Back button */}
             <button
               onClick={onBack}
               className="flex items-center gap-2 text-[#5c0386] font-semibold mb-8
                          hover:gap-3 transition-all duration-200 text-sm md:text-base"
             >
-              <span>←</span> Back to How We Work
+              ← Back to How We Work
             </button>
 
-            {/* Card — identical shell to home page cards */}
-            <div
-              className="rounded-[2.5rem] overflow-hidden shadow-2xl
-                         max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl"
-            >
-              {/* Image area */}
+            {/* ── Hero Card — same structure/shell as home page cards ── */}
+            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
+
+              {/* Image fills the top */}
               <div
-                className="w-full bg-[#ede9f6]"
-                style={{ height: 'clamp(220px,38vw,340px)' }}
+                className="w-full overflow-hidden"
+                style={{ height: 'clamp(220px, 42vw, 340px)' }}
               >
                 <img
                   src="/assets/creative-infrastructure.jpg"
                   alt="Creative Infrastructure"
-                  className="w-full h-full object-contain object-center block"
+                  className="w-full h-full object-cover object-top block"
                 />
               </div>
 
-              {/* U-curve */}
-              <UCurveDivider />
+              {/* Same gentle bow */}
+              <BowDivider />
 
-              {/* Purple content — title + subtext only (problem & packages below) */}
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-2">
-                {/*
-                  Title: use clamp so "CREATIVE INFRASTRUCTURE" never overflows
-                  on any screen width. Min 1.6rem handles very small phones.
-                */}
+              {/* Purple title section */}
+              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
                 <h1
                   className="font-black text-white uppercase tracking-tight leading-tight mb-4"
-                  style={{ fontSize: 'clamp(1.6rem, 5.5vw, 3.2rem)', wordBreak: 'keep-all' }}
+                  style={{ fontSize: 'clamp(1.7rem, 5vw, 3rem)', wordBreak: 'break-word' }}
                 >
                   Creative Infrastructure
                 </h1>
@@ -122,10 +109,11 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 </p>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* ── PROBLEM SECTION ── */}
+        {/* ── Problem ── */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
@@ -158,7 +146,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
           </div>
         </section>
 
-        {/* ── PACKAGES ── */}
+        {/* ── Packages ── */}
         <section className="pb-16 md:pb-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
 
