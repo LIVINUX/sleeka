@@ -35,7 +35,7 @@ export const OurWorks: React.FC = () => {
           Our Works
         </h2>
         <p className="text-xl text-gray-600 font-light animate-fade-in-up animation-delay-200">
-          Here are recent works from our talents.
+          Here are some of the campaigns and assets produced by our creative teams.   
         </p>
       </div>
 
