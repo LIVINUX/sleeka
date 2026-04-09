@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-4">
-          Get consistent, high-converting content that fuels business growth powered by top African talent.
+          Unlock consistent visibility, stronger brand authority, and revenue growth with a flexible on demand creative team powered by top African talent.
         </p>
 
         {/* CTA Button */}
