@@ -7,8 +7,8 @@ export const Hero: React.FC = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 md:px-12 text-center relative z-10 flex-grow flex flex-col justify-center pt- md:pt-20">
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 md:mb-8 px-2">
-          Scale 10X faster with <br className="hidden sm:block" />
-          world-class creative teams on demand.
+          Your creative department <br className="hidden sm:block" />
+          on demand.
         </h1>
 
         <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-4">
