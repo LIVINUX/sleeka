@@ -16,10 +16,10 @@ export const WhatWeDo: React.FC = () => {
         <div className="mb-20">
            <h2 className="text-5xl md:text-7xl font-bold text-geko-dark mb-6">What We Do</h2>
            <p className="text-xl md:text-2xl text-gray-600 font-light max-w-4xl leading-relaxed">
-             We provide end-to-end creative support from design, motion, and social media management to content strategy all delivered through a flexible monthly plan.
+             At Sleeka, we function as your dedicated creative department, providing the design, video, and animation systems that power consistent marketing.
            </p>
            <p className="text-xl md:text-2xl text-gray-600 font-light max-w-4xl leading-relaxed mt-6">
-             For organizations that demand deeper brand alignment and faster turnaround, we also provide trained creative talent who integrate directly into in-house teams, ensuring consistency, speed, and growth.
+             We help businesses stay visible, communicate clearly, and turn attention into revenue, all through a flexible monthly subscription, without the cost or complexity of building an in-house creative team.
            </p>
         </div>
 
