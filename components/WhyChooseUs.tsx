@@ -19,32 +19,27 @@ const features = [
 const tableRows = [
   {
     option: 'Hiring an In-House Creative Team',
-    challenge:
-      'Expensive salaries, recruitment time, management overhead, and long-term payroll commitments.',
+    challenge: 'Expensive salaries, recruitment time, management overhead, and long-term payroll commitments.',
     isSleeka: false,
   },
   {
     option: 'Freelancers',
-    challenge:
-      'Unreliable availability, inconsistent quality, communication delays, and difficulty managing multiple specialists.',
+    challenge: 'Unreliable availability, inconsistent quality, communication delays, and difficulty managing multiple specialists.',
     isSleeka: false,
   },
   {
     option: 'Traditional Agencies',
-    challenge:
-      'High project costs, slower turnaround times, and limited flexibility for ongoing creative needs.',
+    challenge: 'High project costs, slower turnaround times, and limited flexibility for ongoing creative needs.',
     isSleeka: false,
   },
   {
     option: 'DIY with AI Tools',
-    challenge:
-      'Requires time to learn tools, inconsistent quality, lack of creative strategy, and internal teams still spending valuable time producing content instead of focusing on growth.',
+    challenge: 'Requires time to learn tools, inconsistent quality, lack of creative strategy, and internal teams still spending valuable time producing content instead of focusing on growth.',
     isSleeka: false,
   },
   {
     option: 'Sleeka Creative Infrastructure',
-    challenge:
-      'Dedicated creative department, predictable delivery, structured creative workflow, and strategic creative support that integrates seamlessly with your marketing team.',
+    challenge: 'Dedicated creative department, predictable delivery, structured creative workflow, and strategic creative support that integrates seamlessly with your marketing team.',
     isSleeka: true,
   },
 ];
@@ -52,6 +47,25 @@ const tableRows = [
 export const WhyChooseUs: React.FC = () => {
   return (
     <section className="bg-[#5c0386] py-24 text-white relative overflow-hidden">
+      <style>{`
+        /* Hide scrollbar visually but keep it functional */
+        .sleeka-scroll::-webkit-scrollbar { height: 4px; }
+        .sleeka-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 99px; }
+        .sleeka-scroll::-webkit-scrollbar-thumb { background: #47ff01; border-radius: 99px; }
+        /* Fade hint on the right edge — mobile only */
+        @media (max-width: 767px) {
+          .sleeka-scroll-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 48px;
+            background: linear-gradient(to right, transparent, #5c0386);
+            pointer-events: none;
+            border-radius: 0 1.5rem 1.5rem 0;
+          }
+        }
+      `}</style>
+
       {/* Background glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#7a04b3] rounded-full blur-[120px] opacity-30 pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#7a04b3] rounded-full blur-[120px] opacity-30 pointer-events-none translate-y-1/2 -translate-x-1/2" />
@@ -100,7 +114,7 @@ export const WhyChooseUs: React.FC = () => {
         {/* ── COMPARISON TABLE ── */}
         <div className="max-w-4xl mx-auto">
 
-          {/* Table label */}
+          {/* Table header text */}
           <div className="text-center mb-10">
             <span className="inline-block py-1 px-3 rounded-full bg-[#47ff01]/10 text-[#47ff01] font-semibold text-sm tracking-wide uppercase border border-[#47ff01]/20">
               Sleeka vs. The Alternatives
@@ -114,66 +128,87 @@ export const WhyChooseUs: React.FC = () => {
             </p>
           </div>
 
-          {/* Table */}
-          <div className="rounded-3xl overflow-hidden border border-white/10">
+          {/*
+            Mobile: relative wrapper with fade-hint class + horizontal scroll.
+            Desktop (md+): overflow visible, table stretches naturally.
+          */}
+          <div className="relative sleeka-scroll-wrap">
 
-            {/* Header row */}
-            <div className="grid grid-cols-[1fr_1.6fr] bg-white/5 border-b border-white/10">
-              <div className="px-6 py-4 text-sm font-black uppercase tracking-widest text-white/50">
-                Option
-              </div>
-              <div className="px-6 py-4 text-sm font-black uppercase tracking-widest text-white/50 border-l border-white/10">
-                Challenges
+            {/* Swipe hint — mobile only */}
+            <p className="flex items-center justify-center gap-2 text-white/40 text-xs mb-3 md:hidden">
+              <svg className="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              Swipe to explore
+            </p>
+
+            {/* Scroll container — active only on mobile */}
+            <div className="sleeka-scroll overflow-x-auto md:overflow-x-visible -mx-2 px-2">
+
+              {/* Table itself — min-width forces scroll on small screens */}
+              <div
+                className="rounded-3xl overflow-hidden border border-white/10"
+                style={{ minWidth: '520px' }}
+              >
+                {/* Header row */}
+                <div
+                  className="grid border-b border-white/10 bg-white/5"
+                  style={{ gridTemplateColumns: '1fr 1.7fr' }}
+                >
+                  <div className="px-6 py-4 text-xs font-black uppercase tracking-widest text-white/40">
+                    Option
+                  </div>
+                  <div className="px-6 py-4 text-xs font-black uppercase tracking-widest text-white/40 border-l border-white/10">
+                    Challenges
+                  </div>
+                </div>
+
+                {/* Data rows */}
+                {tableRows.map((row, i) => (
+                  <div
+                    key={i}
+                    className={`grid transition-colors duration-200 ${
+                      row.isSleeka
+                        ? 'bg-[#47ff01]'
+                        : 'bg-white/[0.03] hover:bg-white/[0.07] border-b border-white/10'
+                    }`}
+                    style={{ gridTemplateColumns: '1fr 1.7fr' }}
+                  >
+                    {/* Option */}
+                    <div className="px-6 py-5 flex items-start gap-3">
+                      <span
+                        className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          row.isSleeka ? 'bg-[#1a0030]' : 'bg-white/10'
+                        }`}
+                      >
+                        {row.isSleeka
+                          ? <Check className="w-3.5 h-3.5 text-[#47ff01]" strokeWidth={3} />
+                          : <X className="w-3.5 h-3.5 text-white/40" strokeWidth={2.5} />
+                        }
+                      </span>
+                      <span
+                        className={`text-sm font-bold leading-snug ${
+                          row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'
+                        }`}
+                      >
+                        {row.option}
+                      </span>
+                    </div>
+
+                    {/* Challenge */}
+                    <div
+                      className={`px-6 py-5 text-sm leading-relaxed flex items-center ${
+                        row.isSleeka
+                          ? 'text-[#1a0030] font-medium border-l border-[#1a0030]/15'
+                          : 'text-white/65 border-l border-white/10'
+                      }`}
+                    >
+                      {row.challenge}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Data rows */}
-            {tableRows.map((row, i) => (
-              <div
-                key={i}
-                className={`grid grid-cols-[1fr_1.6fr] transition-colors duration-200 ${
-                  row.isSleeka
-                    ? 'bg-[#47ff01] text-[#1a0030]'
-                    : 'bg-white/[0.03] hover:bg-white/[0.07] border-b border-white/10'
-                }`}
-              >
-                {/* Option column */}
-                <div
-                  className={`px-6 py-5 flex items-center gap-3 ${
-                    row.isSleeka ? 'border-b-0' : ''
-                  }`}
-                >
-                  {row.isSleeka ? (
-                    <span className="w-6 h-6 rounded-full bg-[#1a0030] flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3.5 h-3.5 text-[#47ff01]" strokeWidth={3} />
-                    </span>
-                  ) : (
-                    <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                      <X className="w-3.5 h-3.5 text-white/40" strokeWidth={2.5} />
-                    </span>
-                  )}
-                  <span
-                    className={`text-sm sm:text-base font-bold leading-snug ${
-                      row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'
-                    }`}
-                  >
-                    {row.option}
-                  </span>
-                </div>
-
-                {/* Challenge column */}
-                <div
-                  className={`px-6 py-5 flex items-center text-sm sm:text-base leading-relaxed ${
-                    row.isSleeka
-                      ? 'text-[#1a0030] font-medium border-l border-[#1a0030]/15'
-                      : 'text-white/65 border-l border-white/10'
-                  }`}
-                >
-                  {row.challenge}
-                </div>
-              </div>
-            ))}
-
           </div>
 
           {/* Bottom nudge */}
@@ -183,6 +218,14 @@ export const WhyChooseUs: React.FC = () => {
         </div>
 
       </div>
+
+      <style>{`
+        @keyframes bounce-x {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(4px); }
+        }
+        .animate-bounce-x { animation: bounce-x 1.2s ease-in-out infinite; }
+      `}</style>
     </section>
   );
 };
