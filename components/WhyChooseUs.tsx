@@ -59,6 +59,11 @@ export const WhyChooseUs: React.FC = () => {
           left: 0;
           z-index: 2;
         }
+        @keyframes bounce-x {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(5px); }
+        }
+        .animate-bounce-x { animation: bounce-x 1s ease-in-out infinite; }
       `}</style>
 
       {/* Background glows */}
@@ -123,7 +128,18 @@ export const WhyChooseUs: React.FC = () => {
             </p>
           </div>
 
-          {/* Scroll wrapper — invisible scrollbar, no fade, no hint */}
+          {/* Swipe hint — mobile only */}
+          <div className="flex items-center justify-center gap-2 text-white/40 text-xs mb-3 md:hidden">
+            <svg className="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+            <span>Swipe to read challenges</span>
+            <svg className="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          {/* Scroll wrapper — invisible scrollbar, no fade */}
           <div className="slk-table-scroll rounded-3xl border border-white/10">
             <table className="w-full border-collapse" style={{ minWidth: '480px' }}>
 
