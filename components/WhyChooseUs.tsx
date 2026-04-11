@@ -48,21 +48,16 @@ export const WhyChooseUs: React.FC = () => {
   return (
     <section className="bg-[#5c0386] py-24 text-white relative overflow-hidden">
       <style>{`
-        /* Hide scrollbar visually but keep it functional */
-        .sleeka-scroll::-webkit-scrollbar { height: 4px; }
-        .sleeka-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 99px; }
-        .sleeka-scroll::-webkit-scrollbar-thumb { background: #47ff01; border-radius: 99px; }
-        /* Fade hint on the right edge — mobile only */
-        @media (max-width: 767px) {
-          .sleeka-scroll-wrap::after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0;
-            width: 48px;
-            background: linear-gradient(to right, transparent, #5c0386);
-            pointer-events: none;
-            border-radius: 0 1.5rem 1.5rem 0;
-          }
+        /* Hide scrollbar completely — all browsers */
+        .slk-table-scroll { overflow-x: auto; }
+        .slk-table-scroll::-webkit-scrollbar { display: none; }
+        .slk-table-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Sticky first column */
+        .slk-sticky {
+          position: sticky;
+          left: 0;
+          z-index: 2;
         }
       `}</style>
 
@@ -114,7 +109,7 @@ export const WhyChooseUs: React.FC = () => {
         {/* ── COMPARISON TABLE ── */}
         <div className="max-w-4xl mx-auto">
 
-          {/* Table header text */}
+          {/* Table intro */}
           <div className="text-center mb-10">
             <span className="inline-block py-1 px-3 rounded-full bg-[#47ff01]/10 text-[#47ff01] font-semibold text-sm tracking-wide uppercase border border-[#47ff01]/20">
               Sleeka vs. The Alternatives
@@ -128,87 +123,85 @@ export const WhyChooseUs: React.FC = () => {
             </p>
           </div>
 
-          {/*
-            Mobile: relative wrapper with fade-hint class + horizontal scroll.
-            Desktop (md+): overflow visible, table stretches naturally.
-          */}
-          <div className="relative sleeka-scroll-wrap">
+          {/* Scroll wrapper — invisible scrollbar, no fade, no hint */}
+          <div className="slk-table-scroll rounded-3xl border border-white/10">
+            <table className="w-full border-collapse" style={{ minWidth: '480px' }}>
 
-            {/* Swipe hint — mobile only */}
-            <p className="flex items-center justify-center gap-2 text-white/40 text-xs mb-3 md:hidden">
-              <svg className="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-              Swipe to explore
-            </p>
+              {/* Column widths */}
+              <colgroup>
+                <col style={{ width: '44%' }} />
+                <col style={{ width: '56%' }} />
+              </colgroup>
 
-            {/* Scroll container — active only on mobile */}
-            <div className="sleeka-scroll overflow-x-auto md:overflow-x-visible -mx-2 px-2">
-
-              {/* Table itself — min-width forces scroll on small screens */}
-              <div
-                className="rounded-3xl overflow-hidden border border-white/10"
-                style={{ minWidth: '520px' }}
-              >
-                {/* Header row */}
-                <div
-                  className="grid border-b border-white/10 bg-white/5"
-                  style={{ gridTemplateColumns: '1fr 1.7fr' }}
-                >
-                  <div className="px-6 py-4 text-xs font-black uppercase tracking-widest text-white/40">
-                    Option
-                  </div>
-                  <div className="px-6 py-4 text-xs font-black uppercase tracking-widest text-white/40 border-l border-white/10">
-                    Challenges
-                  </div>
-                </div>
-
-                {/* Data rows */}
-                {tableRows.map((row, i) => (
-                  <div
-                    key={i}
-                    className={`grid transition-colors duration-200 ${
-                      row.isSleeka
-                        ? 'bg-[#47ff01]'
-                        : 'bg-white/[0.03] hover:bg-white/[0.07] border-b border-white/10'
-                    }`}
-                    style={{ gridTemplateColumns: '1fr 1.7fr' }}
+              {/* Sticky header row */}
+              <thead>
+                <tr className="bg-[#3d005c]">
+                  {/* Sticky "Option" header */}
+                  <th
+                    className="slk-sticky bg-[#3d005c] px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10"
                   >
-                    {/* Option */}
-                    <div className="px-6 py-5 flex items-start gap-3">
-                      <span
-                        className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          row.isSleeka ? 'bg-[#1a0030]' : 'bg-white/10'
-                        }`}
-                      >
-                        {row.isSleeka
-                          ? <Check className="w-3.5 h-3.5 text-[#47ff01]" strokeWidth={3} />
-                          : <X className="w-3.5 h-3.5 text-white/40" strokeWidth={2.5} />
-                        }
-                      </span>
-                      <span
-                        className={`text-sm font-bold leading-snug ${
-                          row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'
-                        }`}
-                      >
-                        {row.option}
-                      </span>
-                    </div>
+                    Option
+                  </th>
+                  {/* "Challenges" header — scrolls with the table on mobile */}
+                  <th className="px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10 border-l border-white/10">
+                    Challenges
+                  </th>
+                </tr>
+              </thead>
 
-                    {/* Challenge */}
-                    <div
-                      className={`px-6 py-5 text-sm leading-relaxed flex items-center ${
-                        row.isSleeka
-                          ? 'text-[#1a0030] font-medium border-l border-[#1a0030]/15'
-                          : 'text-white/65 border-l border-white/10'
+              <tbody>
+                {tableRows.map((row, i) => {
+                  const bg = row.isSleeka ? '#47ff01' : 'transparent';
+                  const stickyBg = row.isSleeka ? '#47ff01' : '#4a007a'; // solid colour for sticky cell
+
+                  return (
+                    <tr
+                      key={i}
+                      className={`${
+                        row.isSleeka ? '' : 'border-b border-white/10 hover:bg-white/5 transition-colors'
                       }`}
+                      style={{ background: bg }}
                     >
-                      {row.challenge}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                      {/* ── STICKY Option cell ── */}
+                      <td
+                        className="slk-sticky px-6 py-5 align-top"
+                        style={{ background: stickyBg }}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span
+                            className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                              row.isSleeka ? 'bg-[#1a0030]' : 'bg-white/10'
+                            }`}
+                          >
+                            {row.isSleeka
+                              ? <Check className="w-3.5 h-3.5 text-[#47ff01]" strokeWidth={3} />
+                              : <X className="w-3.5 h-3.5 text-white/40" strokeWidth={2.5} />
+                            }
+                          </span>
+                          <span
+                            className={`text-sm font-bold leading-snug ${
+                              row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'
+                            }`}
+                          >
+                            {row.option}
+                          </span>
+                        </div>
+                      </td>
+
+                      {/* ── Scrollable Challenge cell ── */}
+                      <td
+                        className={`px-6 py-5 align-middle text-sm leading-relaxed border-l border-white/10 ${
+                          row.isSleeka ? 'text-[#1a0030] font-medium' : 'text-white/65'
+                        }`}
+                        style={{ minWidth: '260px' }}
+                      >
+                        {row.challenge}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
 
           {/* Bottom nudge */}
@@ -218,14 +211,6 @@ export const WhyChooseUs: React.FC = () => {
         </div>
 
       </div>
-
-      <style>{`
-        @keyframes bounce-x {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(4px); }
-        }
-        .animate-bounce-x { animation: bounce-x 1.2s ease-in-out infinite; }
-      `}</style>
     </section>
   );
 };
