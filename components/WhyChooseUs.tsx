@@ -45,36 +45,37 @@ const tableRows = [
 ];
 
 /*
-  Row background colours as solid values (needed for sticky cells to not bleed through).
-  Normal row: bg-white/[0.03] over #5c0386  ≈ #5e0489
-  Sleeka row: #47ff01
+  Column pixel widths — fixed so sticky offsets are precise.
+  OPT_W: Option column width in px.
+  Table minWidth forces scroll on mobile phones (~390px screens).
 */
-const ROW_BG        = '#5c0386'; // matches section, imperceptible for sticky
-const ROW_BG_SLEEKA = '#47ff01';
+const OPT_W = 180;   // px — option column
+const CH_W  = 420;   // px — challenges column
+const TBL_W = OPT_W + CH_W; // 600px total
+
+const HEADER_BG      = '#3d0060';
+const SECTION_BG     = '#5c0386'; // section background = sticky cell bg for non-Sleeka rows
+const SLEEKA_BG      = '#47ff01';
 
 export const WhyChooseUs: React.FC = () => {
   return (
     <section className="bg-[#5c0386] py-24 text-white relative overflow-hidden">
       <style>{`
-        /* ── Physical clip: hides scrollbar on ALL devices ── */
-        .slk-clip { overflow: hidden; border-radius: 1.5rem; }
-        .slk-scroll { overflow-x: auto; padding-bottom: 20px; margin-bottom: -20px; }
+        /* ── No scrollbar — all browsers ── */
+        .slk-scroll { overflow-x: auto; }
+        .slk-scroll::-webkit-scrollbar { display: none; }
         .slk-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-        .slk-scroll::-webkit-scrollbar { display: none !important; height: 0 !important; }
 
         /* ── Sticky helpers ── */
-        .slk-col-opt {
-          position: sticky;
-          left: 0;
-          z-index: 2;
-        }
+        .slk-opt   { position: sticky; left: 0;            z-index: 2; }
+        .slk-ch-hd { position: sticky; left: ${OPT_W}px;  z-index: 2; }
 
-        /* ── Swipe hint arrow animation ── */
+        /* ── Swipe hint animation ── */
         @keyframes slk-swipe {
           0%, 100% { transform: translateX(0); opacity: 0.4; }
           50%       { transform: translateX(5px); opacity: 0.8; }
         }
-        .slk-swipe-arrow { animation: slk-swipe 1.2s ease-in-out infinite; }
+        .slk-arrow { animation: slk-swipe 1.2s ease-in-out infinite; }
       `}</style>
 
       {/* Background glows */}
@@ -83,7 +84,7 @@ export const WhyChooseUs: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-        {/* ── Section Header ── */}
+        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="inline-block py-1 px-3 rounded-full bg-[#47ff01]/10 text-[#47ff01] font-semibold text-sm mb-6 tracking-wide uppercase border border-[#47ff01]/20">
             The Sleeka Advantage
@@ -96,7 +97,7 @@ export const WhyChooseUs: React.FC = () => {
           </p>
         </div>
 
-        {/* ── Feature Cards ── */}
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20">
           {features.map((feature, index) => (
             <div
@@ -125,7 +126,6 @@ export const WhyChooseUs: React.FC = () => {
         {/* ── COMPARISON TABLE ── */}
         <div className="max-w-4xl mx-auto">
 
-          {/* Table intro */}
           <div className="text-center mb-10">
             <span className="inline-block py-1 px-3 rounded-full bg-[#47ff01]/10 text-[#47ff01] font-semibold text-sm tracking-wide uppercase border border-[#47ff01]/20">
               Sleeka vs. The Alternatives
@@ -141,101 +141,75 @@ export const WhyChooseUs: React.FC = () => {
 
           {/* Swipe hint — mobile only */}
           <div className="flex items-center justify-center gap-1.5 mb-3 md:hidden">
-            <svg
-              className="slk-swipe-arrow w-4 h-4 text-white/40"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
+            <svg className="slk-arrow w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             <span className="text-white/40 text-xs">Swipe to explore</span>
           </div>
 
-          {/* Scroll wrapper — no scrollbar, no fade */}
-          <div className="slk-clip border border-white/10">
-          <div className="slk-scroll">
+          {/* Table scroll wrapper — no scrollbar, no fade */}
+          <div className="slk-scroll rounded-3xl border border-white/10">
             <table
               className="border-collapse"
-              style={{
-                /*
-                  minWidth forces horizontal scroll on mobile.
-                  table-layout: fixed + width: 200% ensures exactly 50/50 columns.
-                  On desktop the container is wide enough so no scroll happens.
-                */
-                width: '200%',
-                maxWidth: '800px',
-                tableLayout: 'fixed',
-              }}
+              style={{ width: `${TBL_W}px`, tableLayout: 'fixed' }}
             >
               <colgroup>
-                <col style={{ width: '50%' }} />
-                <col style={{ width: '50%' }} />
+                <col style={{ width: `${OPT_W}px` }} />
+                <col style={{ width: `${CH_W}px` }} />
               </colgroup>
 
-              {/* ── HEADER ROW — both cells sticky ── */}
+              {/* ── HEADER — both cells sticky ── */}
               <thead>
-                <tr style={{ background: '#3d0060' }}>
-
-                  {/* "Option" header — sticky left */}
+                <tr>
+                  {/* "Option" header — sticky at left: 0 */}
                   <th
-                    className="slk-col-opt px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10"
-                    style={{ background: '#3d0060' }}
+                    className="slk-opt px-5 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10"
+                    style={{ background: HEADER_BG }}
                   >
                     Option
                   </th>
-
-                  {/*
-                    "Challenges" header — NOT sticky horizontally.
-                    On mobile it is always visible because the table starts
-                    fully visible; only the body cells scroll.
-                    We keep it in the header row so it aligns with the column.
-                  */}
-                  <th className="px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10 border-l border-white/10">
+                  {/* "Challenges" header — sticky at left: OPT_W — stays visible as body cells scroll */}
+                  <th
+                    className="slk-ch-hd px-5 py-4 text-left text-xs font-black uppercase tracking-widest text-white/40 border-b border-white/10 border-l border-white/10"
+                    style={{ background: HEADER_BG }}
+                  >
                     Challenges
                   </th>
                 </tr>
               </thead>
 
-              {/* ── BODY ROWS ── */}
+              {/* ── BODY — Option cells sticky, Challenge cells scroll ── */}
               <tbody>
                 {tableRows.map((row, i) => {
                   const isLast   = i === tableRows.length - 1;
-                  const rowBg    = row.isSleeka ? ROW_BG_SLEEKA : 'transparent';
-                  const stickyBg = row.isSleeka ? ROW_BG_SLEEKA : ROW_BG;
+                  const stickyBg = row.isSleeka ? SLEEKA_BG : SECTION_BG;
 
                   return (
                     <tr
                       key={i}
                       className={!row.isSleeka && !isLast ? 'border-b border-white/10' : ''}
-                      style={{ background: rowBg }}
+                      style={{ background: row.isSleeka ? SLEEKA_BG : 'transparent' }}
                     >
-                      {/* Sticky Option cell */}
+                      {/* STICKY Option cell */}
                       <td
-                        className="slk-col-opt px-6 py-5 align-top"
+                        className="slk-opt px-5 py-5 align-top"
                         style={{ background: stickyBg }}
                       >
-                        <div className="flex items-start gap-3">
-                          <span
-                            className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
-                              row.isSleeka ? 'bg-[#1a0030]' : 'bg-white/10'
-                            }`}
-                          >
+                        <div className="flex items-start gap-2">
+                          <span className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${row.isSleeka ? 'bg-[#1a0030]' : 'bg-white/10'}`}>
                             {row.isSleeka
                               ? <Check className="w-3.5 h-3.5 text-[#47ff01]" strokeWidth={3} />
                               : <X className="w-3.5 h-3.5 text-white/40" strokeWidth={2.5} />
                             }
                           </span>
-                          <span className={`text-sm font-bold leading-snug ${row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'}`}>
+                          <span className={`text-xs font-bold leading-snug ${row.isSleeka ? 'text-[#1a0030]' : 'text-white/90'}`}>
                             {row.option}
                           </span>
                         </div>
                       </td>
 
-                      {/* Scrollable Challenge cell */}
-                      <td
-                        className={`px-6 py-5 align-middle text-sm leading-relaxed border-l border-white/10 ${
-                          row.isSleeka ? 'text-[#1a0030] font-medium' : 'text-white/65'
-                        }`}
-                      >
+                      {/* SCROLLABLE Challenge cell — flows under sticky Challenges header */}
+                      <td className={`px-5 py-5 align-middle text-xs leading-relaxed border-l border-white/10 ${row.isSleeka ? 'text-[#1a0030] font-medium' : 'text-white/65'}`}>
                         {row.challenge}
                       </td>
                     </tr>
@@ -244,9 +218,7 @@ export const WhyChooseUs: React.FC = () => {
               </tbody>
             </table>
           </div>
-          </div>
 
-          {/* Bottom nudge */}
           <p className="text-center text-white/40 text-sm mt-6 italic">
             Sleeka is the only option that gives you all of it — without the overhead.
           </p>
