@@ -62,7 +62,7 @@ export const WhyChooseUs: React.FC = () => {
             Why Businesses Choose Sleeka
           </h2>
           <p className="text-white/70 text-lg">
-            Scalable creative solutions designed for performance and growth.
+            Scalable creative infrastructure built to drive performance, leads, and revenue growth.
           </p>
         </div>
 
