@@ -4,15 +4,15 @@ import { Zap, TrendingUp, Check, X } from 'lucide-react';
 const features = [
   {
     icon: Zap,
-    title: 'Speed, Consistency and Scale',
+    title: 'Scalable Content Engine for Growth',
     description:
       "We act as your full creative department, delivering content exactly when you need them. With our scalable model, you can adjust creative capacity based on campaign demand, without the stress of hiring, management, or delays.",
   },
   {
     icon: TrendingUp,
-    title: 'Revenue-Driven Talent',
+    title: 'Revenue-Focused Creative Systems',
     description:
-      "Our talents don't just create content - they're business partners. Vetted professionals who understand marketing, KPIs, and revenue, they integrate seamlessly, work independently, and deliver content that accelerates campaigns and drives measurable growth.",
+      "We don’t just create content, we build structured systems that turn content into leads and revenue, where every piece is intentionally designed to attract attention, build trust, and convert into customers, eliminating random posting and guesswork.",
   },
 ];
 
