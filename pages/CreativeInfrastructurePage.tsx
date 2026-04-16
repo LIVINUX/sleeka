@@ -9,18 +9,6 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
-/* Same subtle bow as HowWeWork — 20px gentle downward curve */
-const BowDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 20"
-    preserveAspectRatio="none"
-    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
-    aria-hidden="true"
-  >
-    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
-  </svg>
-);
-
 export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
@@ -58,30 +46,30 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         .ci-root { overflow-x: hidden; max-width: 100vw; }
       `}</style>
 
-      {/* forceColored=true — always solid dark bg, matching scrolled state on home */}
       <Navbar forceColored />
 
       <main className="ci-root min-h-screen bg-white">
 
-        {/* Spacer so content clears the fixed navbar */}
         <div className="pt-24 bg-white">
           <div className="container mx-auto px-6 md:px-12">
 
-            {/* Back button */}
             <button
               onClick={onBack}
-              className="flex items-center gap-2 text-[#5c0386] font-semibold mb-8
-                         hover:gap-3 transition-all duration-200 text-sm md:text-base"
+              className="flex items-center gap-2 text-[#5c0386] font-semibold mb-8 hover:gap-3 transition-all duration-200 text-sm md:text-base"
             >
               ← Back to How We Work
             </button>
 
-            {/* ── Hero Card — same structure/shell as home page cards ── */}
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
+            {/*
+              Hero card — same structure as HowWeWork cards.
+              Card bg is purple. Image has rounded-b-[2rem] so
+              its bottom corners curve, matching the card's own
+              border-radius language. No SVG, no tricks.
+            */}
+            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#5c0386] max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-              {/* Image fills the top */}
               <div
-                className="w-full overflow-hidden"
+                className="w-full rounded-b-[2rem] overflow-hidden"
                 style={{ height: 'clamp(220px, 42vw, 340px)' }}
               >
                 <img
@@ -91,11 +79,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Same gentle bow */}
-              <BowDivider />
-
-              {/* Purple title section */}
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
+              <div className="px-6 sm:px-8 md:px-12 pb-10 pt-6">
                 <h1
                   className="font-black text-white uppercase tracking-tight leading-tight mb-4"
                   style={{ fontSize: 'clamp(1.7rem, 5vw, 3rem)', wordBreak: 'break-word' }}
@@ -156,25 +140,19 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 onClick={() => handleClick('growth')}
                 onMouseEnter={() => handleHover('growth')}
                 className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold
-                  text-base md:text-xl transition-all duration-300 flex items-center
-                  justify-between gap-3
+                  text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
                   ${activePackage === 'growth'
                     ? 'bg-[#5c0386] text-white shadow-xl shadow-purple-500/30 scale-[1.01]'
-                    : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'
-                  }`}
+                    : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
               >
                 <span>Growth Infrastructure</span>
-                {activePackage === 'growth'
-                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'growth' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
-
               <div className={`pkg-panel ${activePackage === 'growth' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                    For growing businesses that need consistent creative support to maintain
-                    visibility and support marketing activities.
+                    For growing businesses that need consistent creative support to maintain visibility and support marketing activities.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
@@ -187,17 +165,14 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">
-                          {items.map(i => <li key={i}>• {i}</li>)}
-                        </ul>
+                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
                       </div>
                     ))}
                   </div>
                   <div className="mt-6 bg-white/10 rounded-2xl p-4 border border-white/20">
                     <p className="text-white/90 text-sm">
                       <span className="text-[#47ff01] font-bold">Best suited for: </span>
-                      Growing companies that need consistent creative output without building
-                      an internal design team.
+                      Growing companies that need consistent creative output without building an internal design team.
                     </p>
                   </div>
                 </div>
@@ -210,26 +185,19 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 onClick={() => handleClick('authority')}
                 onMouseEnter={() => handleHover('authority')}
                 className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold
-                  text-base md:text-xl transition-all duration-300 flex items-center
-                  justify-between gap-3
+                  text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
                   ${activePackage === 'authority'
                     ? 'bg-[#47ff01] text-black shadow-xl shadow-green-400/30 scale-[1.01]'
-                    : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'
-                  }`}
+                    : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
               >
                 <span>Authority Infrastructure</span>
-                {activePackage === 'authority'
-                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'authority' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
-
               <div className={`pkg-panel ${activePackage === 'authority' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                    For ambitious companies that want to strengthen brand authority, execute
-                    campaigns effectively, and scale their marketing presence with greater
-                    creative capacity, faster delivery, and strategic oversight.
+                    For ambitious companies that want to strengthen brand authority, execute campaigns effectively, and scale their marketing presence with greater creative capacity, faster delivery, and strategic oversight.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
@@ -242,15 +210,12 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">
-                          {items.map(i => <li key={i}>• {i}</li>)}
-                        </ul>
+                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
                       </div>
                     ))}
                   </div>
                   <p className="mt-6 text-white/60 text-sm italic">
-                    Your project manager ensures your creative pipeline stays organized,
-                    prioritized, and delivered efficiently — enabling your team to move faster.
+                    Your project manager ensures your creative pipeline stays organized, prioritized, and delivered efficiently — enabling your team to move faster.
                   </p>
                 </div>
               </div>
@@ -258,8 +223,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
 
             {/* CTA */}
             <div
-              className="rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row
-                         md:items-center md:justify-between gap-6"
+              className="rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
               style={{ background: 'linear-gradient(135deg,#f3eeff 0%,#e8d8ff 100%)' }}
             >
               <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed md:max-w-md">
@@ -271,8 +235,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="slk-btn-cta px-8 py-4 rounded-full font-bold text-base md:text-lg
-                           flex-shrink-0 whitespace-nowrap text-center"
+                className="slk-btn-cta px-8 py-4 rounded-full font-bold text-base md:text-lg flex-shrink-0 whitespace-nowrap text-center"
                 style={{ backgroundColor: '#47ff01', color: '#000' }}
               >
                 Book a Discovery Call
