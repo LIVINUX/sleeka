@@ -5,21 +5,16 @@ interface HowWeWorkProps {
 }
 
 /*
-  Subtle downward bow divider.
-  The path starts at (0,0) top-left, curves gently DOWN only 14px at centre,
-  then back to (400,0) top-right. Fills purple below so it blends seamlessly
-  into the purple content section. Very natural eye-flow downward.
+  The card is a rounded rectangle (rounded-[2.5rem]).
+  The image fills the top of the card.
+  To make the boundary between image and purple feel natural
+  to the card shape, we give the image container rounded bottom
+  corners (rounded-b-[2rem]) so the photo appears as a picture
+  with its own gently curved lower edge — as if the image itself
+  has been shaped to sit inside the card.
+  The outer card's overflow:hidden handles the outer corners.
+  No SVG, no fake curve — just the card's own border-radius language.
 */
-const BowDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 20"
-    preserveAspectRatio="none"
-    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
-    aria-hidden="true"
-  >
-    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
-  </svg>
-);
 
 const GlobalStyles: React.FC = () => (
   <style>{`
@@ -63,10 +58,17 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
       <div className="flex flex-col gap-10 max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
         {/* ── Card 1: Creative Infrastructure ── */}
-        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl">
-          {/* Image — object-cover fills entire area, no gaps */}
+        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#5c0386]">
+
+          {/*
+            Image sits inside the card.
+            rounded-b-[2rem] gives the image gentle rounded bottom corners
+            that match the card's own visual language — no harsh straight cut.
+            The purple background of the card section shows through those corners,
+            creating a natural inset-photo look.
+          */}
           <div
-            className="w-full overflow-hidden"
+            className="w-full rounded-b-[2rem] overflow-hidden"
             style={{ height: 'clamp(240px, 42vw, 360px)' }}
           >
             <img
@@ -76,11 +78,8 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             />
           </div>
 
-          {/* Subtle bow — curves gently downward 20px at the centre */}
-          <BowDivider />
-
           {/* Purple content */}
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          <div className="px-8 md:px-12 pb-12 pt-6">
             <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
             </h3>
@@ -103,9 +102,10 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
         </div>
 
         {/* ── Card 2: Creative Talent Outsourcing ── */}
-        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl">
+        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#5c0386]">
+
           <div
-            className="w-full overflow-hidden"
+            className="w-full rounded-b-[2rem] overflow-hidden"
             style={{ height: 'clamp(240px, 42vw, 360px)' }}
           >
             <img
@@ -115,9 +115,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             />
           </div>
 
-          <BowDivider />
-
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          <div className="px-8 md:px-12 pb-12 pt-6">
             <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
             </h3>
