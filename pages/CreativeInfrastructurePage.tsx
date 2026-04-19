@@ -61,16 +61,17 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
             </button>
 
             {/*
-              Hero card — same structure as HowWeWork cards.
-              Card bg is purple. Image has rounded-b-[2rem] so
-              its bottom corners curve, matching the card's own
-              border-radius language. No SVG, no tricks.
+              Same fix as HowWeWork:
+              Outer card wrapper has NO background color.
+              overflow-hidden clips the image at rounded corners cleanly.
+              Purple bg ONLY on the content section below the image.
             */}
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#5c0386] max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
+            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
+              {/* Image — NO inner border-radius, NO bg on outer card */}
               <div
-                className="w-full rounded-b-[2rem] overflow-hidden"
-                style={{ height: 'clamp(220px, 42vw, 340px)' }}
+                className="w-full"
+                style={{ height: 'clamp(220px, 42vw, 340px)', background: '#ede9f6' }}
               >
                 <img
                   src="/assets/creative-infrastructure.jpg"
@@ -79,7 +80,8 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 />
               </div>
 
-              <div className="px-6 sm:px-8 md:px-12 pb-10 pt-6">
+              {/* Purple section only */}
+              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-6">
                 <h1
                   className="font-black text-white uppercase tracking-tight leading-tight mb-4"
                   style={{ fontSize: 'clamp(1.7rem, 5vw, 3rem)', wordBreak: 'break-word' }}
