@@ -9,6 +9,18 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
+/* Same arch as HowWeWork — purple curves UP into the image */
+const ArchDivider: React.FC = () => (
+  <svg
+    viewBox="0 0 400 32"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    style={{ width: '100%', height: '32px', display: 'block', marginTop: '-1px' }}
+  >
+    <path d="M0,32 Q200,0 400,32 L400,32 L0,32 Z" fill="#5c0386" />
+  </svg>
+);
+
 export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
@@ -60,31 +72,23 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               ← Back to How We Work
             </button>
 
-            {/*
-              Same card structure as HowWeWork:
-              - Outer: rounded-[2.5rem] overflow-hidden, NO bg
-              - Image wrapper has bg-[#5c0386] so rounded corners of image
-                sit on purple (the purple shows through the image bottom curves)
-              - Image itself: rounded-[2rem] overflow-hidden — all corners rounded
-              - Purple content section: flat top
-            */}
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-              <div className="bg-[#5c0386]">
-                <div
-                  className="w-full rounded-[2rem] overflow-hidden"
-                  style={{ height: 'clamp(220px, 42vw, 340px)' }}
-                >
-                  <img
-                    src="/assets/creative-infrastructure.jpg"
-                    alt="Creative Infrastructure"
-                    className="w-full h-full object-cover object-top block"
-                  />
-                </div>
+              {/* Image — maxed out, flat at bottom */}
+              <div style={{ height: 'clamp(220px, 42vw, 340px)' }}>
+                <img
+                  src="/assets/creative-infrastructure.jpg"
+                  alt="Creative Infrastructure"
+                  className="w-full h-full object-cover object-top block"
+                />
               </div>
 
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-6">
-                <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight mb-4">
+              {/* Arch — purple curves up into image */}
+              <ArchDivider />
+
+              {/* Purple content */}
+              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
+                <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
                 <p className="text-white/90 text-sm sm:text-base leading-relaxed">
@@ -105,23 +109,11 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               The Problem Most Growing Businesses Face
             </h2>
             <div className="space-y-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
-              <p>
-                Marketing today requires constant creative output — graphics, videos, campaigns,
-                and storytelling — that keep your brand visible and competitive. But most
-                companies struggle to support this consistently.
-              </p>
-              <p className="italic font-medium text-gray-500">
-                Freelancers are unreliable, often juggling multiple clients with inconsistent availability and delivery.
-              </p>
-              <p className="italic font-medium text-gray-500">
-                Building a full in-house creative team requires hiring designers, video editors, animators, and creative leads — a major payroll commitment.
-              </p>
-              <p className="italic font-medium text-gray-500">
-                Traditional agencies are often expensive, slow to respond, and structured around project billing rather than ongoing creative support.
-              </p>
-              <p>
-                Sleeka solves this with a structured creative department on a flexible monthly subscription — reliable creative capacity without operational complexity. Here are our two creative infrastructure packages:
-              </p>
+              <p>Marketing today requires constant creative output — graphics, videos, campaigns, and storytelling — that keep your brand visible and competitive. But most companies struggle to support this consistently.</p>
+              <p className="italic font-medium text-gray-500">Freelancers are unreliable, often juggling multiple clients with inconsistent availability and delivery.</p>
+              <p className="italic font-medium text-gray-500">Building a full in-house creative team requires hiring designers, video editors, animators, and creative leads — a major payroll commitment.</p>
+              <p className="italic font-medium text-gray-500">Traditional agencies are often expensive, slow to respond, and structured around project billing rather than ongoing creative support.</p>
+              <p>Sleeka solves this with a structured creative department on a flexible monthly subscription — reliable creative capacity without operational complexity. Here are our two creative infrastructure packages:</p>
             </div>
           </div>
         </section>
@@ -135,23 +127,16 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               <button
                 onClick={() => handleClick('growth')}
                 onMouseEnter={() => handleHover('growth')}
-                className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold
-                  text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
-                  ${activePackage === 'growth'
-                    ? 'bg-[#5c0386] text-white shadow-xl shadow-purple-500/30 scale-[1.01]'
-                    : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
+                className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
+                  ${activePackage === 'growth' ? 'bg-[#5c0386] text-white shadow-xl shadow-purple-500/30 scale-[1.01]' : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
               >
                 <span>Growth Infrastructure</span>
-                {activePackage === 'growth'
-                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'growth' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
               <div className={`pkg-panel ${activePackage === 'growth' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                    For growing businesses that need consistent creative support to maintain visibility and support marketing activities.
-                  </p>
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For growing businesses that need consistent creative support to maintain visibility and support marketing activities.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
                       { label: 'What This Package Delivers', items: ['Consistent brand visibility','Professional visual communication','Reliable creative support for ongoing marketing'] },
@@ -168,10 +153,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ))}
                   </div>
                   <div className="mt-6 bg-white/10 rounded-2xl p-4 border border-white/20">
-                    <p className="text-white/90 text-sm">
-                      <span className="text-[#47ff01] font-bold">Best suited for: </span>
-                      Growing companies that need consistent creative output without building an internal design team.
-                    </p>
+                    <p className="text-white/90 text-sm"><span className="text-[#47ff01] font-bold">Best suited for: </span>Growing companies that need consistent creative output without building an internal design team.</p>
                   </div>
                 </div>
               </div>
@@ -182,23 +164,16 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               <button
                 onClick={() => handleClick('authority')}
                 onMouseEnter={() => handleHover('authority')}
-                className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold
-                  text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
-                  ${activePackage === 'authority'
-                    ? 'bg-[#47ff01] text-black shadow-xl shadow-green-400/30 scale-[1.01]'
-                    : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
+                className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
+                  ${activePackage === 'authority' ? 'bg-[#47ff01] text-black shadow-xl shadow-green-400/30 scale-[1.01]' : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
               >
                 <span>Authority Infrastructure</span>
-                {activePackage === 'authority'
-                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
-                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'authority' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
               <div className={`pkg-panel ${activePackage === 'authority' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                    For ambitious companies that want to strengthen brand authority, execute campaigns effectively, and scale their marketing presence with greater creative capacity, faster delivery, and strategic oversight.
-                  </p>
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For ambitious companies that want to strengthen brand authority, execute campaigns effectively, and scale their marketing presence with greater creative capacity, faster delivery, and strategic oversight.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
                       { label: 'What This Package Delivers', items: ['Stronger brand authority','Higher-impact marketing campaigns','Faster creative execution for growth initiatives'] },
@@ -214,30 +189,19 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                       </div>
                     ))}
                   </div>
-                  <p className="mt-6 text-white/60 text-sm italic">
-                    Your project manager ensures your creative pipeline stays organized, prioritized, and delivered efficiently — enabling your team to move faster.
-                  </p>
+                  <p className="mt-6 text-white/60 text-sm italic">Your project manager ensures your creative pipeline stays organized, prioritized, and delivered efficiently — enabling your team to move faster.</p>
                 </div>
               </div>
             </div>
 
             {/* CTA */}
-            <div
-              className="rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-              style={{ background: 'linear-gradient(135deg,#f3eeff 0%,#e8d8ff 100%)' }}
-            >
+            <div className="rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ background: 'linear-gradient(135deg,#f3eeff 0%,#e8d8ff 100%)' }}>
               <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed md:max-w-md">
-                Get a dedicated creative department that delivers high-quality design, video,
-                and animation on demand — boosting visibility, authority, and revenue without
-                building an in-house team.
+                Get a dedicated creative department that delivers high-quality design, video, and animation on demand — boosting visibility, authority, and revenue without building an in-house team.
               </p>
-              <a
-                href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://calendar.app.google/2nWbeLXuC52dvZtq5" target="_blank" rel="noopener noreferrer"
                 className="slk-btn-cta px-8 py-4 rounded-full font-bold text-base md:text-lg flex-shrink-0 whitespace-nowrap text-center"
-                style={{ backgroundColor: '#47ff01', color: '#000' }}
-              >
+                style={{ backgroundColor: '#47ff01', color: '#000' }}>
                 Book a Discovery Call
               </a>
             </div>
