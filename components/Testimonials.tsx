@@ -6,264 +6,206 @@ const reviews = [
     text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
     author: "Emmanuel Okoye",
     role: "CEO, Felicia Transport",
-    rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     text: "Our engagement rate jumped by 38% after Sleeka took over design and motion graphics. Reliable turnaround, zero creative burnout on our end.",
     author: "Joy Chinwe",
     role: "Growth Manager, Atlas",
-    rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     text: "We scaled our creative output overnight. No hiring stress, no onboarding delays — Sleeka just plugged in and executed. In just 45 days, our output doubled, and conversions jumped 23%, adding $25,000 in Q3 revenue.",
     author: "Adelewa Segun",
     role: "Head of Marketing, Cardiff",
-    rating: 5,
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
   }
 ];
 
-/*
-  Animation: "Card Deal"
-  - EXIT:   current card flings away — slides right + rotates + fades out (fast, 320ms)
-  - ENTER:  next card shoots in from LEFT — overshoots slightly then settles (spring bounce, 420ms)
-  - Going backward: mirrors the direction
-  Keys: direction (-1 = prev, 1 = next) drives the exit/enter sides
-*/
-
-type Phase = 'idle' | 'exit' | 'enter';
+const AUTO_DELAY = 9000; // 9 seconds — enough time to read comfortably
 
 export const Testimonials: React.FC = () => {
-  const [index, setIndex] = useState(0);
-  const [phase, setPhase] = useState<Phase>('idle');
-  const [direction, setDirection] = useState<1 | -1>(1);
-  const [nextIndex, setNextIndex] = useState(0);
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [active, setActive]   = useState(0);
+  const [video, setVideo]     = useState<string | null>(null);
+  const [paused, setPaused]   = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const total = reviews.length;
 
-  const navigate = useCallback((dir: 1 | -1) => {
-    if (phase !== 'idle') return;
-    const next = (index + dir + reviews.length) % reviews.length;
-    setDirection(dir);
-    setNextIndex(next);
-    setPhase('exit');
-  }, [phase, index]);
+  const go = useCallback((dir: 1 | -1) => {
+    setActive(prev => (prev + dir + total) % total);
+  }, [total]);
 
-  // Auto-advance every 5s
+  // Auto-advance — restarts whenever active changes or pause state changes
   useEffect(() => {
-    timerRef.current = setTimeout(() => navigate(1), 5000);
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [index, navigate]);
-
-  // Phase sequencing
-  useEffect(() => {
-    if (phase === 'exit') {
-      // After exit anim completes, swap card and start enter
-      const t = setTimeout(() => {
-        setIndex(nextIndex);
-        setPhase('enter');
-      }, 340);
-      return () => clearTimeout(t);
+    if (paused) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
     }
-    if (phase === 'enter') {
-      const t = setTimeout(() => setPhase('idle'), 450);
-      return () => clearTimeout(t);
-    }
-  }, [phase, nextIndex]);
-
-  // Dynamic inline styles for each phase
-  const cardStyle = (): React.CSSProperties => {
-    const base: React.CSSProperties = {
-      transition: 'none',
-      willChange: 'transform, opacity',
-    };
-
-    if (phase === 'idle') {
-      return { ...base, transform: 'translateX(0) rotate(0deg)', opacity: 1, transition: 'none' };
-    }
-    if (phase === 'exit') {
-      // Flings out to the opposite direction of travel
-      const xOut = direction === 1 ? '110%' : '-110%';
-      const rot = direction === 1 ? '8deg' : '-8deg';
-      return {
-        ...base,
-        transform: `translateX(${xOut}) rotate(${rot})`,
-        opacity: 0,
-        transition: 'transform 320ms cubic-bezier(0.55, 0, 1, 0.45), opacity 280ms ease',
-      };
-    }
-    if (phase === 'enter') {
-      // Snaps in from opposite side, slightly overshoots then settles
-      return {
-        ...base,
-        transform: 'translateX(0) rotate(0deg)',
-        opacity: 1,
-        transition: 'transform 440ms cubic-bezier(0.18, 1.4, 0.4, 1), opacity 200ms ease',
-        // Card starts from off-screen (set via keyframe override below)
-      };
-    }
-    return base;
-  };
-
-  // Entry start position (applied for 1 frame before enter transition fires)
-  const enterStartStyle: React.CSSProperties = phase === 'enter'
-    ? {}
-    : {};
-
-  const review = reviews[index];
+    timerRef.current = setInterval(() => go(1), AUTO_DELAY);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [active, paused, go]);
 
   return (
-    <section className="bg-geko-dark py-32 relative overflow-hidden text-white">
+    <section
+      className="bg-geko-dark py-32 relative overflow-hidden text-white"
+      // Pause on mouse hover
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      // Pause on touch (mobile finger hold)
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => {
+        // Resume after a short grace period so the user can lift their finger
+        // and still have a moment to keep reading
+        setTimeout(() => setPaused(false), 1200);
+      }}
+    >
       <style>{`
-        @keyframes slk-enter-left {
-          from { transform: translateX(-100%) rotate(-6deg); opacity: 0; }
-          to   { transform: translateX(0)    rotate(0deg);   opacity: 1; }
+        /* Smooth glide transition */
+        .slk-track {
+          display: flex;
+          transition: transform 700ms cubic-bezier(0.77,0,0.18,1);
+          will-change: transform;
         }
-        @keyframes slk-enter-right {
-          from { transform: translateX(100%) rotate(6deg);  opacity: 0; }
-          to   { transform: translateX(0)    rotate(0deg);  opacity: 1; }
+        .slk-card-wrap {
+          flex: 0 0 100%;
+          padding: 0 8px;
         }
-        @keyframes slk-exit-right {
-          from { transform: translateX(0)    rotate(0deg);   opacity: 1; }
-          to   { transform: translateX(110%) rotate(8deg);   opacity: 0; }
+        @media (min-width: 768px) {
+          .slk-card-wrap { flex: 0 0 72%; padding: 0 16px; }
         }
-        @keyframes slk-exit-left {
-          from { transform: translateX(0)    rotate(0deg);   opacity: 1; }
-          to   { transform: translateX(-110%) rotate(-8deg); opacity: 0; }
+
+        /* Progress bar */
+        @keyframes slk-bar {
+          from { transform: scaleX(0); }
+          to   { transform: scaleX(1); }
         }
-        .slk-card-exit-right {
-          animation: slk-exit-right 320ms cubic-bezier(0.55,0,1,0.45) forwards;
+        .slk-bar {
+          transform-origin: left;
+          animation: slk-bar ${AUTO_DELAY}ms linear forwards;
         }
-        .slk-card-exit-left {
-          animation: slk-exit-left 320ms cubic-bezier(0.55,0,1,0.45) forwards;
+        .slk-bar-paused {
+          animation-play-state: paused;
         }
-        .slk-card-enter-left {
-          animation: slk-enter-left 440ms cubic-bezier(0.18,1.4,0.4,1) forwards;
+
+        /* Pause indicator */
+        .slk-pause-hint {
+          opacity: 0;
+          transition: opacity 0.2s;
         }
-        .slk-card-enter-right {
-          animation: slk-enter-right 440ms cubic-bezier(0.18,1.4,0.4,1) forwards;
+        section:hover .slk-pause-hint,
+        section:active .slk-pause-hint {
+          opacity: 1;
         }
       `}</style>
 
-      {/* Background glows */}
+      {/* Glow blobs */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white opacity-[0.03] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-geko-accent opacity-[0.05] rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Header + Nav arrows */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+        {/* Header + nav */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <h2 className="text-5xl md:text-6xl font-bold leading-tight max-w-xl">
             What our Clients Say
           </h2>
-
-          <div className="flex items-center gap-3 flex-shrink-0">
-            {/* Counter */}
-            <span className="text-white/30 text-sm font-mono mr-2 select-none">
-              {String(index + 1).padStart(2, '0')} / {String(reviews.length).padStart(2, '0')}
+          <div className="flex items-center gap-3">
+            {/* Pause indicator */}
+            <span className="slk-pause-hint text-white/30 text-xs font-mono mr-1 select-none">
+              {paused ? '⏸ paused' : ''}
             </span>
-
+            <span className="text-white/30 text-sm font-mono tabular-nums mr-1 select-none">
+              {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </span>
             <button
-              onClick={() => navigate(-1)}
-              disabled={phase !== 'idle'}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-200 disabled:opacity-30"
+              onClick={() => go(-1)}
+              className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-200"
               aria-label="Previous testimonial"
             >
-              <ArrowLeft size={18} />
+              <ArrowLeft size={16} />
             </button>
             <button
-              onClick={() => navigate(1)}
-              disabled={phase !== 'idle'}
-              className="w-12 h-12 rounded-full bg-[#47ff01] flex items-center justify-center text-[#5c0386] hover:scale-110 transition-all duration-200 disabled:opacity-30"
+              onClick={() => go(1)}
+              className="w-11 h-11 rounded-full bg-[#47ff01] flex items-center justify-center text-[#5c0386] hover:scale-110 transition-transform duration-200"
               aria-label="Next testimonial"
             >
-              <ArrowRight size={18} strokeWidth={2.5} />
+              <ArrowRight size={16} strokeWidth={2.5} />
             </button>
           </div>
         </div>
 
-        {/* Card stage — overflow hidden clips the fling animation */}
-        <div
-          className="relative overflow-hidden"
-          style={{ minHeight: '320px' }}
-        >
+        {/* Slider track */}
+        <div className="overflow-hidden -mx-4 md:-mx-0">
           <div
-            key={`${index}-${phase}`}
-            className={`
-              ${phase === 'exit' && direction === 1  ? 'slk-card-exit-right'  : ''}
-              ${phase === 'exit' && direction === -1 ? 'slk-card-exit-left'   : ''}
-              ${phase === 'enter' && direction === 1 ? 'slk-card-enter-right' : ''}
-              ${phase === 'enter' && direction === -1? 'slk-card-enter-left'  : ''}
-              max-w-2xl mx-auto
-            `}
+            className="slk-track"
+            style={{
+              transform: `translateX(${
+                typeof window !== 'undefined' && window.innerWidth >= 768
+                  ? `calc(14% + ${-active * 72}%)`
+                  : `${-active * 100}%`
+              })`,
+            }}
           >
-            <div className="bg-white text-geko-dark rounded-[2.5rem] p-10 md:p-12 shadow-2xl">
-
-              {/* Opening quote */}
-              <span className="text-6xl font-serif font-bold leading-none block mb-6 text-[#47ff01] h-8 overflow-visible">
-                "
-              </span>
-
-              {/* Review text */}
-              <p className="text-xl md:text-2xl font-medium leading-relaxed mb-10 text-geko-dark">
-                {review.text}
-              </p>
-
-              {/* Author + video button */}
-              <div className="border-t border-gray-100 pt-6 flex items-center justify-between gap-4">
-                <div>
-                  <h4 className="font-bold text-lg text-geko-dark">{review.author}</h4>
-                  <p className="text-sm text-gray-500 mt-0.5">{review.role}</p>
-                </div>
-
-                <button
-                  onClick={() => setSelectedVideo(review.videoUrl)}
-                  className="relative w-12 h-12 flex-shrink-0 rounded-full bg-[#47ff01] flex items-center justify-center hover:scale-110 transition-transform group"
-                  aria-label="Watch video testimonial"
+            {reviews.map((r, i) => (
+              <div key={i} className="slk-card-wrap">
+                <div
+                  className="bg-white text-geko-dark rounded-[2.5rem] p-8 md:p-12 shadow-2xl transition-all duration-700"
+                  style={{
+                    opacity:   i === active ? 1 : 0.4,
+                    transform: i === active ? 'scale(1)' : 'scale(0.95)',
+                  }}
                 >
-                  <div className="absolute inset-0 rounded-full bg-[#47ff01] animate-ping opacity-60" />
-                  <Play size={18} className="text-[#5c0386] fill-[#5c0386] relative z-10 ml-0.5" />
-                </button>
+                  <span className="text-6xl font-serif font-bold leading-none block mb-5 text-[#47ff01] h-8 overflow-visible">"</span>
+                  <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 text-geko-dark">
+                    {r.text}
+                  </p>
+                  <div className="border-t border-gray-100 pt-6 flex items-center justify-between">
+                    <div>
+                      <h4 className="font-bold text-lg text-geko-dark">{r.author}</h4>
+                      <p className="text-sm text-gray-500 mt-0.5">{r.role}</p>
+                    </div>
+                    <button
+                      onClick={() => setVideo(r.videoUrl)}
+                      className="relative w-12 h-12 flex-shrink-0 rounded-full bg-[#47ff01] flex items-center justify-center hover:scale-110 transition-transform"
+                      aria-label="Watch video testimonial"
+                    >
+                      <div className="absolute inset-0 rounded-full bg-[#47ff01] animate-ping opacity-60" />
+                      <Play size={18} className="text-[#5c0386] fill-[#5c0386] relative z-10 ml-0.5" />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Progress bar — thin green line that resets on each slide */}
-        <div className="max-w-2xl mx-auto mt-6">
-          <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
+        {/* Progress bar */}
+        <div className="max-w-md mx-auto mt-8">
+          <div className="h-0.5 bg-white/10 rounded-full overflow-hidden relative">
             <div
-              key={index}
-              className="h-full bg-[#47ff01] rounded-full"
-              style={{
-                animation: 'slk-progress 5s linear forwards',
-              }}
+              key={`${active}-${paused}`}
+              className={`slk-bar h-full bg-[#47ff01] rounded-full ${paused ? 'slk-bar-paused' : ''}`}
             />
           </div>
-          <style>{`
-            @keyframes slk-progress {
-              from { width: 0%; }
-              to   { width: 100%; }
-            }
-          `}</style>
+          <p className="text-center text-white/20 text-xs mt-3 select-none">
+            Hover or touch to pause
+          </p>
         </div>
 
       </div>
 
       {/* Video Modal */}
-      {selectedVideo && (
+      {video && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative w-full max-w-4xl aspect-video">
             <button
-              onClick={() => setSelectedVideo(null)}
+              onClick={() => setVideo(null)}
               className="absolute -top-12 right-0 text-white hover:text-[#47ff01] transition-colors"
             >
               <X size={32} />
             </button>
             <iframe
-              src={selectedVideo}
+              src={video}
               className="w-full h-full rounded-2xl"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
