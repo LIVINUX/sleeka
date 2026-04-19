@@ -9,18 +9,6 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
-/* Same bow divider as HowWeWork */
-const BowDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 20"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
-  >
-    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
-  </svg>
-);
-
 export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
@@ -73,28 +61,29 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
             </button>
 
             {/*
-              Card: same structure as HowWeWork cards.
-              Outer wrapper: NO background — corners clip cleanly.
-              Curve SVG: between image and purple section — KEPT.
-              Purple bg: only on the content section.
-              max-w centres the card just like the home page cards.
+              Same card structure as HowWeWork:
+              - Outer: rounded-[2.5rem] overflow-hidden, NO bg
+              - Image wrapper has bg-[#5c0386] so rounded corners of image
+                sit on purple (the purple shows through the image bottom curves)
+              - Image itself: rounded-[2rem] overflow-hidden — all corners rounded
+              - Purple content section: flat top
             */}
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-              <div
-                className="w-full"
-                style={{ height: 'clamp(220px, 42vw, 340px)', background: '#ede9f6' }}
-              >
-                <img
-                  src="/assets/creative-infrastructure.jpg"
-                  alt="Creative Infrastructure"
-                  className="w-full h-full object-cover object-top block"
-                />
+              <div className="bg-[#5c0386]">
+                <div
+                  className="w-full rounded-[2rem] overflow-hidden"
+                  style={{ height: 'clamp(220px, 42vw, 340px)' }}
+                >
+                  <img
+                    src="/assets/creative-infrastructure.jpg"
+                    alt="Creative Infrastructure"
+                    className="w-full h-full object-cover object-top block"
+                  />
+                </div>
               </div>
 
-              <BowDivider />
-
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
+              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-6">
                 <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
@@ -122,21 +111,16 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 companies struggle to support this consistently.
               </p>
               <p className="italic font-medium text-gray-500">
-                Freelancers are unreliable, often juggling multiple clients with inconsistent
-                availability and delivery.
+                Freelancers are unreliable, often juggling multiple clients with inconsistent availability and delivery.
               </p>
               <p className="italic font-medium text-gray-500">
-                Building a full in-house creative team requires hiring designers, video editors,
-                animators, and creative leads — a major payroll commitment.
+                Building a full in-house creative team requires hiring designers, video editors, animators, and creative leads — a major payroll commitment.
               </p>
               <p className="italic font-medium text-gray-500">
-                Traditional agencies are often expensive, slow to respond, and structured around
-                project billing rather than ongoing creative support.
+                Traditional agencies are often expensive, slow to respond, and structured around project billing rather than ongoing creative support.
               </p>
               <p>
-                Sleeka solves this with a structured creative department on a flexible monthly
-                subscription — reliable creative capacity without operational complexity.
-                Here are our two creative infrastructure packages:
+                Sleeka solves this with a structured creative department on a flexible monthly subscription — reliable creative capacity without operational complexity. Here are our two creative infrastructure packages:
               </p>
             </div>
           </div>
@@ -162,7 +146,6 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                   ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
                   : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
-
               <div className={`pkg-panel ${activePackage === 'growth' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
@@ -180,9 +163,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">
-                          {items.map(i => <li key={i}>• {i}</li>)}
-                        </ul>
+                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
                       </div>
                     ))}
                   </div>
@@ -212,7 +193,6 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                   ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
                   : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
-
               <div className={`pkg-panel ${activePackage === 'authority' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
@@ -230,9 +210,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">
-                          {items.map(i => <li key={i}>• {i}</li>)}
-                        </ul>
+                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
                       </div>
                     ))}
                   </div>
