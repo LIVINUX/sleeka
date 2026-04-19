@@ -11,17 +11,6 @@ interface HowWeWorkProps {
   back down to bottom-right (400,32), then fills down to the bottom.
   This makes the purple appear to rise up into the image — a smile/arch.
 */
-const ArchDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 32"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-    style={{ width: '100%', height: '32px', display: 'block', marginTop: '-1px' }}
-  >
-    {/* Arch curves UP into the image from both sides, peaks at centre */}
-    <path d="M0,32 Q200,0 400,32 L400,32 L0,32 Z" fill="#5c0386" />
-  </svg>
-);
 
 const GlobalStyles: React.FC = () => (
   <style>{`
