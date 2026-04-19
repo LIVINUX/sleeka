@@ -9,6 +9,18 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
+/* Same bow divider as HowWeWork */
+const BowDivider: React.FC = () => (
+  <svg
+    viewBox="0 0 400 20"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
+  >
+    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
+  </svg>
+);
+
 export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
@@ -43,7 +55,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         }
         .pkg-panel.open   { max-height: 2400px; opacity: 1; }
         .pkg-panel.closed { max-height: 0;       opacity: 0; }
-        .ci-root { overflow-x: hidden; max-width: 100vw; }
+        .ci-root { overflow-x: hidden; }
       `}</style>
 
       <Navbar forceColored />
@@ -61,14 +73,14 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
             </button>
 
             {/*
-              Same fix as HowWeWork:
-              Outer card wrapper has NO background color.
-              overflow-hidden clips the image at rounded corners cleanly.
-              Purple bg ONLY on the content section below the image.
+              Card: same structure as HowWeWork cards.
+              Outer wrapper: NO background — corners clip cleanly.
+              Curve SVG: between image and purple section — KEPT.
+              Purple bg: only on the content section.
+              max-w centres the card just like the home page cards.
             */}
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-              {/* Image — NO inner border-radius, NO bg on outer card */}
               <div
                 className="w-full"
                 style={{ height: 'clamp(220px, 42vw, 340px)', background: '#ede9f6' }}
@@ -80,12 +92,10 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Purple section only */}
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-6">
-                <h1
-                  className="font-black text-white uppercase tracking-tight leading-tight mb-4"
-                  style={{ fontSize: 'clamp(1.7rem, 5vw, 3rem)', wordBreak: 'break-word' }}
-                >
+              <BowDivider />
+
+              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
+                <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
                 <p className="text-white/90 text-sm sm:text-base leading-relaxed">
@@ -102,7 +112,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         {/* ── Problem ── */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
               The Problem Most Growing Businesses Face
             </h2>
             <div className="space-y-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
@@ -148,8 +158,11 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
               >
                 <span>Growth Infrastructure</span>
-                {activePackage === 'growth' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'growth'
+                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
+                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
+
               <div className={`pkg-panel ${activePackage === 'growth' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
@@ -167,7 +180,9 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
+                        <ul className="space-y-1 text-sm text-white/80">
+                          {items.map(i => <li key={i}>• {i}</li>)}
+                        </ul>
                       </div>
                     ))}
                   </div>
@@ -193,8 +208,11 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
               >
                 <span>Authority Infrastructure</span>
-                {activePackage === 'authority' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
+                {activePackage === 'authority'
+                  ? <ChevronUp className="w-5 h-5 flex-shrink-0" />
+                  : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
               </button>
+
               <div className={`pkg-panel ${activePackage === 'authority' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
@@ -212,7 +230,9 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
-                        <ul className="space-y-1 text-sm text-white/80">{items.map(i => <li key={i}>• {i}</li>)}</ul>
+                        <ul className="space-y-1 text-sm text-white/80">
+                          {items.map(i => <li key={i}>• {i}</li>)}
+                        </ul>
                       </div>
                     ))}
                   </div>
