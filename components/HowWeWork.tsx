@@ -5,24 +5,23 @@ interface HowWeWorkProps {
 }
 
 /*
-  CARD STRUCTURE:
-  ┌─────────────────────────────────────┐  ← outer card: rounded-[2.5rem], NO bg
-  │  ╔═════════════════════════════╗    │
-  │  ║                             ║    │  ← image: rounded-[2rem] on ALL corners
-  │  ║       illustration          ║    │    top corners clipped by outer overflow-hidden
-  │  ║                             ║    │    bottom corners curve INTO the purple
-  │  ╚══════════╝  ╚══════════════╝    │  ← image bottom corners (curved)
-  │  ██████████████████████████████    │  ← purple section: flat top, no curve
-  │  ██  Creative Infrastructure  ██    │
-  │  ██  description text...      ██    │
-  │  ██  [Learn More!]            ██    │
-  └─────────────────────────────────────┘
-
-  The image rounded-[2rem] at the bottom overlaps the purple bg,
-  looking like a rounded-rectangle photo sitting on a purple panel.
-  The outer card overflow-hidden clips the top corners of the image.
-  No SVG, no fake curves — just border-radius doing its job.
+  CURVE DIRECTION: Purple curves UP into the image.
+  The SVG sits at the bottom of the image container.
+  Path: starts at bottom-left (0,32), arches UP to centre (200,0),
+  back down to bottom-right (400,32), then fills down to the bottom.
+  This makes the purple appear to rise up into the image — a smile/arch.
 */
+const ArchDivider: React.FC = () => (
+  <svg
+    viewBox="0 0 400 32"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    style={{ width: '100%', height: '32px', display: 'block', marginTop: '-1px' }}
+  >
+    {/* Arch curves UP into the image from both sides, peaks at centre */}
+    <path d="M0,32 Q200,0 400,32 L400,32 L0,32 Z" fill="#5c0386" />
+  </svg>
+);
 
 const GlobalStyles: React.FC = () => (
   <style>{`
@@ -42,52 +41,34 @@ const GlobalStyles: React.FC = () => (
       transform: scale(1.06); filter: brightness(1.08);
       animation: none; box-shadow: 0 8px 28px rgba(71,255,1,0.45);
     }
-    .slk-btn-soon {
-      animation: slk-pulse-soft 2.6s ease-in-out infinite;
-    }
-    /* Hover lift */
+    .slk-btn-soon { animation: slk-pulse-soft 2.6s ease-in-out infinite; }
     .slk-card {
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.35s ease;
-      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
     }
     .slk-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 32px 64px rgba(92,3,134,0.22), 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 28px 56px rgba(92,3,134,0.2), 0 8px 20px rgba(0,0,0,0.1);
     }
-    /* Click pop */
     @keyframes slk-pop {
       0%   { transform: scale(1); }
-      35%  { transform: scale(1.06) translateY(-6px); }
-      65%  { transform: scale(0.98) translateY(-2px); }
-      100% { transform: scale(1)    translateY(0); }
+      40%  { transform: scale(1.05) translateY(-4px); }
+      70%  { transform: scale(0.98); }
+      100% { transform: scale(1); }
     }
-    .slk-card-popped {
-      animation: slk-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    }
+    .slk-popped { animation: slk-pop 0.38s cubic-bezier(0.34,1.56,0.64,1) forwards; }
   `}</style>
 );
 
-interface CardProps {
-  children: React.ReactNode;
-  onPop?: () => void;
-}
-
-const Card: React.FC<CardProps> = ({ children, onPop }) => {
+const Card: React.FC<{ children: React.ReactNode; onClick?: () => void }> = ({ children, onClick }) => {
   const [popped, setPopped] = useState(false);
-
   const handleClick = () => {
     setPopped(true);
-    if (onPop) onPop();
-    // Reset after animation so it can pop again
-    setTimeout(() => setPopped(false), 420);
+    setTimeout(() => { setPopped(false); if (onClick) onClick(); }, 200);
   };
-
   return (
     <div
       onClick={handleClick}
-      className={`slk-card rounded-[2.5rem] overflow-hidden shadow-2xl select-none
-        ${popped ? 'slk-card-popped' : ''}`}
+      className={`slk-card rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer ${popped ? 'slk-popped' : ''}`}
     >
       {children}
     </div>
@@ -109,31 +90,23 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
 
       <div className="flex flex-col gap-10 max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-        {/* ── Card 1: Creative Infrastructure ── */}
-        <Card onPop={onNavigateToInfrastructure}>
-          {/*
-            Image container — rounded on ALL corners (2rem).
-            Top corners are clipped by the outer card's overflow-hidden.
-            Bottom corners curve downward into the purple below.
-            The purple bg shows through those bottom curves naturally.
-            No SVG, no fake divider needed.
-          */}
-          <div>
-            <div
-              className="w-full rounded-[2rem] overflow-hidden"
-              style={{ height: 'clamp(240px, 42vw, 360px)' }}
-            >
-              <img
-                src="/assets/creative-infrastructure.jpg"
-                alt="Creative Infrastructure"
-                className="w-full h-full object-cover object-top block"
-              />
-            </div>
+        {/* Card 1 — Creative Infrastructure */}
+        <Card onClick={onNavigateToInfrastructure}>
+          {/* Image fills top, maxed out */}
+          <div style={{ height: 'clamp(240px, 42vw, 360px)' }}>
+            <img
+              src="/assets/creative-infrastructure.jpg"
+              alt="Creative Infrastructure"
+              className="w-full h-full object-cover object-top block"
+            />
           </div>
 
-          {/* Purple content — flat top, no curve */}
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-6">
-            <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
+          {/* Arch SVG — purple curves UP into the image */}
+          <ArchDivider />
+
+          {/* Purple content */}
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+            <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
@@ -154,23 +127,20 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           </div>
         </Card>
 
-        {/* ── Card 2: Creative Talent Outsourcing ── */}
+        {/* Card 2 — Creative Talent Outsourcing */}
         <Card>
-          <div className="bg-[#5c0386]">
-            <div
-              className="w-full rounded-[2rem] overflow-hidden"
-              style={{ height: 'clamp(240px, 42vw, 360px)' }}
-            >
-              <img
-                src="/assets/talent-outsourcing.jpg"
-                alt="Creative Talent Outsourcing"
-                className="w-full h-full object-cover object-top block"
-              />
-            </div>
+          <div style={{ height: 'clamp(240px, 42vw, 360px)' }}>
+            <img
+              src="/assets/talent-outsourcing.jpg"
+              alt="Creative Talent Outsourcing"
+              className="w-full h-full object-cover object-top block"
+            />
           </div>
 
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-6">
-            <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
+          <ArchDivider />
+
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+            <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
