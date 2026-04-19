@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface HowWeWorkProps {
   onNavigateToInfrastructure: () => void;
 }
 
 /*
-  THE ONLY CHANGE from the working version:
-  - Outer card wrapper: removed bg-[#5c0386]
-    This was causing purple to bleed through the top rounded corners.
-  - The SVG curve between image and purple section: KEPT exactly as before.
-  - Everything else: fonts, layout, centering — all unchanged.
-*/
+  CARD STRUCTURE:
+  ┌─────────────────────────────────────┐  ← outer card: rounded-[2.5rem], NO bg
+  │  ╔═════════════════════════════╗    │
+  │  ║                             ║    │  ← image: rounded-[2rem] on ALL corners
+  │  ║       illustration          ║    │    top corners clipped by outer overflow-hidden
+  │  ║                             ║    │    bottom corners curve INTO the purple
+  │  ╚══════════╝  ╚══════════════╝    │  ← image bottom corners (curved)
+  │  ██████████████████████████████    │  ← purple section: flat top, no curve
+  │  ██  Creative Infrastructure  ██    │
+  │  ██  description text...      ██    │
+  │  ██  [Learn More!]            ██    │
+  └─────────────────────────────────────┘
 
-/* Gentle downward bow — purple fill curves into the content section */
-const BowDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 20"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-    style={{ width: '100%', height: '20px', display: 'block', marginBottom: '-1px' }}
-  >
-    <path d="M0,0 Q200,20 400,0 L400,20 L0,20 Z" fill="#5c0386" />
-  </svg>
-);
+  The image rounded-[2rem] at the bottom overlaps the purple bg,
+  looking like a rounded-rectangle photo sitting on a purple panel.
+  The outer card overflow-hidden clips the top corners of the image.
+  No SVG, no fake curves — just border-radius doing its job.
+*/
 
 const GlobalStyles: React.FC = () => (
   <style>{`
@@ -45,22 +45,60 @@ const GlobalStyles: React.FC = () => (
     .slk-btn-soon {
       animation: slk-pulse-soft 2.6s ease-in-out infinite;
     }
+    /* Hover lift */
     .slk-card {
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s ease;
+      cursor: pointer;
     }
     .slk-card:hover {
       transform: translateY(-10px) scale(1.02);
       box-shadow: 0 32px 64px rgba(92,3,134,0.22), 0 8px 24px rgba(0,0,0,0.12);
     }
+    /* Click pop */
+    @keyframes slk-pop {
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.06) translateY(-6px); }
+      65%  { transform: scale(0.98) translateY(-2px); }
+      100% { transform: scale(1)    translateY(0); }
+    }
+    .slk-card-popped {
+      animation: slk-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
   `}</style>
 );
+
+interface CardProps {
+  children: React.ReactNode;
+  onPop?: () => void;
+}
+
+const Card: React.FC<CardProps> = ({ children, onPop }) => {
+  const [popped, setPopped] = useState(false);
+
+  const handleClick = () => {
+    setPopped(true);
+    if (onPop) onPop();
+    // Reset after animation so it can pop again
+    setTimeout(() => setPopped(false), 420);
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className={`slk-card rounded-[2.5rem] overflow-hidden shadow-2xl select-none
+        ${popped ? 'slk-card-popped' : ''}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure }) => (
   <section className="bg-white py-24 overflow-hidden">
     <GlobalStyles />
     <div className="container mx-auto px-6 md:px-12">
 
-      {/* Section Header */}
       <div className="mb-16">
         <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">How we work</h2>
         <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
@@ -69,33 +107,32 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
         </p>
       </div>
 
-      {/* Cards — centred, constrained width */}
       <div className="flex flex-col gap-10 max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
         {/* ── Card 1: Creative Infrastructure ── */}
-        <div className="slk-card rounded-[2.5rem] overflow-hidden shadow-2xl">
+        <Card onPop={onNavigateToInfrastructure}>
           {/*
-            Image fills the top.
-            Outer card has NO background — overflow-hidden clips corners cleanly.
-            Background here is the illustration's own light purple (#ede9f6)
-            so corners look natural instead of white.
+            Image container — rounded on ALL corners (2rem).
+            Top corners are clipped by the outer card's overflow-hidden.
+            Bottom corners curve downward into the purple below.
+            The purple bg shows through those bottom curves naturally.
+            No SVG, no fake divider needed.
           */}
-          <div
-            className="w-full"
-            style={{ height: 'clamp(240px, 42vw, 360px)', background: '#ede9f6' }}
-          >
-            <img
-              src="/assets/creative-infrastructure.jpg"
-              alt="Creative Infrastructure"
-              className="w-full h-full object-cover object-top block"
-            />
+          <div className="bg-[#5c0386]">
+            <div
+              className="w-full rounded-[2rem] overflow-hidden"
+              style={{ height: 'clamp(240px, 42vw, 360px)' }}
+            >
+              <img
+                src="/assets/creative-infrastructure.jpg"
+                alt="Creative Infrastructure"
+                className="w-full h-full object-cover object-top block"
+              />
+            </div>
           </div>
 
-          {/* SVG bow curves gently downward — image flows into purple */}
-          <BowDivider />
-
-          {/* Purple content section */}
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          {/* Purple content — flat top, no curve */}
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-6">
             <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
             </h3>
@@ -108,31 +145,31 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               creative output without the cost or complexity of building an in house team.
             </p>
             <button
-              onClick={onNavigateToInfrastructure}
+              onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
               className="slk-btn-learn px-8 py-4 rounded-full font-bold text-lg w-fit"
               style={{ backgroundColor: '#47ff01', color: '#000' }}
             >
               Learn More!
             </button>
           </div>
-        </div>
+        </Card>
 
         {/* ── Card 2: Creative Talent Outsourcing ── */}
-        <div className="slk-card rounded-[2.5rem] overflow-hidden shadow-2xl">
-          <div
-            className="w-full"
-            style={{ height: 'clamp(240px, 42vw, 360px)', background: '#ede9f6' }}
-          >
-            <img
-              src="/assets/talent-outsourcing.jpg"
-              alt="Creative Talent Outsourcing"
-              className="w-full h-full object-cover object-top block"
-            />
+        <Card>
+          <div className="bg-[#5c0386]">
+            <div
+              className="w-full rounded-[2rem] overflow-hidden"
+              style={{ height: 'clamp(240px, 42vw, 360px)' }}
+            >
+              <img
+                src="/assets/talent-outsourcing.jpg"
+                alt="Creative Talent Outsourcing"
+                className="w-full h-full object-cover object-top block"
+              />
+            </div>
           </div>
 
-          <BowDivider />
-
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-6">
             <h3 className="text-3xl md:text-4xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
             </h3>
@@ -152,7 +189,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Coming Soon
             </button>
           </div>
-        </div>
+        </Card>
 
       </div>
     </div>
