@@ -118,7 +118,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             The purple bg shows through those bottom curves naturally.
             No SVG, no fake divider needed.
           */}
-          <div className="bg-[#5c0386]">
+          <div>
             <div
               className="w-full rounded-[2rem] overflow-hidden"
               style={{ height: 'clamp(240px, 42vw, 360px)' }}
