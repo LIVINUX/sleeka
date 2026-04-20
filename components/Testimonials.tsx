@@ -22,12 +22,12 @@ const reviews = [
   }
 ];
 
-const AUTO_DELAY = 9000; // 9 seconds — enough time to read comfortably
+const AUTO_DELAY = 9000;
 
 export const Testimonials: React.FC = () => {
-  const [active, setActive]   = useState(0);
-  const [video, setVideo]     = useState<string | null>(null);
-  const [paused, setPaused]   = useState(false);
+  const [active, setActive] = useState(0);
+  const [video, setVideo] = useState<string | null>(null);
+  const [paused, setPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const total = reviews.length;
 
@@ -35,7 +35,6 @@ export const Testimonials: React.FC = () => {
     setActive(prev => (prev + dir + total) % total);
   }, [total]);
 
-  // Auto-advance — restarts whenever active changes or pause state changes
   useEffect(() => {
     if (paused) {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -48,19 +47,12 @@ export const Testimonials: React.FC = () => {
   return (
     <section
       className="bg-geko-dark py-32 relative overflow-hidden text-white"
-      // Pause on mouse hover
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      // Pause on touch (mobile finger hold)
       onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => {
-        // Resume after a short grace period so the user can lift their finger
-        // and still have a moment to keep reading
-        setTimeout(() => setPaused(false), 1200);
-      }}
+      onTouchEnd={() => setTimeout(() => setPaused(false), 1200)}
     >
       <style>{`
-        /* Smooth glide transition */
         .slk-track {
           display: flex;
           transition: transform 700ms cubic-bezier(0.77,0,0.18,1);
@@ -73,8 +65,6 @@ export const Testimonials: React.FC = () => {
         @media (min-width: 768px) {
           .slk-card-wrap { flex: 0 0 72%; padding: 0 16px; }
         }
-
-        /* Progress bar */
         @keyframes slk-bar {
           from { transform: scaleX(0); }
           to   { transform: scaleX(1); }
@@ -83,22 +73,9 @@ export const Testimonials: React.FC = () => {
           transform-origin: left;
           animation: slk-bar ${AUTO_DELAY}ms linear forwards;
         }
-        .slk-bar-paused {
-          animation-play-state: paused;
-        }
-
-        /* Pause indicator */
-        .slk-pause-hint {
-          opacity: 0;
-          transition: opacity 0.2s;
-        }
-        section:hover .slk-pause-hint,
-        section:active .slk-pause-hint {
-          opacity: 1;
-        }
+        .slk-bar-paused { animation-play-state: paused; }
       `}</style>
 
-      {/* Glow blobs */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white opacity-[0.03] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-geko-accent opacity-[0.05] rounded-full blur-3xl pointer-events-none" />
 
@@ -110,10 +87,6 @@ export const Testimonials: React.FC = () => {
             What our Clients Say
           </h2>
           <div className="flex items-center gap-3">
-            {/* Pause indicator */}
-            <span className="slk-pause-hint text-white/30 text-xs font-mono mr-1 select-none">
-              {paused ? '⏸ paused' : ''}
-            </span>
             <span className="text-white/30 text-sm font-mono tabular-nums mr-1 select-none">
               {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
@@ -134,7 +107,7 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Slider track */}
+        {/* Slider */}
         <div className="overflow-hidden -mx-4 md:-mx-0">
           <div
             className="slk-track"
@@ -179,17 +152,14 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress bar */}
+        {/* Progress bar — no text, just the visual bar */}
         <div className="max-w-md mx-auto mt-8">
-          <div className="h-0.5 bg-white/10 rounded-full overflow-hidden relative">
+          <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
             <div
               key={`${active}-${paused}`}
               className={`slk-bar h-full bg-[#47ff01] rounded-full ${paused ? 'slk-bar-paused' : ''}`}
             />
           </div>
-          <p className="text-center text-white/20 text-xs mt-3 select-none">
-            Hover or touch to pause
-          </p>
         </div>
 
       </div>

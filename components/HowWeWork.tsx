@@ -4,15 +4,6 @@ interface HowWeWorkProps {
   onNavigateToInfrastructure: () => void;
 }
 
-/*
-  OVERLAP TECHNIQUE:
-  - Image fills its container fully (no clipping, no curve on image)
-  - Purple section has rounded-tl-[2rem] rounded-tr-[2rem] (curved top corners)
-  - Purple section has marginTop: '-2rem' — pulls it UP over the image
-  - Result: purple slides up onto the bottom of the image with a smooth
-    curved top edge, like a card overlay. No white gaps, no SVG needed.
-*/
-
 const GlobalStyles: React.FC = () => (
   <style>{`
     @keyframes slk-pulse {
@@ -49,12 +40,16 @@ const GlobalStyles: React.FC = () => (
   `}</style>
 );
 
-const Card: React.FC<{ children: React.ReactNode; onClick?: () => void }> = ({ children, onClick }) => {
+/* Card pops on click — does NOT navigate. Navigation is button-only. */
+const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [popped, setPopped] = useState(false);
+
   const handleClick = () => {
+    if (popped) return;
     setPopped(true);
-    setTimeout(() => { setPopped(false); if (onClick) onClick(); }, 200);
+    setTimeout(() => setPopped(false), 420);
   };
+
   return (
     <div
       onClick={handleClick}
@@ -81,8 +76,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
       <div className="flex flex-col gap-10 max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
         {/* Card 1 — Creative Infrastructure */}
-        <Card onClick={onNavigateToInfrastructure}>
-          {/* Image — fills full width, flat bottom */}
+        <Card>
           <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
             <img
               src="/assets/creative-infrastructure.jpg"
@@ -90,18 +84,9 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               className="w-full h-full object-cover object-top block"
             />
           </div>
-
-          {/*
-            Purple section — negative marginTop pulls it up over the image.
-            Rounded top corners create the smooth curved overlap on the image.
-            No SVG. No white gaps. Pure CSS.
-          */}
           <div
             className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
-            style={{
-              marginTop: '-2rem',
-              borderRadius: '2rem 2rem 0 0',
-            }}
+            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
           >
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
@@ -114,6 +99,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Perfect for startups and growing businesses that need consistent, high quality
               creative output without the cost or complexity of building an in house team.
             </p>
+            {/* Only this button navigates */}
             <button
               onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
               className="slk-btn-learn px-8 py-4 rounded-full font-bold text-lg w-fit"
@@ -133,13 +119,9 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               className="w-full h-full object-cover object-top block"
             />
           </div>
-
           <div
             className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
-            style={{
-              marginTop: '-2rem',
-              borderRadius: '2rem 2rem 0 0',
-            }}
+            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
           >
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
