@@ -8,15 +8,13 @@ export const CaseStudyPage: React.FC = () => {
   const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null);
 
   useEffect(() => {
-    // Get the case study ID from the URL hash
     const hash = window.location.hash;
     const id = hash.replace('#/case-study/', '');
-    
     const study = getCaseStudyById(id);
     if (study) {
       setCaseStudy(study);
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
     } else {
-      // Redirect to home if case study not found
       window.location.hash = '#home';
     }
   }, []);
@@ -31,7 +29,7 @@ export const CaseStudyPage: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar forceColored />
       <CaseStudyDetail
         title={caseStudy.title}
         subtitle={caseStudy.subtitle}
@@ -42,6 +40,9 @@ export const CaseStudyPage: React.FC = () => {
         results={caseStudy.results}
         image={caseStudy.image}
         businessImpact={caseStudy.businessImpact}
+        introVideo={caseStudy.introVideo}
+        videos={caseStudy.videos}
+        finalVideo={caseStudy.finalVideo}
         additionalSections={caseStudy.additionalSections}
       />
       <Footer />
