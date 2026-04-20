@@ -9,18 +9,6 @@ interface Props {
 
 type ActivePackage = 'growth' | 'authority' | null;
 
-/* Same arch as HowWeWork — purple curves UP into the image */
-const ArchDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 32"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-    style={{ width: '100%', height: '32px', display: 'block', marginTop: '-1px' }}
-  >
-    <path d="M0,32 Q200,0 400,32 L400,32 L0,32 Z" fill="#5c0386" />
-  </svg>
-);
-
 export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
@@ -72,9 +60,10 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               ← Back to How We Work
             </button>
 
+            {/* Card — same overlap structure as HowWeWork */}
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-              {/* Image — maxed out, flat at bottom */}
+              {/* Image fills top fully */}
               <div style={{ height: 'clamp(220px, 42vw, 340px)' }}>
                 <img
                   src="/assets/creative-infrastructure.jpg"
@@ -83,11 +72,14 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Arch — purple curves up into image */}
-              <ArchDivider />
-
-              {/* Purple content */}
-              <div className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-4">
+              {/* Purple overlaps image — negative margin + rounded top corners */}
+              <div
+                className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-8 relative z-10"
+                style={{
+                  marginTop: '-2rem',
+                  borderRadius: '2rem 2rem 0 0',
+                }}
+              >
                 <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
