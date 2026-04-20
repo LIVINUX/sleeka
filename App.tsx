@@ -12,7 +12,9 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
+// Original single page that handles ALL case studies
 import { CaseStudyPage } from './pages/CaseStudyPage';
+// Creative infrastructure detail page (state-based, no hash)
 import { CreativeInfrastructurePage } from './pages/CreativeInfrastructurePage';
 
 type Page = 'home' | 'case-study' | 'creative-infrastructure';
@@ -26,7 +28,9 @@ function App() {
       const hash = window.location.hash;
       if (hash.startsWith('#/case-study/')) {
         setCurrentPage('case-study');
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
       } else if (currentPage === 'case-study') {
+        // Coming back from a case study via hash change
         setCurrentPage('home');
       }
     };
@@ -35,6 +39,7 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [currentPage]);
 
+  // Creative infrastructure: state-based navigation (preserves scroll position)
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('creative-infrastructure');
@@ -50,7 +55,9 @@ function App() {
     });
   };
 
+  // ── Render ────────────────────────────────────────────────────────────────
   if (currentPage === 'case-study') return <CaseStudyPage />;
+
   if (currentPage === 'creative-infrastructure') {
     return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} />;
   }
