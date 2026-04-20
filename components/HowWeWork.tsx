@@ -5,23 +5,13 @@ interface HowWeWorkProps {
 }
 
 /*
-  CURVE DIRECTION: Purple curves UP into the image.
-  The SVG sits at the bottom of the image container.
-  Path: starts at bottom-left (0,32), arches UP to centre (200,0),
-  back down to bottom-right (400,32), then fills down to the bottom.
-  This makes the purple appear to rise up into the image — a smile/arch.
+  OVERLAP TECHNIQUE:
+  - Image fills its container fully (no clipping, no curve on image)
+  - Purple section has rounded-tl-[2rem] rounded-tr-[2rem] (curved top corners)
+  - Purple section has marginTop: '-2rem' — pulls it UP over the image
+  - Result: purple slides up onto the bottom of the image with a smooth
+    curved top edge, like a card overlay. No white gaps, no SVG needed.
 */
-const ArchDivider: React.FC = () => (
-  <svg
-    viewBox="0 0 400 32"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-    style={{ width: '100%', height: '32px', display: 'block', marginTop: '-1px' }}
-  >
-    {/* Arch curves UP into the image from both sides, peaks at centre */}
-    <path d="M0,32 Q200,0 400,32 L400,32 L0,32 Z" fill="#5c0386" />
-  </svg>
-);
 
 const GlobalStyles: React.FC = () => (
   <style>{`
@@ -92,8 +82,8 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
 
         {/* Card 1 — Creative Infrastructure */}
         <Card onClick={onNavigateToInfrastructure}>
-          {/* Image fills top, maxed out */}
-          <div style={{ height: 'clamp(240px, 42vw, 360px)' }}>
+          {/* Image — fills full width, flat bottom */}
+          <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
             <img
               src="/assets/creative-infrastructure.jpg"
               alt="Creative Infrastructure"
@@ -101,11 +91,18 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             />
           </div>
 
-          {/* Arch SVG — purple curves UP into the image */}
-          <ArchDivider />
-
-          {/* Purple content */}
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          {/*
+            Purple section — negative marginTop pulls it up over the image.
+            Rounded top corners create the smooth curved overlap on the image.
+            No SVG. No white gaps. Pure CSS.
+          */}
+          <div
+            className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
+            style={{
+              marginTop: '-2rem',
+              borderRadius: '2rem 2rem 0 0',
+            }}
+          >
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
             </h3>
@@ -129,7 +126,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
 
         {/* Card 2 — Creative Talent Outsourcing */}
         <Card>
-          <div style={{ height: 'clamp(240px, 42vw, 360px)' }}>
+          <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
             <img
               src="/assets/talent-outsourcing.jpg"
               alt="Creative Talent Outsourcing"
@@ -137,9 +134,13 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             />
           </div>
 
-          <ArchDivider />
-
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-4">
+          <div
+            className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
+            style={{
+              marginTop: '-2rem',
+              borderRadius: '2rem 2rem 0 0',
+            }}
+          >
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
             </h3>
