@@ -39,6 +39,7 @@ export const CaseStudyPage: React.FC = () => {
         solution={caseStudy.solution}
         results={caseStudy.results}
         image={caseStudy.image}
+        showHeroImage={caseStudy.showHeroImage}
         businessImpact={caseStudy.businessImpact}
         introVideo={caseStudy.introVideo}
         videos={caseStudy.videos}
