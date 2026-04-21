@@ -46,7 +46,7 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="bg-geko-dark py-32 relative overflow-hidden text-white"
+      className="bg-[#5c0386] py-32 relative overflow-hidden text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
