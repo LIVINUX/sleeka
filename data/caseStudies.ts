@@ -1,37 +1,23 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// caseStudies.ts
-//
-// ASSET UPLOAD GUIDE
+// ASSET UPLOAD PATHS (confirmed from your file screenshots)
 // ─────────────────────────────────────────────────────────────────────────────
-// All assets go in /public/assets/works/  (subfolders per client)
+// PBN  →  /public/assets/works/pbn/
+//   pbn-intro.mp4   pbn-final.mp4
+//   sketch-1.jpg    sketch-2.jpg    style-1.jpg    style-2.jpg
 //
-// PBN
-//   /assets/works/pbn/pbn-intro.mp4       ← introVideo.file
-//   /assets/works/pbn/pbn-final.mp4       ← finalVideo.file
-//   /assets/works/pbn/sketch-1.jpg        ← additionalSections images[0]
-//   /assets/works/pbn/sketch-2.jpg        ← additionalSections images[1]
-//   /assets/works/pbn/style-1.jpg         ← additionalSections images[2]
-//   /assets/works/pbn/style-2.jpg         ← additionalSections images[3]
+// BLUECHIP  →  /public/assets/works/bluechip/
+//   bluechip-summit.mp4    bluechip-summit.jpg    bluechip-founder.mp4
 //
-// BLUECHIP
-//   /assets/works/bluechip/bluechip-summit.mp4      ← videos[0].file
-//   /assets/works/bluechip/bluechip-founder-1.mp4   ← videos[1].file
-//   /assets/works/bluechip/bluechip-founder-2.mp4   ← videos[2].file
-//   /assets/works/bluechip/bluechip-founder-3.mp4   ← videos[3].file
-//
-// EMSXCHANGE
-//   /assets/works/ems/ems-kinetic.mp4     ← introVideo.file
-//   /assets/works/ems/ems-countdown.jpg   ← additionalSections images[0]
-//   /assets/works/ems/ems-giveaway.jpg    ← additionalSections images[1]
-//   /assets/works/ems/ems-milestone.jpg   ← additionalSections images[2]
-//   /assets/works/ems/ems-dday.jpg        ← additionalSections images[3]
-//   /assets/works/ems/ems-design-5.jpg    ← additionalSections images[4]
-//   /assets/works/ems/ems-design-6.jpg    ← additionalSections images[5]
+// EMSXCHANGE  →  /public/assets/works/ems/
+//   ems-kinetic.mp4
+//   ems-giveaway.jpg   ems-milestone.jpg   ems-dday.jpg   ems-countdown.jpg
+//   (Big5Annoucement.jpg already exists at /assets/works/Big5Annoucement.jpg)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface VideoAsset {
-  label: string;  // display label e.g. "Intro Video"
-  file: string;   // full path e.g. "/assets/works/pbn/pbn-intro.mp4"
+  label: string;
+  file: string;
+  poster?: string;
 }
 
 export interface CaseStudy {
@@ -44,33 +30,29 @@ export interface CaseStudy {
   solution: string;
   results: string[];
   image: string;
+  showHeroImage?: boolean;   // set false to skip the hero image block
   businessImpact?: string;
-  // Optional single video shown at top of purple section (PBN intro, EmsXchange kinetic)
-  introVideo?: VideoAsset;
-  // Optional list of stacked videos in purple section (Bluechip event + founders)
-  videos?: VideoAsset[];
-  // Optional single video shown at bottom of white section (PBN final video)
-  finalVideo?: VideoAsset;
+  introVideo?: VideoAsset;   // single video shown right after header (PBN, EmsXchange)
+  videos?: VideoAsset[];     // multiple stacked videos (Bluechip)
+  finalVideo?: VideoAsset;   // shown at very bottom after extra sections (PBN)
   additionalSections?: {
     title: string;
     description: string;
-    images: string[];
-    // optional grid layout override: 'stack' | '2col' | '3col'
-    grid?: 'stack' | '2col' | '3col';
+    images: string[];        // always stacked one per row — no grid
   }[];
 }
 
 export const caseStudies: CaseStudy[] = [
 
-  // ── Premia Business Network ───────────────────────────────────────────────
+  // ── Premia Business Network ──────────────────────────────────────────────
   {
     id: 'premiabn',
     title: 'Premia Business Network',
     subtitle: 'Clarifying a talent outsourcing proposition for a pan-African executive community',
     tags: 'Illustration, Animated explainer video',
-    image: '/assets/works/2.jpg',
+    image: '/assets/works/pbn/style-1.jpg', // fallback only — hero image is hidden
+    showHeroImage: false,                   // NO hero image; intro video is the first visual
 
-    // Intro video — shown in purple section below header
     introVideo: {
       label: 'Intro Video',
       file: '/assets/works/pbn/pbn-intro.mp4',
@@ -92,42 +74,47 @@ export const caseStudies: CaseStudy[] = [
     businessImpact:
       'The explainer video strengthened credibility, clarified the value proposition, and became a core communication asset across digital and presentation channels. It successfully positioned PBN Outsource as a trusted pan-African talent solution, resulting in measurable leads and expanded brand awareness across its target markets.',
 
-    // Sketches + Styleframes section (white bg, 2×2 grid)
+    // Brand materials — stacked one by one in this order
     additionalSections: [
       {
         title: 'Sketches + Styleframes',
         description: 'Here are some quick sketches and style frames we used for the animation.',
-        grid: '2col',
         images: [
           '/assets/works/pbn/sketch-1.jpg',
-          '/assets/works/pbn/sketch-2.jpg',
           '/assets/works/pbn/style-1.jpg',
+          '/assets/works/pbn/sketch-2.jpg',
           '/assets/works/pbn/style-2.jpg',
         ],
       },
     ],
 
-    // Final video — shown in white section after additionalSections
     finalVideo: {
       label: 'Final Video',
       file: '/assets/works/pbn/pbn-final.mp4',
     },
   },
 
-  // ── Bluechip Technologies ─────────────────────────────────────────────────
+  // ── Bluechip Technologies ────────────────────────────────────────────────
   {
     id: 'bluechip-technologies',
     title: 'Bluechip Technologies',
     subtitle: 'Driving visibility for the Bluechip AI and Data Summit',
     tags: 'Motion, Video editing',
-    image: '/assets/works/Olumide Soyombo Bluechip_1000.jpg',
+    image: '/assets/works/bluechip/bluechip-summit.jpg',
+    showHeroImage: false, // No hero image — videos are the first visuals
 
-    // Multiple videos stacked in purple section: event video + 3 founder videos
+    // Two videos stacked: Event Video then Founder Video
     videos: [
-      { label: 'Event Video',     file: '/assets/works/bluechip/bluechip-summit.mp4'    },
-      { label: 'Founder Video 1', file: '/assets/works/bluechip/bluechip-founder-1.mp4' },
-      { label: 'Founder Video 2', file: '/assets/works/bluechip/bluechip-founder-2.mp4' },
-      { label: 'Founder Video 3', file: '/assets/works/bluechip/bluechip-founder-3.mp4' },
+      {
+        label: 'Event Video',
+        file: '/assets/works/bluechip/bluechip-summit.mp4',
+        poster: '/assets/works/bluechip/bluechip-summit.jpg',
+      },
+      {
+        label: 'Founder Video',
+        file: '/assets/works/bluechip/bluechip-founder.mp4',
+        poster: '/assets/works/bluechip/bluechip-summit.jpg',
+      },
     ],
 
     overview:
@@ -135,28 +122,31 @@ export const caseStudies: CaseStudy[] = [
     problem:
       'For their AI and Data Summit, they needed compelling promotional content to create awareness, communicate the value of the summit, build anticipation, and drive attendance from professionals and industry leaders.',
     solution:
-      'Sleeka produced a motion video introducing the AI and Data Summit and three short invitation videos featuring the co-founders personally inviting professionals to attend. The content was optimized for digital promotion to increase visibility ahead of the event.',
+      'Sleeka produced a motion video introducing the AI and Data Summit and a short invitation video featuring a co-founder personally inviting professionals to attend. The content was optimized for digital promotion to increase visibility ahead of the event.',
     results: [
       '2,000+ professionals attended the AI and Data Summit',
       '1 flagship motion video used as the core promotional asset for the event',
-      '3 founder invitation videos that strengthened credibility and executive-led promotion',
+      '1 founder invitation video that strengthened credibility and executive-led promotion',
     ],
     businessImpact:
       'The campaign increased awareness and helped drive strong attendance for the AI and Data Summit, while positioning Bluechip Technologies as a leader in conversations around AI and data innovation.',
+
+    // No additional brand materials for Bluechip
   },
 
-  // ── EmsXchange ────────────────────────────────────────────────────────────
+  // ── EmsXchange ───────────────────────────────────────────────────────────
   {
     id: 'emsxchange',
     title: 'EmsXchange',
     subtitle: 'Driving engagement and brand visibility through a 5 year anniversary campaign',
     tags: 'Design, Motion, Video editing',
     image: '/assets/works/Big5Annoucement.jpg',
+    showHeroImage: true, // Hero image shows first, then kinetic video below it
 
-    // Kinetic motion video — shown in purple section below the hero image
     introVideo: {
       label: 'Kinetic Motion Video',
       file: '/assets/works/ems/ems-kinetic.mp4',
+      poster: '/assets/works/Big5Annoucement.jpg',
     },
 
     overview:
@@ -174,33 +164,31 @@ export const caseStudies: CaseStudy[] = [
     businessImpact:
       "The anniversary campaign transformed EmsXchange's 5 year milestone into a high engagement marketing moment, expanding brand visibility, activating community participation, and strengthening the company's presence across social media.",
 
-    // Campaign designs grid (3-col on desktop)
+    // Brand materials — stacked one by one
     additionalSections: [
       {
         title: 'Campaign Designs',
         description:
           '9 promotional designs built momentum across every phase of the anniversary — from announcement through to D-Day.',
-        grid: '3col',
         images: [
           '/assets/works/Big5Annoucement.jpg',
-          '/assets/works/ems/ems-countdown.jpg',
           '/assets/works/ems/ems-giveaway.jpg',
           '/assets/works/ems/ems-milestone.jpg',
           '/assets/works/ems/ems-dday.jpg',
-          '/assets/works/ems/ems-design-5.jpg',
-          '/assets/works/ems/ems-design-6.jpg',
+          '/assets/works/ems/ems-countdown.jpg',
         ],
       },
     ],
   },
 
-  // ── Felicia Transport ─────────────────────────────────────────────────────
+  // ── Felicia Transport (unchanged) ────────────────────────────────────────
   {
     id: 'felicia-transport',
     title: 'Felicia Transport',
     subtitle: 'Building Public Trust and Market Credibility from Day One',
     tags: 'Branding, Identity design, Merchandise',
     image: '/assets/works/VanDesign.jpg',
+    showHeroImage: true,
     overview:
       'Felicia Transport is a Nigerian public transportation company focused on delivering safe, reliable, and modern mobility at scale. As a new company, Felicia needed more than visibility — it needed instant credibility, public trust, and a brand system capable of supporting long-term growth.',
     problem:
@@ -219,28 +207,24 @@ export const caseStudies: CaseStudy[] = [
         title: 'Logo design',
         description:
           'Concept: A bold, expressive combination mark inspired by the letter F, a road, and a forward-driven arrow. These elements flow seamlessly to convey motion, direction, and speed.',
-        grid: 'stack',
         images: ['/assets/Felicia/2.jpg', '/assets/Felicia/3.jpg', '/assets/Felicia/4.jpg'],
       },
       {
         title: 'Fresh Colors',
         description:
           'While many Nigerian brands rely on blue and red, we chose a bolder path. A fresh, modern palette anchored by green symbolizing growth, movement, and reliability.',
-        grid: 'stack',
         images: ['/assets/Felicia/6.jpg'],
       },
       {
         title: 'Our Font Choices',
         description:
           'We paired Galano Grotesque with Montserrat to create a clean, modern typographic system, bold enough for visibility and refined enough for clarity across all touchpoints.',
-        grid: 'stack',
         images: ['/assets/Felicia/7.jpg'],
       },
       {
         title: 'Visual Outlook',
         description:
           'A glimpse of the brand in action across mockups and merchandise, showing its presence, personality, and impact.',
-        grid: 'stack',
         images: ['/assets/Felicia/Mockups.jpg'],
       },
     ],
