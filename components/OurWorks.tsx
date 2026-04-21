@@ -29,7 +29,7 @@ const works = [
 
 export const OurWorks: React.FC = () => {
   return (
-    <section id="work" className="bg-[#F9F9F9] py-24 relative overflow-hidden">
+    <section id="work" className="bg-white py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 mb-16">
         <h2 className="text-5xl md:text-6xl font-bold text-geko-dark mb-4 animate-fade-in-up">
           Our Works
