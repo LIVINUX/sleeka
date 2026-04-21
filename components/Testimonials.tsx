@@ -46,7 +46,8 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="bg-[#5c0386] py-32 relative overflow-hidden text-white"
+      className="py-32 relative overflow-hidden text-white"
+      style={{ backgroundColor: '#5c0386' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
@@ -76,8 +77,9 @@ export const Testimonials: React.FC = () => {
         .slk-bar-paused { animation-play-state: paused; }
       `}</style>
 
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white opacity-[0.03] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-geko-accent opacity-[0.05] rounded-full blur-3xl pointer-events-none" />
+      {/* Subtle bg glows matching the purple tone */}
+      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#7a04b3] opacity-30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#7a04b3] opacity-30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
@@ -152,7 +154,7 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress bar — no text, just the visual bar */}
+        {/* Progress bar */}
         <div className="max-w-md mx-auto mt-8">
           <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
             <div
