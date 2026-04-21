@@ -12,9 +12,7 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
-// Original single page that handles ALL case studies
 import { CaseStudyPage } from './pages/CaseStudyPage';
-// Creative infrastructure detail page (state-based, no hash)
 import { CreativeInfrastructurePage } from './pages/CreativeInfrastructurePage';
 
 type Page = 'home' | 'case-study' | 'creative-infrastructure';
@@ -30,7 +28,6 @@ function App() {
         setCurrentPage('case-study');
         window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
       } else if (currentPage === 'case-study') {
-        // Coming back from a case study via hash change
         setCurrentPage('home');
       }
     };
@@ -39,7 +36,6 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [currentPage]);
 
-  // Creative infrastructure: state-based navigation (preserves scroll position)
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('creative-infrastructure');
@@ -55,7 +51,6 @@ function App() {
     });
   };
 
-  // ── Render ────────────────────────────────────────────────────────────────
   if (currentPage === 'case-study') return <CaseStudyPage />;
 
   if (currentPage === 'creative-infrastructure') {
@@ -81,7 +76,8 @@ function App() {
           <div id="talent"><TalentShowcase /></div>
           <Testimonials />
           <WhyChooseUs />
-          {/* <CTASection /> */}
+          {/* CTA section — white bg, light purple card, after WhyChooseUs */}
+          <CTASection />
         </main>
         <Footer />
       </div>
