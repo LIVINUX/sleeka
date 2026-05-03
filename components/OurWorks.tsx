@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const works = [
   {
     id: 'premiabn',
     title: 'PremiaBN',
     tags: 'Illustration, Animated explainer video',
-    image: '/assets/works/2.png',
+    image: '/assets/works/2.jpg',
   },
   {
     id: 'bluechip-technologies',
@@ -17,38 +17,55 @@ const works = [
     id: 'emsxchange',
     title: 'EmsXchange',
     tags: 'Design, Motion, Video editing',
-    image: '/assets/works/3.jpg',
+    image: '/assets/works/Big5Annoucement.jpg',
   },
   {
     id: 'felicia-transport',
     title: 'Felicia Transport',
     tags: 'Branding, Identity design, Merchandise',
-    image: '/assets/works/1.jpg',
+    image: '/assets/works/VanDesign.jpg',
   },
 ];
 
 export const OurWorks: React.FC = () => {
+  const [clickedId, setClickedId] = useState<string | null>(null);
+
+  const handleCardClick = (id: string) => {
+    setClickedId(id);
+    setTimeout(() => {
+      window.location.hash = `#/case-study/${id}`;
+      setClickedId(null);
+    }, 220);
+  };
+
   return (
-    <section id="work" className="bg-white py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 mb-16">
-        <h2 className="text-5xl md:text-6xl font-bold text-geko-dark mb-4 animate-fade-in-up">
-          Our Works
-        </h2>
-        <p className="text-xl text-gray-600 font-light animate-fade-in-up animation-delay-200">
-          Here are some of the campaigns and assets produced by our creative teams.   
+    <section id="work" className="bg-[#F9F9F9] py-16 relative overflow-hidden">
+      <style>{`
+        @keyframes card-pop {
+          0%   { transform: scale(1); }
+          40%  { transform: scale(1.04); box-shadow: 0 20px 60px rgba(92,3,134,0.25); }
+          100% { transform: scale(0.97); opacity: 0.85; }
+        }
+        .card-popping { animation: card-pop 0.22s ease-out forwards; }
+      `}</style>
+
+      <div className="container mx-auto px-6 md:px-12 mb-12">
+        <h2 className="text-5xl md:text-6xl font-bold text-geko-dark mb-4">Real Results</h2>
+        <p className="text-xl text-gray-600 font-light">
+          Here are some of the campaigns and assets produced by our creative teams
         </p>
       </div>
 
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {works.map((work, index) => (
-            <a
+            <div
               key={work.id}
-              href={`#/case-study/${work.id}`}
-              className="group animate-fade-in-up block"
+              onClick={() => handleCardClick(work.id)}
+              className={`group cursor-pointer ${clickedId === work.id ? 'card-popping' : ''}`}
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
-              <div className="rounded-3xl overflow-hidden mb-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer">
+              <div className="rounded-3xl overflow-hidden mb-6 shadow-lg hover:shadow-2xl transition-all duration-300">
                 <img
                   src={work.image}
                   alt={work.title}
@@ -59,7 +76,7 @@ export const OurWorks: React.FC = () => {
                 {work.title}
               </h3>
               <p className="text-lg text-gray-600">- {work.tags}</p>
-            </a>
+            </div>
           ))}
         </div>
       </div>

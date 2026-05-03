@@ -46,7 +46,7 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="py-32 relative overflow-hidden text-white"
+      className="py-24 relative overflow-hidden text-white"
       style={{ backgroundColor: '#5c0386' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -59,10 +59,7 @@ export const Testimonials: React.FC = () => {
           transition: transform 700ms cubic-bezier(0.77,0,0.18,1);
           will-change: transform;
         }
-        .slk-card-wrap {
-          flex: 0 0 100%;
-          padding: 0 8px;
-        }
+        .slk-card-wrap { flex: 0 0 100%; padding: 0 8px; }
         @media (min-width: 768px) {
           .slk-card-wrap { flex: 0 0 72%; padding: 0 16px; }
         }
@@ -70,49 +67,38 @@ export const Testimonials: React.FC = () => {
           from { transform: scaleX(0); }
           to   { transform: scaleX(1); }
         }
-        .slk-bar {
-          transform-origin: left;
-          animation: slk-bar ${AUTO_DELAY}ms linear forwards;
-        }
+        .slk-bar { transform-origin: left; animation: slk-bar ${AUTO_DELAY}ms linear forwards; }
         .slk-bar-paused { animation-play-state: paused; }
       `}</style>
 
-      {/* Subtle bg glows matching the purple tone */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#7a04b3] opacity-30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#7a04b3] opacity-30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Header + nav */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-          <h2 className="text-5xl md:text-6xl font-bold leading-tight max-w-xl">
-            What our Clients Say
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight max-w-xl">
+            Proof From Businesses Like Yours
           </h2>
           <div className="flex items-center gap-3">
             <span className="text-white/30 text-sm font-mono tabular-nums mr-1 select-none">
               {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
-            <button
-              onClick={() => go(-1)}
+            <button onClick={() => go(-1)}
               className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-200"
-              aria-label="Previous testimonial"
-            >
+              aria-label="Previous testimonial">
               <ArrowLeft size={16} />
             </button>
-            <button
-              onClick={() => go(1)}
+            <button onClick={() => go(1)}
               className="w-11 h-11 rounded-full bg-[#47ff01] flex items-center justify-center text-[#5c0386] hover:scale-110 transition-transform duration-200"
-              aria-label="Next testimonial"
-            >
+              aria-label="Next testimonial">
               <ArrowRight size={16} strokeWidth={2.5} />
             </button>
           </div>
         </div>
 
-        {/* Slider */}
         <div className="overflow-hidden -mx-4 md:-mx-0">
-          <div
-            className="slk-track"
+          <div className="slk-track"
             style={{
               transform: `translateX(${
                 typeof window !== 'undefined' && window.innerWidth >= 768
@@ -123,27 +109,18 @@ export const Testimonials: React.FC = () => {
           >
             {reviews.map((r, i) => (
               <div key={i} className="slk-card-wrap">
-                <div
-                  className="bg-white text-geko-dark rounded-[2.5rem] p-8 md:p-12 shadow-2xl transition-all duration-700"
-                  style={{
-                    opacity:   i === active ? 1 : 0.4,
-                    transform: i === active ? 'scale(1)' : 'scale(0.95)',
-                  }}
-                >
+                <div className="bg-white text-geko-dark rounded-[2.5rem] p-8 md:p-12 shadow-2xl transition-all duration-700"
+                  style={{ opacity: i === active ? 1 : 0.4, transform: i === active ? 'scale(1)' : 'scale(0.95)' }}>
                   <span className="text-6xl font-serif font-bold leading-none block mb-5 text-[#47ff01] h-8 overflow-visible">"</span>
-                  <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 text-geko-dark">
-                    {r.text}
-                  </p>
+                  <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 text-geko-dark">{r.text}</p>
                   <div className="border-t border-gray-100 pt-6 flex items-center justify-between">
                     <div>
                       <h4 className="font-bold text-lg text-geko-dark">{r.author}</h4>
                       <p className="text-sm text-gray-500 mt-0.5">{r.role}</p>
                     </div>
-                    <button
-                      onClick={() => setVideo(r.videoUrl)}
+                    <button onClick={() => setVideo(r.videoUrl)}
                       className="relative w-12 h-12 flex-shrink-0 rounded-full bg-[#47ff01] flex items-center justify-center hover:scale-110 transition-transform"
-                      aria-label="Watch video testimonial"
-                    >
+                      aria-label="Watch video testimonial">
                       <div className="absolute inset-0 rounded-full bg-[#47ff01] animate-ping opacity-60" />
                       <Play size={18} className="text-[#5c0386] fill-[#5c0386] relative z-10 ml-0.5" />
                     </button>
@@ -154,34 +131,25 @@ export const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Progress bar */}
         <div className="max-w-md mx-auto mt-8">
           <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
-            <div
-              key={`${active}-${paused}`}
-              className={`slk-bar h-full bg-[#47ff01] rounded-full ${paused ? 'slk-bar-paused' : ''}`}
-            />
+            <div key={`${active}-${paused}`}
+              className={`slk-bar h-full bg-[#47ff01] rounded-full ${paused ? 'slk-bar-paused' : ''}`} />
           </div>
         </div>
 
       </div>
 
-      {/* Video Modal */}
       {video && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative w-full max-w-4xl aspect-video">
-            <button
-              onClick={() => setVideo(null)}
-              className="absolute -top-12 right-0 text-white hover:text-[#47ff01] transition-colors"
-            >
+            <button onClick={() => setVideo(null)}
+              className="absolute -top-12 right-0 text-white hover:text-[#47ff01] transition-colors">
               <X size={32} />
             </button>
-            <iframe
-              src={video}
-              className="w-full h-full rounded-2xl"
+            <iframe src={video} className="w-full h-full rounded-2xl"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+              allowFullScreen />
           </div>
         </div>
       )}

@@ -40,16 +40,12 @@ const GlobalStyles: React.FC = () => (
   `}</style>
 );
 
-/* Card pops on click — does NOT navigate. Navigation is button-only. */
 const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [popped, setPopped] = useState(false);
-
   const handleClick = () => {
-    if (popped) return;
     setPopped(true);
     setTimeout(() => setPopped(false), 420);
   };
-
   return (
     <div
       onClick={handleClick}
@@ -61,12 +57,12 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure }) => (
-  <section className="bg-white py-24 overflow-hidden">
+  <section className="bg-white py-16 overflow-hidden">
     <GlobalStyles />
     <div className="container mx-auto px-6 md:px-12">
 
-      <div className="mb-16">
-        <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">How We Work</h2>
+      <div className="mb-12">
+        <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">How we work</h2>
         <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
           We help growing businesses build creative capacity through flexible, outcome driven
           solutions that power visibility, authority, and revenue.
@@ -75,19 +71,14 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
 
       <div className="flex flex-col gap-10 max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
 
-        {/* Card 1 — Creative Infrastructure */}
+        {/* Card 1 */}
         <Card>
           <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
-            <img
-              src="/assets/creative-infrastructure.jpg"
-              alt="Creative Infrastructure"
-              className="w-full h-full object-cover object-top block"
-            />
+            <img src="/assets/creative-infrastructure.jpg" alt="Creative Infrastructure"
+              className="w-full h-full object-cover object-top block" />
           </div>
-          <div
-            className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
-            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
-          >
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
+            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Infrastructure
             </h3>
@@ -99,7 +90,6 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Perfect for startups and growing businesses that need consistent, high quality
               creative output without the cost or complexity of building an in house team.
             </p>
-            {/* Only this button navigates */}
             <button
               onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
               className="slk-btn-learn px-8 py-4 rounded-full font-bold text-lg w-fit"
@@ -110,19 +100,14 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           </div>
         </Card>
 
-        {/* Card 2 — Creative Talent Outsourcing */}
+        {/* Card 2 */}
         <Card>
           <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
-            <img
-              src="/assets/talent-outsourcing.jpg"
-              alt="Creative Talent Outsourcing"
-              className="w-full h-full object-cover object-top block"
-            />
+            <img src="/assets/talent-outsourcing.jpg" alt="Creative Talent Outsourcing"
+              className="w-full h-full object-cover object-top block" />
           </div>
-          <div
-            className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
-            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
-          >
+          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
+            style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
               Creative Talent Outsourcing
             </h3>
@@ -134,11 +119,9 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Our talents combine technical expertise, AI enabled workflows, and soft skills,
               integrating seamlessly with your team to execute work efficiently and effectively.
             </p>
-            <button
-              disabled
+            <button disabled
               className="slk-btn-soon px-8 py-4 rounded-full font-bold text-lg w-fit cursor-not-allowed"
-              style={{ backgroundColor: '#47ff01', color: '#000' }}
-            >
+              style={{ backgroundColor: '#47ff01', color: '#000' }}>
               Coming Soon
             </button>
           </div>
