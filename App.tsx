@@ -7,6 +7,7 @@ import { AgencyDescription } from './components/AgencyDescription';
 import { OurWorks } from './components/OurWorks';
 import { HowWeWork } from './components/HowWeWork';
 import { TalentShowcase } from './components/TalentShowcase';
+import { ToolsWorkflows } from './components/ToolsWorkflows';
 import { Testimonials } from './components/Testimonials';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { CTASection } from './components/CTASection';
@@ -74,6 +75,7 @@ function App() {
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
           <div id="talent"><TalentShowcase /></div>
+          <div id="tools"><ToolsWorkflows /></div>
           <Testimonials />
           <WhyChooseUs />
           {/* CTA section — white bg, light purple card, after WhyChooseUs */}
