@@ -74,8 +74,8 @@ function App() {
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
-          <div id="talent"><TalentShowcase /></div>
           <div id="tools"><ToolsWorkflows /></div>
+          <div id="talent"><TalentShowcase /></div>
           <Testimonials />
           <WhyChooseUs />
           {/* CTA section — white bg, light purple card, after WhyChooseUs */}
