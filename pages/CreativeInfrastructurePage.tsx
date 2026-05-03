@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { CTASection } from '../components/CTASection';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface Props {
@@ -25,18 +26,6 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
   return (
     <>
       <style>{`
-        @keyframes slk-pulse {
-          0%,100% { box-shadow: 0 0 0 0 rgba(71,255,1,0.55), 0 6px 20px rgba(71,255,1,0.22); }
-          60%      { box-shadow: 0 0 0 10px rgba(71,255,1,0), 0 6px 20px rgba(71,255,1,0.22); }
-        }
-        .slk-btn-cta {
-          animation: slk-pulse 2.2s ease-in-out infinite;
-          transition: transform 0.2s ease, filter 0.2s ease;
-        }
-        .slk-btn-cta:hover {
-          transform: scale(1.06); filter: brightness(1.08);
-          animation: none; box-shadow: 0 8px 28px rgba(71,255,1,0.45);
-        }
         .pkg-panel {
           overflow: hidden;
           transition: max-height 0.5s ease-in-out, opacity 0.35s ease-in-out;
@@ -60,10 +49,8 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               ← Back to How We Work
             </button>
 
-            {/* Card — same overlap structure as HowWeWork */}
+            {/* Hero card */}
             <div className="rounded-[2.5rem] overflow-hidden shadow-2xl max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl">
-
-              {/* Image fills top fully */}
               <div style={{ height: 'clamp(220px, 42vw, 340px)' }}>
                 <img
                   src="/assets/creative-infrastructure.jpg"
@@ -71,14 +58,9 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                   className="w-full h-full object-cover object-top block"
                 />
               </div>
-
-              {/* Purple overlaps image — negative margin + rounded top corners */}
               <div
                 className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-8 relative z-10"
-                style={{
-                  marginTop: '-2rem',
-                  borderRadius: '2rem 2rem 0 0',
-                }}
+                style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
               >
                 <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
@@ -94,7 +76,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* ── Problem ── */}
+        {/* Problem */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
@@ -110,8 +92,8 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
           </div>
         </section>
 
-        {/* ── Packages ── */}
-        <section className="pb-16 md:pb-20">
+        {/* Packages */}
+        <section className="pb-8">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
 
             {/* Growth */}
@@ -120,7 +102,9 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 onClick={() => handleClick('growth')}
                 onMouseEnter={() => handleHover('growth')}
                 className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
-                  ${activePackage === 'growth' ? 'bg-[#5c0386] text-white shadow-xl shadow-purple-500/30 scale-[1.01]' : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
+                  ${activePackage === 'growth'
+                    ? 'bg-[#5c0386] text-white shadow-xl shadow-purple-500/30 scale-[1.01]'
+                    : 'bg-[#5c0386]/10 text-[#5c0386] hover:bg-[#5c0386] hover:text-white hover:scale-[1.01]'}`}
               >
                 <span>Growth Infrastructure</span>
                 {activePackage === 'growth' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
@@ -152,12 +136,14 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
             </div>
 
             {/* Authority */}
-            <div className="mb-12">
+            <div className="mb-4">
               <button
                 onClick={() => handleClick('authority')}
                 onMouseEnter={() => handleHover('authority')}
                 className={`w-full text-left px-6 md:px-8 py-4 md:py-5 rounded-full font-bold text-base md:text-xl transition-all duration-300 flex items-center justify-between gap-3
-                  ${activePackage === 'authority' ? 'bg-[#47ff01] text-black shadow-xl shadow-green-400/30 scale-[1.01]' : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
+                  ${activePackage === 'authority'
+                    ? 'bg-[#47ff01] text-black shadow-xl shadow-green-400/30 scale-[1.01]'
+                    : 'bg-[#47ff01]/20 text-gray-800 hover:bg-[#47ff01] hover:text-black hover:scale-[1.01]'}`}
               >
                 <span>Authority Infrastructure</span>
                 {activePackage === 'authority' ? <ChevronUp className="w-5 h-5 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 flex-shrink-0" />}
@@ -186,20 +172,11 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ background: 'linear-gradient(135deg,#f3eeff 0%,#e8d8ff 100%)' }}>
-              <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed md:max-w-md">
-                Get a dedicated creative department that delivers high-quality design, video, and animation on demand — boosting visibility, authority, and revenue without building an in-house team.
-              </p>
-              <a href="https://calendar.app.google/2nWbeLXuC52dvZtq5" target="_blank" rel="noopener noreferrer"
-                className="slk-btn-cta px-8 py-4 rounded-full font-bold text-base md:text-lg flex-shrink-0 whitespace-nowrap text-center"
-                style={{ backgroundColor: '#47ff01', color: '#000' }}>
-                Book a Discovery Call
-              </a>
-            </div>
-
           </div>
         </section>
+
+        {/* CTA — same component as home page for full consistency */}
+        <CTASection />
 
       </main>
       <Footer />
