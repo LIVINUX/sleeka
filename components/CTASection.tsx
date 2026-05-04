@@ -11,7 +11,7 @@ export const CTASection: React.FC = () => {
             boxShadow: '0 8px 40px rgba(92,3,134,0.08)',
           }}
         >
-          <div className="px-10 md:px-14 py-10 md:py-12">
+          <div className="px-10 md:px-14 py-10 md:py-12 flex flex-col items-center text-center">
             {/* Small header */}
             <p
               className="text-xs font-bold uppercase tracking-[0.18em] mb-3"
@@ -36,7 +36,7 @@ export const CTASection: React.FC = () => {
 
             {/* Body text */}
             <p
-              className="text-base md:text-lg leading-relaxed mb-8 max-w-2xl"
+              className="text-base md:text-lg leading-relaxed mb-8 max-w-xl"
               style={{ color: '#4a4a6a' }}
             >
               Turn your content into a predictable engine for visibility, leads, and revenue —
