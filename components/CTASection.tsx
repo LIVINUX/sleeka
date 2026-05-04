@@ -7,16 +7,10 @@ export const CTASection: React.FC = () => {
         <div
           className="relative rounded-[2rem] overflow-hidden max-w-4xl mx-auto"
           style={{
-            background: 'linear-gradient(135deg, #fdf8ff 0%, #f0e6ff 50%, #e8d5ff 100%)',
-            boxShadow: '0 8px 40px rgba(92,3,134,0.12)',
+            background: '#f7f3fc',
+            boxShadow: '0 8px 40px rgba(92,3,134,0.08)',
           }}
         >
-          {/* Left accent stripe */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-1.5"
-            style={{ background: 'linear-gradient(to bottom, #47ff01, #5c0386)' }}
-          />
-
           <div className="px-10 md:px-14 py-10 md:py-12">
             {/* Small header */}
             <p
@@ -50,7 +44,7 @@ export const CTASection: React.FC = () => {
               or dealing with inconsistent output.
             </p>
 
-            {/* Button — single line, no arrow */}
+            {/* Button */}
             <a
               href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
               target="_blank"
