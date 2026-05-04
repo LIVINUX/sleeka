@@ -11,32 +11,41 @@ export const CTASection: React.FC = () => {
             boxShadow: '0 8px 40px rgba(92,3,134,0.08)',
           }}
         >
-          <div className="px-10 md:px-14 py-10 md:py-12 flex flex-col items-center text-center">
-            {/* Small header */}
+          <div className="px-10 md:px-14 py-12 md:py-16 flex flex-col items-center text-center">
+
+            {/* Label */}
             <p
-              className="text-xs font-bold uppercase tracking-[0.18em] mb-3"
+              className="text-xs font-bold uppercase tracking-[0.18em] mb-5"
               style={{ color: '#5c0386' }}
             >
               Ready to Scale Your Creative?
             </p>
 
-            {/* Main headline */}
+            {/* First headline line — smaller, dark */}
             <h2
-              className="font-black leading-tight mb-4"
+              className="font-black leading-tight mb-2"
               style={{
-                fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)',
+                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
                 color: '#1a1a2e',
               }}
             >
-              Stop Posting Without Results.<br />
-              <span style={{ color: '#5c0386' }}>
-                Plug Into a System That Drives Growth.
-              </span>
+              Stop Posting Without Results.
+            </h2>
+
+            {/* Second headline line — larger, purple, more breathing room */}
+            <h2
+              className="font-black leading-tight mb-8"
+              style={{
+                fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)',
+                color: '#5c0386',
+              }}
+            >
+              Plug Into a System That Drives Growth.
             </h2>
 
             {/* Body text */}
             <p
-              className="text-base md:text-lg leading-relaxed mb-8 max-w-xl"
+              className="text-base md:text-lg leading-relaxed mb-10 max-w-xl"
               style={{ color: '#4a4a6a' }}
             >
               Turn your content into a predictable engine for visibility, leads, and revenue —
@@ -54,6 +63,7 @@ export const CTASection: React.FC = () => {
             >
               Book a Discovery Call
             </a>
+
           </div>
         </div>
       </div>
