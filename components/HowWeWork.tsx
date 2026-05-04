@@ -62,7 +62,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
     <div className="container mx-auto px-6 md:px-12">
 
       <div className="mb-12">
-        <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">How we work</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-geko-dark">How we work</h2>
         <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
           We help growing businesses build creative capacity through flexible, outcome driven
           solutions that power visibility, authority, and revenue.
@@ -92,7 +92,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             </p>
             <button
               onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
-              className="slk-btn-learn px-8 py-4 rounded-full font-bold text-lg w-fit"
+              className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center"
               style={{ backgroundColor: '#47ff01', color: '#000' }}
             >
               Learn More!
@@ -120,7 +120,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               integrating seamlessly with your team to execute work efficiently and effectively.
             </p>
             <button disabled
-              className="slk-btn-soon px-8 py-4 rounded-full font-bold text-lg w-fit cursor-not-allowed"
+              className="slk-btn-soon px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center cursor-not-allowed"
               style={{ backgroundColor: '#47ff01', color: '#000' }}>
               Coming Soon
             </button>

@@ -37,7 +37,7 @@ export const TalentShowcase: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
 
         <div className="mb-14">
-          <h2 className="text-5xl md:text-7xl font-bold text-geko-dark mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-geko-dark mb-6">
             The Creative Engine
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl">
