@@ -1,14 +1,4 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
-
-/*
-  Consistent CTA box used on both:
-  - Home page (after WhyChooseUs)
-  - Creative Infrastructure page (bottom of page)
-
-  Box: warm gradient from off-white to light lavender with a purple left accent stripe
-  Button: same size as Hero section button
-*/
 
 export const CTASection: React.FC = () => {
   return (
@@ -60,20 +50,15 @@ export const CTASection: React.FC = () => {
               or dealing with inconsistent output.
             </p>
 
-            {/* Button — same size as Hero section */}
+            {/* Button — single line, no arrow */}
             <a
               href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 group
-                         px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5
-                         rounded-full font-bold text-base sm:text-lg
-                         transition-all hover:scale-105 duration-300
-                         shadow-xl hover:shadow-2xl"
-              style={{ backgroundColor: '#47ff01', color: '#000' }}
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-full font-bold text-base transition-all hover:scale-105 duration-300 shadow-xl hover:shadow-2xl"
+              style={{ backgroundColor: '#47ff01', color: '#000', padding: '16px 32px' }}
             >
               Book a Discovery Call
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
