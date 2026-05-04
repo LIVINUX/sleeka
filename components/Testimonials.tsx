@@ -77,7 +77,7 @@ export const Testimonials: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
 
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight max-w-xl">
+          <h2 className="text-4xl md:text-6xl font-bold leading-tight max-w-xl">
             Proof From Businesses Like Yours
           </h2>
           <div className="flex items-center gap-3">

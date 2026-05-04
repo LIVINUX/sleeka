@@ -58,7 +58,7 @@ export const WhyChooseUs: React.FC = () => {
           <span className="inline-block py-1 px-3 rounded-full bg-[#47ff01]/10 text-[#47ff01] font-semibold text-sm mb-6 tracking-wide uppercase border border-[#47ff01]/20">
             The Sleeka Advantage
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Why Businesses Choose Sleeka
           </h2>
           <p className="text-white/70 text-lg">

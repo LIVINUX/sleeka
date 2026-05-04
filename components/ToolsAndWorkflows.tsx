@@ -4,7 +4,7 @@ export const ToolsAndWorkflows: React.FC = () => (
   <section
     className="relative overflow-hidden flex flex-col items-center text-center"
     style={{
-      background: 'linear-gradient(135deg, #5c0386 0%, #7B00D4 50%, #5c0386 100%)',
+      backgroundColor: '#5c0386',
       paddingTop: '80px',
       paddingLeft: '24px',
       paddingRight: '24px',
@@ -26,9 +26,9 @@ export const ToolsAndWorkflows: React.FC = () => (
       Tools &amp; Workflows
     </span>
 
-    {/* Heading — consistent with all other sections: text-4xl md:text-5xl */}
+    {/* Heading — same as all other sections */}
     <h2
-      className="font-bold text-white mb-6 text-4xl md:text-5xl leading-tight"
+      className="font-bold text-white mb-6 text-4xl md:text-6xl leading-tight"
       style={{ maxWidth: '560px' }}
     >
       Systemized and Flexible
@@ -44,7 +44,7 @@ export const ToolsAndWorkflows: React.FC = () => (
       we simply make it more efficient.
     </p>
 
-    {/* Phone Mockup — sits at bottom, base flush with section edge */}
+    {/* Phone Mockup — base flush with section bottom edge */}
     <div style={{ maxWidth: '300px', width: '100%' }}>
       <img
         src="/assets/tools-mockup.png"
