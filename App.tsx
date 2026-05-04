@@ -6,8 +6,8 @@ import { TrustedBy } from './components/TrustedBy';
 import { AgencyDescription } from './components/AgencyDescription';
 import { OurWorks } from './components/OurWorks';
 import { HowWeWork } from './components/HowWeWork';
+import { ToolsAndWorkflows } from './components/ToolsAndWorkflows';
 import { TalentShowcase } from './components/TalentShowcase';
-import { ToolsWorkflows } from './components/ToolsWorkflows';
 import { Testimonials } from './components/Testimonials';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { CTASection } from './components/CTASection';
@@ -74,7 +74,7 @@ function App() {
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
-          <div id="tools"><ToolsWorkflows /></div>
+          <ToolsAndWorkflows />
           <div id="talent"><TalentShowcase /></div>
           <Testimonials />
           <WhyChooseUs />
