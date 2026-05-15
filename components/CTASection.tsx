@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 export const CTASection: React.FC = () => {
   return (
@@ -7,32 +8,25 @@ export const CTASection: React.FC = () => {
         <div
           className="relative rounded-[2rem] overflow-hidden max-w-4xl mx-auto"
           style={{
-            background: '#f7f3fc',
-            boxShadow: '0 8px 40px rgba(92,3,134,0.08)',
+            background: '#e6d5f7',
+            boxShadow: '0 8px 40px rgba(92,3,134,0.12)',
           }}
         >
           <div className="px-10 md:px-14 py-12 md:py-16 flex flex-col items-center text-center">
 
-            {/* Label */}
+            {/* Small intro line — slightly bigger than a label */}
             <p
-              className="text-xs font-bold uppercase tracking-[0.18em] mb-5"
-              style={{ color: '#5c0386' }}
-            >
-              Ready to Scale Your Creative?
-            </p>
-
-            {/* First headline line — smaller, dark */}
-            <h2
-              className="font-black leading-tight mb-2"
+              className="font-bold uppercase tracking-wide mb-4"
               style={{
-                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+                fontSize: 'clamp(0.85rem, 1.5vw, 1rem)',
                 color: '#1a1a2e',
+                letterSpacing: '0.08em',
               }}
             >
               Stop Posting Without Results.
-            </h2>
+            </p>
 
-            {/* Second headline line — larger, purple, more breathing room */}
+            {/* Main headline — big */}
             <h2
               className="font-black leading-tight mb-8"
               style={{
@@ -53,15 +47,16 @@ export const CTASection: React.FC = () => {
               or dealing with inconsistent output.
             </p>
 
-            {/* Button */}
+            {/* Button — exact copy from Hero */}
             <a
               href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full font-bold text-base transition-all hover:scale-105 duration-300 shadow-xl hover:shadow-2xl"
-              style={{ backgroundColor: '#47ff01', color: '#000', padding: '16px 32px' }}
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 justify-center whitespace-nowrap"
+              style={{ backgroundColor: '#47ff01', color: '#000' }}
             >
               Book a Discovery Call
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
 
           </div>
