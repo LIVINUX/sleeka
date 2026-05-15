@@ -7,7 +7,7 @@ export const AgencyDescription: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
           <div className="lg:w-1/3 shrink-0">
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-geko-dark leading-tight sticky top-24">
-              Built for Modern Marketing
+              Built for<br /> Modern Marketing
             </h2>
           </div>
           <div className="lg:w-2/3">
