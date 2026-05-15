@@ -5,7 +5,7 @@ const works = [
     id: 'premiabn',
     title: 'PremiaBN',
     tags: 'Illustration, Animated explainer video',
-    image: '/assets/works/2.jpg',
+    image: '/assets/works/2.png',
   },
   {
     id: 'bluechip-technologies',
@@ -17,13 +17,13 @@ const works = [
     id: 'emsxchange',
     title: 'EmsXchange',
     tags: 'Design, Motion, Video editing',
-    image: '/assets/works/Big5Annoucement.jpg',
+    image: '/assets/works/3.jpg',
   },
   {
     id: 'felicia-transport',
     title: 'Felicia Transport',
     tags: 'Branding, Identity design, Merchandise',
-    image: '/assets/works/VanDesign.jpg',
+    image: '/assets/works/1.jpg',
   },
 ];
 
