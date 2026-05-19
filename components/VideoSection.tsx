@@ -20,7 +20,7 @@ export const VideoSection: React.FC = () => {
             {/* Video Label */}
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
                 <span className="bg-white/90 backdrop-blur text-geko-dark px-4 py-2 rounded-full text-xs md:text-sm font-bold tracking-wide uppercase">
-                    Our Showreel
+                    Growth System
                 </span>
             </div>
         </div>

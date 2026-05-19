@@ -50,12 +50,7 @@ export const TalentShowcase: React.FC = () => {
           {talents.map((talent, index) => (
             <div key={index} className="group cursor-pointer">
               <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 bg-gray-200">
-                {talent.available && (
-                  <div className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur text-geko-dark text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                    OPEN FOR WORK
-                  </div>
-                )}
+                {/* Open for work badge hidden — talent outsourcing paused */}
                 <img
                   src={talent.image}
                   alt={talent.name}

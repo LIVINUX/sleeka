@@ -14,7 +14,6 @@ export const CTASection: React.FC = () => {
         >
           <div className="px-10 md:px-14 py-12 md:py-16 flex flex-col items-center text-center">
 
-            {/* Small intro line — slightly bigger than a label */}
             <p
               className="font-bold uppercase tracking-wide mb-4"
               style={{
@@ -26,7 +25,6 @@ export const CTASection: React.FC = () => {
               Stop Posting Without Results.
             </p>
 
-            {/* Main headline — big */}
             <h2
               className="font-black leading-tight mb-8"
               style={{
@@ -37,7 +35,6 @@ export const CTASection: React.FC = () => {
               Plug Into a System That Drives Growth.
             </h2>
 
-            {/* Body text */}
             <p
               className="text-base md:text-lg leading-relaxed mb-10 max-w-xl"
               style={{ color: '#4a4a6a' }}
@@ -47,16 +44,45 @@ export const CTASection: React.FC = () => {
               or dealing with inconsistent output.
             </p>
 
-            {/* Button — exact copy from Hero */}
+            {/* Button with border pop effect */}
+            <style>{`
+              .cta-btn {
+                position: relative;
+                background-color: #47ff01;
+                color: #000;
+                padding: 16px 36px;
+                border-radius: 9999px;
+                font-weight: 700;
+                font-size: 1rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                white-space: nowrap;
+                box-shadow: 0 0 0 0 rgba(71,255,1,0.5);
+                animation: borderPop 2s ease-in-out infinite;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                text-decoration: none;
+              }
+              .cta-btn:hover {
+                transform: scale(1.05);
+                animation: none;
+                box-shadow: 0 0 0 6px rgba(71,255,1,0.3), 0 20px 40px rgba(0,0,0,0.15);
+              }
+              @keyframes borderPop {
+                0%   { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); }
+                60%  { box-shadow: 0 0 0 12px rgba(71,255,1,0); }
+                100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); }
+              }
+            `}</style>
+
             <a
               href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 justify-center whitespace-nowrap"
-              style={{ backgroundColor: '#47ff01', color: '#000' }}
+              className="cta-btn group"
             >
               Book a Discovery Call
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
           </div>
