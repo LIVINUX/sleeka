@@ -39,7 +39,7 @@ export const CTASection: React.FC = () => {
               className="text-base md:text-lg leading-relaxed mb-10 max-w-xl"
               style={{ color: '#4a4a6a' }}
             >
-              Turn your content into a predictable engine for visibility, leads, and revenue —
+              Turn your content into a predictable engine for visibility, leads, and revenue 
               without the cost of building an in-house team, the stress of managing creatives,
               or dealing with inconsistent output.
             </p>
