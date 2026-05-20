@@ -62,12 +62,12 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-8 relative z-10"
                 style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
               >
-                <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-tight mb-4">
+                <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed">
-                  Sleeka functions as your dedicated creative department, providing the design and
-                  video systems that help brands stay visible, build authority,
+                <p className="text-white/90 text-base leading-relaxed">
+                  Sleeka functions as your dedicated creative department, providing the design,
+                  video, and animation systems that help brands stay visible, build authority,
                   and convert attention into revenue.
                 </p>
               </div>
@@ -79,10 +79,10 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         {/* Problem */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
               A Growing Problem
             </h2>
-            <div className="space-y-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+            <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
               <p>Modern marketing is not just about creating more content. Without clear strategy, positioning, and structured execution, businesses end up spending money on marketing that fails to generate consistent leads, customers, and revenue.</p>
               <p className="italic font-medium text-gray-500">Freelancers are unreliable, building a full in-house marketing team is expensive and difficult to manage, and traditional agencies are often costly with slow turnaround times.</p>
               <p>Sleeka provides businesses with a dedicated creative infrastructure that combines strategy, design, video, and content execution to help brands stay visible, attract leads, build trust, and drive measurable growth through content designed to convert, not just exist.</p>
