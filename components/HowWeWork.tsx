@@ -63,7 +63,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
 
       <div className="mb-12">
         <h2 className="text-4xl md:text-6xl font-bold mb-6 text-geko-dark">How We Work</h2>
-        <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed">
           We help growing businesses build creative capacity through flexible, outcome driven
           solutions that power visibility, authority, and revenue.
         </p>
@@ -84,7 +84,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
               Your full creative department on a flexible monthly subscription, delivering
-              design and video systems that fuel marketing campaigns and brand growth.
+              design, video, and animation systems that fuel marketing campaigns and brand growth.
             </p>
             <p className="text-white/80 text-base leading-relaxed mb-10">
               Perfect for startups and growing businesses that need consistent, high quality

@@ -51,7 +51,7 @@ export const OurWorks: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 mb-12">
         <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Real Results</h2>
-        <p className="text-xl text-gray-600 font-normal">
+        <p className="text-lg text-gray-600 font-normal">
           Here are some of the campaigns and assets produced by our creative teams
         </p>
       </div>

@@ -57,15 +57,14 @@ export const TalentShowcase: React.FC = () => {
                   className="w-full h-full object-cover transition-all duration-700 filter grayscale group-hover:grayscale-0 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 display:none transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  {/* View profile badge hidden — talent outsourcing paused */}
+                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                   <button className="w-full bg-white text-geko-dark py-3 rounded-xl font-bold text-sm shadow-lg hover:bg-geko-accent transition-colors">
                     View Profile
                   </button>
                 </div>
               </div>
               <div className="space-y-1">
-                <h3 className="text-2xl font-serif font-bold text-[#5c0386]">{talent.name}</h3>
+                <h3 className="text-2xl font-bold text-[#5c0386]">{talent.name}</h3>
                 <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">{talent.role}</p>
                 <p className="text-xs text-gray-400 pt-2 border-t border-gray-200 mt-3 inline-block w-full">
                   {talent.skills}
