@@ -84,7 +84,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
             </h2>
             <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
               <p>Modern marketing is not just about creating more content. Without clear strategy, positioning, and structured execution, businesses end up spending money on marketing that fails to generate consistent leads, customers, and revenue.</p>
-              <p className="italic font-medium text-gray-500">Freelancers are unreliable, building a full in-house marketing team is expensive and difficult to manage, and traditional agencies are often costly with slow turnaround times.</p>
+              <p className="font-medium text-gray-500">Freelancers are unreliable, building a full in-house marketing team is expensive and difficult to manage, and traditional agencies are often costly with slow turnaround times.</p>
               <p>Sleeka provides businesses with a dedicated creative infrastructure that combines strategy, design, video, and content execution to help brands stay visible, attract leads, build trust, and drive measurable growth through content designed to convert, not just exist.</p>
               <p className="font-semibold text-gray-800">Here are our creative infrastructure packages:</p>
             </div>
