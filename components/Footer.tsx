@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Your creative partner for content that drives results.
+              Your creative partner for content that drives measurable results.
             </p>
           </div>
 
