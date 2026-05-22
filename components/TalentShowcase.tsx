@@ -10,9 +10,9 @@ const talents = [
   },
   {
     name: "Dusom Oputa",
-    role: "AI Animator & Social Media Manager",
+    role: "Project Manager & Content Operations",
     image: "/assets/Dusom Oputa.jpg",
-    skills: "AI Animation • Social",
+    skills: "Content Systems • Coordination",
     available: true
   },
   {
