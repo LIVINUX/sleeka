@@ -6,7 +6,7 @@ const reviews = [
     text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
     author: "Emmanuel Okoye",
     role: "CEO, Felicia Transport",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    videoUrl: ""
   },
   {
     text: "Our engagement rate jumped by 38% after Sleeka took over design and motion graphics. Reliable turnaround, zero creative burnout on our end.",
