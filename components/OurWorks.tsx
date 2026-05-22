@@ -72,10 +72,10 @@ export const OurWorks: React.FC = () => {
                   className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-[#5c0386] transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#5c0386] transition-colors duration-300">
                 {work.title}
               </h3>
-              <p className="text-lg text-gray-600">- {work.tags}</p>
+              <p className="text-xs text-gray-400">- {work.tags}</p>
             </div>
           ))}
         </div>
