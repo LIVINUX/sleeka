@@ -3,22 +3,22 @@ import { Play, X, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const reviews = [
   {
-    text: "The talent we hired from Sleeka blended seamlessly into our team. He handled design, animation, and video editing with impressive speed and quality, saving us both time and budget.",
-    author: "Emmanuel Okoye",
-    role: "CEO, Felicia Transport",
+    text: "Sleeka helped us scale our marketing execution without building an expensive in-house team. Within 45 days, our content output doubled, conversions increased by 23%, and we generated an additional $25,000 in Q3 revenue.",
+    author: "Adelewa Segun",
+    role: "Head of Marketing, Cardiff",
     videoUrl: ""
   },
   {
-    text: "Our engagement rate jumped by 38% after Sleeka took over design and motion graphics. Reliable turnaround, zero creative burnout on our end.",
+    text: "After working with Sleeka, our content became more consistent and our engagement improved significantly. The turnaround time, communication, and creative execution felt like having an internal creative department.",
     author: "Joy Chinwe",
-    role: "Growth Manager, Atlas",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    role: "Growth Manager, Atas",
+    videoUrl: ""
   },
   {
-    text: "We scaled our creative output overnight. No hiring stress, no onboarding delays — Sleeka just plugged in and executed. In just 45 days, our output doubled, and conversions jumped 23%, adding $25,000 in Q3 revenue.",
-    author: "Adelewa Segun",
-    role: "Head of Marketing, Cardiff",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    text: "Sleeka didn’t just help us create content. They brought structure to our marketing execution. From design to animation and video editing, everything became faster, smoother, and more consistent without the stress of managing multiple freelancers.",
+    author: "Emmanuel Okoye",
+    role: "CEO, Felicia Transport",
+    videoUrl: ""
   }
 ];
 
