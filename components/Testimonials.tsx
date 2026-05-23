@@ -17,7 +17,7 @@ const reviews = [
   {
     text: "Sleeka didn’t just help us create content. They brought structure to our marketing execution. From design to animation and video editing, everything became faster, smoother, and more consistent without the stress of managing multiple freelancers.",
     author: "Emmanuel Okoye",
-    role: "CEO, Felicia Transport",
+    role: "CEO, EmsXchange",
     videoUrl: ""
   }
 ];
