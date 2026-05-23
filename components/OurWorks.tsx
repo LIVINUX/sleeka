@@ -23,7 +23,7 @@ const works = [
     id: 'felicia-transport',
     title: 'Felicia Transport',
     tags: 'Branding, Identity design, Merchandise',
-    image: '/assets/works/1.png',
+    image: '/assets/works/1.jpg',
   },
 ];
 
