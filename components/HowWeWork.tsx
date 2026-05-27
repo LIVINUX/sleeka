@@ -84,7 +84,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
               Your full creative department on a flexible monthly subscription, delivering
-              design, video, and animation systems that fuel marketing campaigns and brand growth.
+              design and video systems that fuel marketing campaigns and brand growth.
             </p>
             <p className="text-white/80 text-base leading-relaxed mb-10">
               Perfect for startups and growing businesses that need consistent, high quality
@@ -113,7 +113,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
               Scale faster with vetted, multi skilled creative professionals trained in graphics
-              design, animation, and video production, all in one.
+              design and video production, all in one.
             </p>
             <p className="text-white/80 text-base leading-relaxed mb-10">
               Our talents combine technical expertise, AI enabled workflows, and soft skills,
