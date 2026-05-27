@@ -2,8 +2,8 @@ import React from 'react';
 
 // ─── LOGO SIZES — edit each height here anytime ───────────────────────────
 const logoConfig = [
-  { file: "1.png", name: "Bluechip",     height: 97 },
-  { file: "2.png", name: "JHDC",         height: 110 },
+  { file: "1.png", name: "Bluechip",     height: 95 },
+  { file: "2.png", name: "JHDC",         height: 100 },
   { file: "3.png", name: "Citisquare",   height: 110 },
   { file: "4.png", name: "PBN",          height:  96 },
   { file: "5.png", name: "Felicia",      height:  45 },
