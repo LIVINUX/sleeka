@@ -66,8 +66,8 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                   Creative Infrastructure
                 </h1>
                 <p className="text-white/90 text-base leading-relaxed">
-                  Sleeka functions as your dedicated creative department, providing the design,
-                  video, and animation systems that help brands stay visible, build authority,
+                  Sleeka functions as your dedicated creative department, providing the design and
+                  video systems that help brands stay visible, build authority,
                   and convert attention into revenue.
                 </p>
               </div>
