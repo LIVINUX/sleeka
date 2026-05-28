@@ -5,7 +5,7 @@ const talents = [
     name: "Blossom Uzoho",
     role: "Creative Generalist",
     image: "/assets/Blossom Uzoho.jpg",
-    skills: "Design • Video Editing • 2D Animation",
+    skills: "Design • Video Editing • Animation",
     available: true
   },
   {
