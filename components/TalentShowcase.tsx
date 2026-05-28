@@ -24,9 +24,9 @@ const talents = [
   },
   {
     name: "Peter Samuel",
-    role: "Creative Generalist",
+    role: "Visual and Motion Designer",
     image: "/assets/Peter Samuel.jpg",
-    skills: "Design • Video Editing • Animation",
+    skills: "Design • Video Editing • Motion Graphics",
     available: true
   }
 ];
