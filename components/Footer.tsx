@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center mb-4">
+            <a href="/" className="flex items-center mb-4">
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
               <li>
                 <button
                   onClick={onNavigateToFAQ}
-                  className="text-[#5c0386] font-semibold hover:text-[#7a04b3] transition-colors text-sm text-left"
+                  className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left"
                 >
                   FAQ
                 </button>

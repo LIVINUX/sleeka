@@ -3,8 +3,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Case Studies', href: '#work' },
-  { label: 'The Team', href: '#talent' },
+  { label: 'Our Work', href: '#work' },
+  { label: 'Our Talent', href: '#talent' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
 ];
@@ -12,9 +12,12 @@ const navLinks = [
 interface NavbarProps {
   /** When true the navbar is always solid (dark bg), ignoring scroll state */
   forceColored?: boolean;
+  onNavigateToFAQ?: () => void;
+  onNavigateHome?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ forceColored = false }) => {
+export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigateToFAQ, onNavigateHome, onNavigateToSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -34,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false }) => {
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between text-white">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="/" onClick={onNavigateToSection ? (e) => { e.preventDefault(); onNavigateToSection('home'); } : undefined} className="flex items-center">
           <img src="/assets/1.png" alt="Sleeka" className="h-12 md:h-16 w-auto" />
         </a>
 
@@ -44,11 +47,20 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false }) => {
             <a
               key={link.label}
               href={link.href}
+              onClick={onNavigateToSection ? (e) => { e.preventDefault(); onNavigateToSection(link.href.replace('#', '')); } : undefined}
               className="text-sm font-medium hover:text-geko-accent transition-colors"
             >
               {link.label}
             </a>
           ))}
+          {onNavigateToFAQ && (
+            <button
+              onClick={onNavigateToFAQ}
+              className="text-sm font-medium hover:text-geko-accent transition-colors"
+            >
+              FAQ
+            </button>
+          )}
         </div>
 
         {/* CTA Button */}
@@ -98,18 +110,26 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false }) => {
           {navLinks.map((link, index) => (
             <a
               key={link.label}
-              href={link.href}
+              href={onNavigateHome ? `/${link.href}` : link.href}
               className="text-white text-lg font-medium py-2 transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
               style={{
                 transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
                 transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
                 opacity: isMobileMenuOpen ? 1 : 0,
               }}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => { setIsMobileMenuOpen(false); if (onNavigateToSection) onNavigateToSection(link.href.replace('#', '')); }}
             >
               {link.label}
             </a>
           ))}
+          {onNavigateToFAQ && (
+            <button
+              className="text-white text-lg font-medium py-2 text-left transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
+              onClick={() => { onNavigateToFAQ(); setIsMobileMenuOpen(false); }}
+            >
+              FAQ
+            </button>
+          )}
           <a
             href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
             target="_blank"
