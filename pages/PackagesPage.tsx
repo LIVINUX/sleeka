@@ -411,4 +411,4 @@ export const PackagesPage: React.FC = () => {
       {version === 'A' ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
     : <VersionB active={active} onHover={handleHover} onClick={handleClick} />}
     </>
-};
+);
