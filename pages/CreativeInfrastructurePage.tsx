@@ -3,14 +3,18 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CTASection } from '../components/CTASection';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { PagePreloader } from '../components/PagePreloader';
 
 interface Props {
   onBack: () => void;
+  onNavigateToFAQ?: () => void;
+  onNavigateHome?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
 }
 
 type ActivePackage = 'growth' | 'authority' | null;
 
-export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
+export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack, onNavigateToFAQ, onNavigateHome, onNavigateToSection }) => {
   const [activePackage, setActivePackage] = useState<ActivePackage>(null);
 
   useEffect(() => {

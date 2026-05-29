@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { PagePreloader } from './PagePreloader';
 
 type ActivePackage = 'growth' | 'authority' | null;
 
@@ -21,7 +22,7 @@ const HeroButton: React.FC = () => (
 const MinimalHeader: React.FC = () => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-[#5c0386] px-6 py-4 flex items-center justify-between shadow-lg">
     <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer">
-      <img src="/assets/sleeka-logo.png" alt="Sleeka" className="h-8 w-auto" />
+      <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
     </a>
     <a
       href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
@@ -404,7 +405,10 @@ export const PackagesPage: React.FC = () => {
   const handleHover = (pkg: 'growth' | 'authority') =>
     setActive(pkg);
 
-  return version === 'A'
-    ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
-    : <VersionB active={active} onHover={handleHover} onClick={handleClick} />;
+  return (
+    <>
+      <PagePreloader />
+      {version === 'A' ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
+    : <VersionB active={active} onHover={handleHover} onClick={handleClick} />}
+    </>
 };

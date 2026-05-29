@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { PagePreloader } from '../components/PagePreloader';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 
@@ -247,6 +248,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
 
   return (
     <div className="min-h-screen bg-white">
+      <PagePreloader />
       <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
 
       {/* Hero */}
