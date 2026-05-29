@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp, Check } from 'lucide-react';
-import { PagePreloader } from './PagePreloader';
 
 type ActivePackage = 'growth' | 'authority' | null;
 
@@ -405,10 +404,7 @@ export const PackagesPage: React.FC = () => {
   const handleHover = (pkg: 'growth' | 'authority') =>
     setActive(pkg);
 
-  return (
-    <>
-      <PagePreloader />
-      {version === 'A' ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
-    : <VersionB active={active} onHover={handleHover} onClick={handleClick} />}
-    </>
-);
+  return version === 'A'
+    ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
+    : <VersionB active={active} onHover={handleHover} onClick={handleClick} />;
+};
