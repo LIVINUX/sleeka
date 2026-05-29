@@ -1,7 +1,9 @@
 import React from 'react';
 import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps { onNavigateToFAQ?: () => void; }
+
+export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
   return (
     <footer className="bg-white py-20">
       <div className="container mx-auto px-6 md:px-12">
@@ -13,7 +15,7 @@ export const Footer: React.FC = () => {
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Your creative partner for content that drives measurable results.
+              Your creative partner for design, video, and content that drives results.
             </p>
           </div>
 
@@ -42,9 +44,12 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm">
+                <button
+                  onClick={onNavigateToFAQ}
+                  className="text-[#5c0386] font-semibold hover:text-[#7a04b3] transition-colors text-sm text-left"
+                >
                   FAQ
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -89,7 +94,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            © 2026 Sleeka. All rights reserved
+            © 2025 Sleeka. All rights reserved
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
