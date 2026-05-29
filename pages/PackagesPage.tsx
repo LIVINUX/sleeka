@@ -270,7 +270,6 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
             <ArrowLeft className="w-4 h-4" />
             Back to home
           </button>
-        </div>
       </div>
     </section>
   </div>
