@@ -161,9 +161,9 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
         <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8 text-center">What inconsistent marketing actually costs you</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {[
-            { cost: 'Visibility', pain: 'Competitors stay top of mind. You don't.' },
-            { cost: 'Leads', pain: 'Content goes out. Enquiries don't come in.' },
-            { cost: 'Revenue', pain: 'You're working hard but growth is inconsistent.' },
+            { cost: "Visibility", pain: "Competitors stay top of mind. You don't." },
+            { cost: "Leads", pain: "Content goes out. Enquiries don't come in." },
+            { cost: "Revenue", pain: "You're working hard but growth is inconsistent." },
           ].map(({ cost, pain }) => (
             <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50 text-center">
               <p className="font-black text-[#5c0386] text-lg mb-2">Lost {cost}</p>
