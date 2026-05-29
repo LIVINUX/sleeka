@@ -262,14 +262,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
             <ArrowLeft className="w-4 h-4" /> Back to home
           </a>
         </p>
-        {/* Back link */}
-          <button
-            onClick={onBack}
-            className="mt-10 flex items-center gap-2 text-gray-400 hover:text-geko-dark transition-colors text-sm font-medium"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to home
-          </button>
+        </div>
       </div>
     </section>
   </div>
