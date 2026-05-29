@@ -11,31 +11,72 @@ import { TalentShowcase } from './components/TalentShowcase';
 import { Testimonials } from './components/Testimonials';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { CTASection } from './components/CTASection';
+import { HomeFAQ } from './components/HomeFAQ';
 import { Footer } from './components/Footer';
 import { Preloader } from './components/Preloader';
 import { CaseStudyPage } from './pages/CaseStudyPage';
 import { CreativeInfrastructurePage } from './pages/CreativeInfrastructurePage';
+import { FAQPage } from './pages/FAQPage';
+import { PackagesPage } from './pages/PackagesPage';
 
-type Page = 'home' | 'case-study' | 'creative-infrastructure';
+type Page = 'home' | 'case-study' | 'creative-infrastructure' | 'faq' | 'packages';
+
+// Derive initial page from URL path
+function getPageFromPath(path: string): Page {
+  if (path.startsWith('/creative-infrastructure')) return 'creative-infrastructure';
+  if (path.startsWith('/packages')) return 'packages';
+  if (path.startsWith('/faq')) return 'faq';
+  if (path.startsWith('/case-study')) return 'case-study';
+  return 'home';
+}
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentPage, setCurrentPage] = useState<Page>(() =>
+    getPageFromPath(window.location.pathname)
+  );
   const savedScrollPos = useRef<number>(0);
 
+  // Keep browser URL in sync with page state
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith('#/case-study/')) {
-        setCurrentPage('case-study');
-        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-      } else if (currentPage === 'case-study') {
-        setCurrentPage('home');
-      }
+    const pathMap: Record<Page, string> = {
+      'home': '/',
+      'creative-infrastructure': '/creative-infrastructure',
+      'faq': '/faq',
+      'packages': '/packages',
+      'case-study': window.location.pathname.startsWith('/case-study')
+        ? window.location.pathname
+        : '/case-study',
     };
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    const newPath = pathMap[currentPage];
+    if (window.location.pathname !== newPath) {
+      window.history.pushState({}, '', newPath);
+    }
   }, [currentPage]);
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath(window.location.pathname));
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateToFAQ = () => {
+    savedScrollPos.current = window.scrollY;
+    setCurrentPage('faq');
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
+  const goBackFromFAQ = () => {
+    setCurrentPage('home');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: savedScrollPos.current, behavior: 'instant' as ScrollBehavior });
+      });
+    });
+  };
 
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
@@ -53,7 +94,8 @@ function App() {
   };
 
   if (currentPage === 'case-study') return <CaseStudyPage />;
-
+  if (currentPage === 'packages') return <PackagesPage />;
+  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} />;
   if (currentPage === 'creative-infrastructure') {
     return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} />;
   }
@@ -62,7 +104,7 @@ function App() {
     <>
       <Preloader />
       <div className="min-h-screen bg-white">
-        <Navbar />
+        <Navbar onNavigateToFAQ={navigateToFAQ} />
         <main>
           <div id="home" className="relative">
             <Hero />
@@ -78,10 +120,10 @@ function App() {
           <div id="talent"><TalentShowcase /></div>
           <Testimonials />
           <WhyChooseUs />
-          {/* CTA section — white bg, light purple card, after WhyChooseUs */}
+          <HomeFAQ onNavigateToFAQ={navigateToFAQ} />
           <CTASection />
         </main>
-        <Footer />
+        <Footer onNavigateToFAQ={navigateToFAQ} />
       </div>
     </>
   );
