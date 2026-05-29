@@ -63,6 +63,16 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const navigateHomeToSection = (sectionId: string) => {
+    setCurrentPage('home');
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    // After home renders, scroll to the section
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const navigateToFAQ = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('faq');
@@ -95,9 +105,9 @@ function App() {
 
   if (currentPage === 'case-study') return <CaseStudyPage />;
   if (currentPage === 'packages') return <PackagesPage />;
-  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} />;
+  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromFAQ} onNavigateToSection={navigateHomeToSection} />;
   if (currentPage === 'creative-infrastructure') {
-    return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} />;
+    return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
   }
 
   return (
