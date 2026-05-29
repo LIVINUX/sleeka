@@ -35,7 +35,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         .ci-root { overflow-x: hidden; }
       `}</style>
 
-      <Navbar forceColored />
+      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
 
       <main className="ci-root min-h-screen bg-white">
 
@@ -62,12 +62,12 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                 className="bg-[#5c0386] px-6 sm:px-8 md:px-12 pb-10 pt-8 relative z-10"
                 style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}
               >
-                <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight mb-4">
+                <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-tight mb-4">
                   Creative Infrastructure
                 </h1>
-                <p className="text-white/90 text-base leading-relaxed">
-                  Sleeka functions as your dedicated creative department, providing the design and
-                  video systems that help brands stay visible, build authority,
+                <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                  Sleeka functions as your dedicated creative department, providing the design,
+                  video, and animation systems that help brands stay visible, build authority,
                   and convert attention into revenue.
                 </p>
               </div>
@@ -79,14 +79,15 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         {/* Problem */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
-              A Growing Problem
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 pb-3 border-b border-gray-200">
+              The Problem Most Growing Businesses Face
             </h2>
-            <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
-              <p>Modern marketing is not just about creating more content. Without clear strategy, positioning, and structured execution, businesses end up spending money on marketing that fails to generate consistent leads, customers, and revenue.</p>
-              <p className="font-medium text-gray-500">Freelancers are unreliable, building a full in-house marketing team is expensive and difficult to manage, and traditional agencies are often costly with slow turnaround times.</p>
-              <p>Sleeka provides businesses with a dedicated creative infrastructure that combines strategy, design, video, and content execution to help brands stay visible, attract leads, build trust, and drive measurable growth through content designed to convert, not just exist.</p>
-              <p className="font-semibold text-gray-800">Here are our creative infrastructure packages:</p>
+            <div className="space-y-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+              <p>Marketing today requires constant creative output — graphics, videos, campaigns, and storytelling — that keep your brand visible and competitive. But most companies struggle to support this consistently.</p>
+              <p className="italic font-medium text-gray-500">Freelancers are unreliable, often juggling multiple clients with inconsistent availability and delivery.</p>
+              <p className="italic font-medium text-gray-500">Building a full in-house creative team requires hiring designers, video editors, animators, and creative leads — a major payroll commitment.</p>
+              <p className="italic font-medium text-gray-500">Traditional agencies are often expensive, slow to respond, and structured around project billing rather than ongoing creative support.</p>
+              <p>Sleeka solves this with a structured creative department on a flexible monthly subscription — reliable creative capacity without operational complexity. Here are our two creative infrastructure packages:</p>
             </div>
           </div>
         </section>
@@ -111,15 +112,15 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               <div className={`pkg-panel ${activePackage === 'growth' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For growing businesses that need structured creative execution to maintain visibility, support marketing activities, and build consistent brand presence.</p>
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For growing businesses that need consistent creative support to maintain visibility and support marketing activities.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
-                      { label: 'What This Package Supports', items: ['Consistent brand visibility','Professional brand communication','Ongoing creative execution'] },
-                      { label: 'Creative Infrastructure Includes', items: ['Brand graphics and marketing visuals','Short-form video editing','Campaign and promotional creatives','Motion graphics and visual storytelling assets'] },
-                      { label: 'Strategy & Planning', items: ['Structured content calendar','Creative direction aligned with business goals','Organized campaign planning and execution'] },
-                      { label: 'Creative Capacity', items: ['6 creative requests per month','1 active task at a time','Additional requests managed through a structured queue'] },
-                      { label: 'Typical Delivery Timeline', items: ['Graphic design: 24–48 hours','Video editing: 48–72 hours','Motion graphics / animation: 3–5 working days'] },
-                      { label: 'Coordination & Reporting', items: ['Dedicated Project Manager','Monthly performance reporting','Organized workflow and task coordination'] },
+                      { label: 'What This Package Delivers', items: ['Consistent brand visibility','Professional visual communication','Reliable creative support for ongoing marketing'] },
+                      { label: 'Creative Support Includes', items: ['Brand graphics and marketing visuals','Short-form video editing','Campaign visuals and promotional creatives','Visual storytelling assets for brand communication'] },
+                      { label: 'Monthly Creative Planning', items: ['Structured content calendar','Creative direction aligned with marketing goals','Organized campaign planning'] },
+                      { label: 'Creative Request Capacity', items: ['6 creative requests per month','1 active task at a time','Additional requests move into a structured queue'] },
+                      { label: 'Typical Delivery Time', items: ['Graphic design: 24 – 48 hours','Video editing: 48 – 72 hours','Motion graphics / animation: 3 – 5 working days'] },
+                      { label: 'Coordination & Reporting', items: ['Dedicated Project Manager','Monthly creative performance report','Organized task coordination and workflow management'] },
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
@@ -128,7 +129,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                     ))}
                   </div>
                   <div className="mt-6 bg-white/10 rounded-2xl p-4 border border-white/20">
-                    <p className="text-white/90 text-sm"><span className="text-[#47ff01] font-bold">Best suited for: </span>Growing businesses that need consistent creative execution without building an expensive in-house creative team.</p>
+                    <p className="text-white/90 text-sm"><span className="text-[#47ff01] font-bold">Best suited for: </span>Growing companies that need consistent creative output without building an internal design team.</p>
                   </div>
                 </div>
               </div>
@@ -150,15 +151,15 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
               <div className={`pkg-panel ${activePackage === 'authority' ? 'open' : 'closed'}`}>
                 <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
                   <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For brands focused on scaling visibility, building authority, and executing marketing at a higher level with deeper strategic and creative support.</p>
+                  <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">For ambitious companies that want to strengthen brand authority, execute campaigns effectively, and scale their marketing presence with greater creative capacity, faster delivery, and strategic oversight.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                     {[
-                      { label: 'What This Package Supports', items: ['Stronger brand authority and positioning','Consistent multi-platform visibility','Higher-quality marketing execution','Lead generation','Scalable content operations'] },
-                      { label: 'Creative Infrastructure Includes', items: ['Advanced brand and campaign visuals','High-volume short-form video editing','Motion graphics and animation support','Strategic content creatives for marketing campaigns','Visual storytelling assets across platforms'] },
-                      { label: 'Strategy & Planning', items: ['Content strategy and positioning support','Structured monthly content planning','Campaign direction aligned with growth goals','Marketing performance review and optimization'] },
-                      { label: 'Creative Capacity', items: ['12 creative requests per month','2 active tasks at a time','Priority workflow management'] },
-                      { label: 'Typical Delivery Timeline', items: ['Graphic design: 24–48 hours','Video editing: 24–72 hours','Motion graphics / animation: 2–5 working days'] },
-                      { label: 'Coordination & Reporting', items: ['Dedicated Project Manager','Priority communication and coordination','Monthly strategy and performance review','Organized workflow and approval systems'] },
+                      { label: 'What This Package Delivers', items: ['Stronger brand authority','Higher-impact marketing campaigns','Faster creative execution for growth initiatives'] },
+                      { label: 'Premium Creative Support', items: ['Advanced brand and marketing design','High-quality short-form video production','Motion graphics and visual storytelling','Light animation for campaigns and brand messaging','Creative support for product launches and promotions'] },
+                      { label: 'Strategic Creative Direction', items: ['Creative Director oversight','Brand positioning guidance','Campaign creative direction','Messaging and creative strategy support'] },
+                      { label: 'Enhanced Request Capacity', items: ['20 creative requests per month','Up to 3 active tasks at the same time','Priority task queue for faster execution'] },
+                      { label: 'Priority Delivery Time', items: ['Graphic design: Less than 12 hours','Video editing: 24 – 48 hours','Motion graphics / animation: 2 – 4 working days'] },
+                      { label: 'Strategic Coordination', items: ['Dedicated Project Manager','Monthly growth and creative performance report','Strategy review sessions','Higher revision flexibility'] },
                     ].map(({ label, items }) => (
                       <div key={label}>
                         <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-2">{label}</p>
@@ -166,9 +167,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 bg-white/10 rounded-2xl p-4 border border-white/20">
-                    <p className="text-white/90 text-sm"><span className="text-[#47ff01] font-bold">Best suited for: </span>Businesses ready to scale marketing with a dedicated creative infrastructure that supports authority, growth, and long-term brand visibility.</p>
-                  </div>
+                  <p className="mt-6 text-white/60 text-sm italic">Your project manager ensures your creative pipeline stays organized, prioritized, and delivered efficiently — enabling your team to move faster.</p>
                 </div>
               </div>
             </div>
@@ -180,7 +179,7 @@ export const CreativeInfrastructurePage: React.FC<Props> = ({ onBack }) => {
         <CTASection />
 
       </main>
-      <Footer />
+      <Footer onNavigateToFAQ={onNavigateToFAQ} />
     </>
   );
 };

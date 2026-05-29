@@ -237,14 +237,17 @@ const FAQAccordion: React.FC<{ item: FAQItem; index: number }> = ({ item, index 
 
 interface FAQPageProps {
   onBack: () => void;
+  onNavigateToFAQ?: () => void;
+  onNavigateHome?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
 }
 
-export const FAQPage: React.FC<FAQPageProps> = ({ onBack }) => {
+export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNavigateHome, onNavigateToSection }) => {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar forceColored />
+      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
 
       {/* Hero */}
       <section className="bg-geko-dark pt-32 pb-20 px-6 text-center">
@@ -338,7 +341,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack }) => {
         </div>
       </section>
 
-      <Footer />
+      <Footer onNavigateToFAQ={onNavigateToFAQ} />
     </div>
   );
 };
