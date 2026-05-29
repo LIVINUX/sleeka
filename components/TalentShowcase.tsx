@@ -2,10 +2,10 @@ import React from 'react';
 
 const talents = [
   {
-    name: "Blossom Uzoho",
-    role: "Creative Generalist",
-    image: "/assets/Blossom Uzoho.jpg",
-    skills: "Design • Video Editing • Animation",
+    name: "Livinus Ekeh",
+    role: "Content Strategist & Lead Generation Specialist",
+    image: "/assets/Livinus Ekeh.jpg",
+    skills: "Strategy • Lead Generation • Growth Hacking",
     available: true
   },
   {
@@ -16,10 +16,10 @@ const talents = [
     available: true
   },
   {
-    name: "Caleb Ohiro",
-    role: "Visual and Motion Designer",
-    image: "/assets/Caleb Ohiro.jpg",
-    skills: "UI/UX • Design • Motion Graphics",
+    name: "Blossom Uzoho",
+    role: "Creative Generalist",
+    image: "/assets/Blossom Uzoho.jpg",
+    skills: "Design • Video Editing • Animation",
     available: true
   },
   {
