@@ -258,11 +258,19 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
           </div>
         </div>
         <p className="text-center text-gray-400 text-sm mt-8">
-          Want to explore our full website first?{' '}
           <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#5c0386] font-semibold hover:underline">
-            sleekahq.vercel.app
+            Back to home
           </a>
         </p>
+        {/* Back link */}
+          <button
+            onClick={onBack}
+            className="mt-10 flex items-center gap-2 text-gray-400 hover:text-geko-dark transition-colors text-sm font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to home
+          </button>
+        </div>
       </div>
     </section>
   </div>
