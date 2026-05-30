@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { PagePreloader } from '../components/PagePreloader';
+import { Footer } from '../components/Footer';
 
 type ActivePackage = 'growth' | 'authority' | null;
 
@@ -9,12 +11,23 @@ const HeroButton: React.FC = () => (
     href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
     target="_blank"
     rel="noopener noreferrer"
-    className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 w-full sm:w-auto justify-center"
+    className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 whitespace-nowrap justify-center"
     style={{ backgroundColor: '#47ff01', color: '#000' }}
   >
     Book a Discovery Call
     <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
   </a>
+);
+
+// ─── SHARED: Back to Home link (same as FAQ page) ────────────────────────
+const BackToHome: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome }) => (
+  <button
+    onClick={onNavigateHome}
+    className="mt-10 flex items-center gap-2 text-gray-400 hover:text-[#5c0386] transition-colors text-sm font-medium mx-auto"
+  >
+    <ArrowRight className="w-4 h-4 rotate-180" />
+    Back to home
+  </button>
 );
 
 // ─── SHARED: Minimal Header ────────────────────────────────────────────────
@@ -133,7 +146,7 @@ const PackageAccordion: React.FC<{
 // of inaction more than the cost of signing up. Built around one central idea:
 // "you're already paying for this problem." Pressure comes from truth, not hype.
 // ══════════════════════════════════════════════════════════════════════════════
-const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'authority') => void; onClick: (p: 'growth' | 'authority') => void }> = ({ active, onHover, onClick }) => (
+const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'authority') => void; onClick: (p: 'growth' | 'authority') => void; onNavigateHome?: () => void }> = ({ active, onHover, onClick, onNavigateHome }) => (
   <div className="min-h-screen bg-white">
     <MinimalHeader />
 
@@ -161,11 +174,12 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
         <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8 text-center">What inconsistent marketing actually costs you</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {[
-            { cost: "Visibility", pain: "Competitors stay top of mind. You don't." },
-            { cost: "Leads", pain: "Content goes out. Enquiries don't come in." },
-            { cost: "Revenue", pain: "You're working hard but growth is inconsistent." },
-          ].map(({ cost, pain }) => (
+            { cost: "Visibility", pain: "Competitors stay top of mind. You don't.", icon: "👁️" },
+            { cost: "Leads", pain: "Content goes out. Enquiries don't come in.", icon: "📉" },
+            { cost: "Revenue", pain: "You're working hard but growth is inconsistent.", icon: "💸" },
+          ].map(({ cost, pain, icon }) => (
             <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50 text-center">
+              <div className="text-3xl mb-3">{icon}</div>
               <p className="font-black text-[#5c0386] text-lg mb-2">Lost {cost}</p>
               <p className="text-gray-500 text-sm leading-relaxed">{pain}</p>
             </div>
@@ -176,7 +190,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
         <div className="rounded-[2rem] p-8 text-white text-center" style={{ backgroundColor: '#5c0386' }}>
           <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-3">The Sleeka difference</p>
           <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
-            A dedicated creative team: strategy, design, video, and execution. Structured as a monthly system that builds and compounds over time.
+            A dedicated creative team — strategy, design, video, and execution — structured as a monthly system that builds and compounds over time.
           </p>
           <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
         </div>
@@ -248,7 +262,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
             The gap between where you are<br />and where you want to be is execution.
           </h2>
           <p className="text-gray-600 mb-3 max-w-sm leading-relaxed">
-            One call. Thirty minutes. We'll show you exactly how we'd build your system and what results to expect.
+            One call. Twenty minutes. We'll show you exactly how we'd build your system and what results to expect.
           </p>
           <p className="text-gray-400 text-sm mb-8 max-w-xs">
             Not ready yet? The call costs nothing. Waiting costs you visibility.
@@ -272,7 +286,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
 // VERSION B — Your spec: Hook → Problem → Solution → Packages → Trust →
 // Urgency → Note above button → Hero button. Clean, linear, persuasive flow.
 // ══════════════════════════════════════════════════════════════════════════════
-const VersionB: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'authority') => void; onClick: (p: 'growth' | 'authority') => void }> = ({ active, onHover, onClick }) => (
+const VersionB: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'authority') => void; onClick: (p: 'growth' | 'authority') => void; onNavigateHome?: () => void }> = ({ active, onHover, onClick, onNavigateHome }) => (
   <div className="min-h-screen bg-white">
     <MinimalHeader />
 
@@ -344,9 +358,18 @@ const VersionB: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
 
     {/* Trust */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-3xl mx-auto p-6 rounded-2xl bg-gray-50 border border-gray-100">
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 text-center">Brands already running on Sleeka infrastructure</p>
-        <p className="text-gray-700 font-semibold text-center">EmsXchange · Bluechip Technologies · PremiaBN · Felicia Transport</p>
+      <div className="max-w-3xl mx-auto p-6 rounded-2xl bg-gray-50 border border-gray-100 text-center">
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Brands already running on Sleeka infrastructure</p>
+        <div className="flex flex-wrap items-center justify-center gap-8">
+          {[
+            { file: '1.png', name: 'Bluechip', h: 44 },
+            { file: '4.png', name: 'PBN', h: 38 },
+            { file: '5.png', name: 'Felicia', h: 22 },
+            { file: '6.png', name: 'Socialander', h: 44 },
+          ].map(({ file, name, h }) => (
+            <img key={name} src={`/assets/Client logos/${file}`} alt={name} style={{ height: `${h}px` }} className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+          ))}
+        </div>
       </div>
     </section>
 
@@ -393,7 +416,13 @@ const VersionB: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
 );
 
 // ─── Main Export ───────────────────────────────────────────────────────────
-export const PackagesPage: React.FC = () => {
+interface PackagesPageProps {
+  onNavigateToFAQ?: () => void;
+  onNavigateHome?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
+}
+
+export const PackagesPage: React.FC<PackagesPageProps> = ({ onNavigateToFAQ, onNavigateHome, onNavigateToSection }) => {
   const [active, setActive] = useState<ActivePackage>(null);
 
   // ← Change 'A' to 'B' to switch versions
@@ -404,7 +433,11 @@ export const PackagesPage: React.FC = () => {
   const handleHover = (pkg: 'growth' | 'authority') =>
     setActive(pkg);
 
-  return version === 'A'
-    ? <VersionA active={active} onHover={handleHover} onClick={handleClick} />
-    : <VersionB active={active} onHover={handleHover} onClick={handleClick} />;
+  return (
+    <>
+      <PagePreloader />
+      {version === 'A' ? <VersionA active={active} onHover={handleHover} onClick={handleClick} onNavigateHome={onNavigateHome} />
+    : <VersionB active={active} onHover={handleHover} onClick={handleClick} onNavigateHome={onNavigateHome} />}
+      <Footer onNavigateToFAQ={onNavigateToFAQ} onNavigateToSection={onNavigateToSection} />
+    </>
 };
