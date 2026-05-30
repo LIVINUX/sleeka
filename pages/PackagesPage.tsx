@@ -55,7 +55,7 @@ const TrustLogos: React.FC = () => (
       { file: '1.png', name: 'Bluechip', h: 44 },
       { file: '4.png', name: 'PBN', h: 38 },
       { file: '5.png', name: 'Felicia', h: 22 },
-      { file: '6.png', name: 'Socialander', h: 44 },
+      { file: '6.png', name: 'Socialander', h: 60 },
     ].map(({ file, name, h }) => (
       <img
         key={name}
