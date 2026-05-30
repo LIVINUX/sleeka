@@ -193,12 +193,6 @@ const FinalCTA: React.FC<{ onNavigateHome?: () => void; headlineA?: boolean }> =
         </p>
         <HeroButton />
       </div>
-      <p className="text-center text-gray-400 text-sm mt-8">
-        Want to explore our full website first?{' '}
-        <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#5c0386] font-semibold hover:underline">
-          sleekahq.vercel.app
-        </a>
-      </p>
       <div className="flex justify-center">
         <BackToHome onNavigateHome={onNavigateHome} />
       </div>
@@ -255,7 +249,7 @@ const VersionA: React.FC<{
         <div className="rounded-[2rem] p-8 text-white text-center" style={{ backgroundColor: '#5c0386' }}>
           <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-3">The Sleeka difference</p>
           <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
-            A dedicated creative team — strategy, design, video, and execution — structured as a monthly system that builds and compounds over time.
+            A dedicated creative team. Strategy, Design, Video, and Execution. Structured as a monthly system that builds and compounds over time.
           </p>
           <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
         </div>
