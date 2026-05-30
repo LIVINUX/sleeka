@@ -1,21 +1,40 @@
 import React from 'react';
 import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
 
-interface FooterProps { onNavigateToFAQ?: () => void; }
+interface FooterProps {
+  onNavigateToFAQ?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
+  onNavigateToPackages?: () => void;
+}
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onNavigateToFAQ,
+  onNavigateToSection,
+  onNavigateToPackages,
+}) => {
+
+  const handleSection = (sectionId: string) => {
+    if (onNavigateToSection) {
+      onNavigateToSection(sectionId);
+    } else {
+      // Already on home — just scroll
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-white py-20">
       <div className="container mx-auto px-6 md:px-12">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Section */}
+
+          {/* Brand */}
           <div className="lg:col-span-1">
             <a href="/" className="flex items-center mb-4">
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Your creative partner for design, video, and content that drives results.
+              Your creative partner for content that drives results.
             </p>
           </div>
 
@@ -24,30 +43,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
             <h4 className="font-bold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#work" className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm">
+                <button onClick={() => handleSection('work')} className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left">
                   Our Work
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm">
+                <button onClick={() => handleSection('services')} className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left">
                   Services
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#about" className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm">
+                <button onClick={() => handleSection('about')} className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left">
                   About Us
-                </a>
+                </button>
               </li>
+              {onNavigateToPackages && (
+                <li>
+                  <button onClick={onNavigateToPackages} className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left">
+                    Our Packages
+                  </button>
+                </li>
+              )}
               <li>
-                <a href="#" className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <button
-                  onClick={onNavigateToFAQ}
-                  className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left"
-                >
+                <button onClick={onNavigateToFAQ} className="text-gray-600 hover:text-[#5c0386] transition-colors text-sm text-left">
                   FAQ
                 </button>
               </li>
@@ -75,16 +93,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
           <div>
             <h4 className="font-bold text-gray-900 mb-4">Follow Us</h4>
             <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
                 <Instagram size={20} />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -93,16 +105,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToFAQ }) => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © 2025 Sleeka. All rights reserved
-          </p>
+          <p className="text-gray-500 text-sm">© 2025 Sleeka. All rights reserved</p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">
-              Terms of Service
-            </a>
+            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
