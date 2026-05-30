@@ -73,6 +73,12 @@ function App() {
     }, 100);
   };
 
+  const navigateToPackages = () => {
+    savedScrollPos.current = window.scrollY;
+    setCurrentPage('packages');
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
   const navigateToFAQ = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('faq');
@@ -90,7 +96,7 @@ function App() {
 
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
-    setCurrentPage('creative-infrastructure');
+    setCurrentPage('packages');
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
@@ -104,8 +110,8 @@ function App() {
   };
 
   if (currentPage === 'case-study') return <CaseStudyPage />;
-  if (currentPage === 'packages') return <PackagesPage />;
-  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromFAQ} onNavigateToSection={navigateHomeToSection} />;
+  if (currentPage === 'packages') return <PackagesPage onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
+  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} />;
   if (currentPage === 'creative-infrastructure') {
     return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
   }
@@ -133,7 +139,7 @@ function App() {
           <HomeFAQ onNavigateToFAQ={navigateToFAQ} />
           <CTASection />
         </main>
-        <Footer onNavigateToFAQ={navigateToFAQ} />
+        <Footer onNavigateToFAQ={navigateToFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} />
       </div>
     </>
   );
