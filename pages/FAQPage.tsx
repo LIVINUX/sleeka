@@ -109,7 +109,7 @@ const faqData: FAQSection[] = [
       },
       {
         question: "What if I want to terminate the contract later?",
-        answer: "Either party can terminate the contract with at least 1 week notice. We recommend staying at least 2 months to properly evaluate results, since marketing improves with time and consistency."
+        answer: "Either party can terminate the contract with at least 2 weeks notice. We recommend staying at least 2 months to properly evaluate results, since marketing improves with time and consistency."
       },
       {
         question: "How is payment structured?",
