@@ -176,7 +176,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
         <div className="rounded-[2rem] p-8 text-white text-center" style={{ backgroundColor: '#5c0386' }}>
           <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-3">The Sleeka difference</p>
           <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
-            A dedicated creative team — strategy, design, video, and execution — structured as a monthly system that builds and compounds over time.
+            A dedicated creative team: strategy, design, video, and execution. Structured as a monthly system that builds and compounds over time.
           </p>
           <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
         </div>
@@ -248,7 +248,7 @@ const VersionA: React.FC<{ active: ActivePackage; onHover: (p: 'growth' | 'autho
             The gap between where you are<br />and where you want to be is execution.
           </h2>
           <p className="text-gray-600 mb-3 max-w-sm leading-relaxed">
-            One call. Twenty minutes. We'll show you exactly how we'd build your system and what results to expect.
+            One call. Thirty minutes. We'll show you exactly how we'd build your system and what results to expect.
           </p>
           <p className="text-gray-400 text-sm mb-8 max-w-xs">
             Not ready yet? The call costs nothing. Waiting costs you visibility.
