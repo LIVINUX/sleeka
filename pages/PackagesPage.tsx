@@ -185,7 +185,7 @@ const FinalCTA: React.FC<{ onNavigateHome?: () => void; headlineA?: boolean }> =
         </h2>
         <p className="text-gray-600 mb-3 max-w-sm leading-relaxed">
           {headlineA
-            ? 'One call. Twenty minutes. We will show you exactly how we would build your system and what results to expect.'
+            ? 'One call. Thirty minutes. We will show you exactly how we would build your system and what results to expect.'
             : 'Twenty minutes. No pressure. Just clarity on whether Sleeka is the right fit and what results you can realistically expect.'}
         </p>
         <p className="text-gray-400 text-sm mb-8 max-w-xs">
