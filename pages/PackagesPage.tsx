@@ -48,25 +48,48 @@ const MinimalHeader: React.FC = () => (
   </header>
 );
 
-// ─── SHARED: Trust Logos ───────────────────────────────────────────────────
-const TrustLogos: React.FC = () => (
-  <div className="flex flex-wrap items-center justify-center gap-8">
-    {[
-      { file: '1.png', name: 'Bluechip', h: 44 },
-      { file: '4.png', name: 'PBN', h: 38 },
-      { file: '5.png', name: 'Felicia', h: 22 },
-      { file: '6.png', name: 'Socialander', h: 44 },
-    ].map(({ file, name, h }) => (
-      <img
-        key={name}
-        src={`/assets/Client logos/${file}`}
-        alt={name}
-        style={{ height: `${h}px` }}
-        className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-      />
-    ))}
-  </div>
-);
+// ─── SHARED: Trust Logos — two layout versions ────────────────────────────
+// Change trustLayout below: 'grid' = 2x2, 'row' = single row standalone
+const trustLayout: 'grid' | 'row' = 'grid';
+
+const logos = [
+  { file: '1.png', name: 'Bluechip',    hGrid: 80, hRow: 70 },
+  { file: '4.png', name: 'PBN',         hGrid: 72, hRow: 62 },
+  { file: '5.png', name: 'Felicia',     hGrid: 48, hRow: 40 },
+  { file: '6.png', name: 'Socialander', hGrid: 80, hRow: 70 },
+];
+
+const TrustLogos: React.FC = () => {
+  if (trustLayout === 'grid') {
+    return (
+      <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
+        {logos.map(({ file, name, hGrid }) => (
+          <div key={name} className="flex items-center justify-center bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+            <img
+              src={`/assets/Client logos/${file}`}
+              alt={name}
+              style={{ height: `${hGrid}px` }}
+              className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-10">
+      {logos.map(({ file, name, hRow }) => (
+        <img
+          key={name}
+          src={`/assets/Client logos/${file}`}
+          alt={name}
+          style={{ height: `${hRow}px` }}
+          className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+        />
+      ))}
+    </div>
+  );
+};
 
 // ─── SHARED: Package Accordion (same as CI page) ──────────────────────────
 const PackageAccordion: React.FC<{
@@ -193,6 +216,12 @@ const FinalCTA: React.FC<{ onNavigateHome?: () => void; headlineA?: boolean }> =
         </p>
         <HeroButton />
       </div>
+      <p className="text-center text-gray-400 text-sm mt-8">
+        Want to explore our full website first?{' '}
+        <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#5c0386] font-semibold hover:underline">
+          sleekahq.vercel.app
+        </a>
+      </p>
       <div className="flex justify-center">
         <BackToHome onNavigateHome={onNavigateHome} />
       </div>
@@ -251,7 +280,7 @@ const VersionA: React.FC<{
           <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
             A dedicated creative team. Strategy, Design, Video, and Execution. Structured as a monthly system that builds and compounds over time.
           </p>
-          <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
+          <p className="text-white/60 text-sm">No freelancer chaos. No in house overhead. No agency delays.</p>
         </div>
       </div>
     </section>
