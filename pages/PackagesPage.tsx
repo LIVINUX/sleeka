@@ -216,12 +216,6 @@ const FinalCTA: React.FC<{ onNavigateHome?: () => void; headlineA?: boolean }> =
         </p>
         <HeroButton />
       </div>
-      <p className="text-center text-gray-400 text-sm mt-8">
-        Want to explore our full website first?{' '}
-        <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#5c0386] font-semibold hover:underline">
-          sleekahq.vercel.app
-        </a>
-      </p>
       <div className="flex justify-center">
         <BackToHome onNavigateHome={onNavigateHome} />
       </div>
