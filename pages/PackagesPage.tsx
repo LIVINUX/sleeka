@@ -34,7 +34,7 @@ const BackToHome: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome 
 const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome }) => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-[#5c0386] px-6 py-4 flex items-center justify-between shadow-lg">
     <button onClick={onNavigateHome} className="flex items-center">
-      <img src="/assets/Logo white.png" alt="Sleeka" className="h-8 w-auto" />
+      <img src="/assets/1.png" alt="Sleeka" className="h-10 w-auto" />
     </button>
     <a
       href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
@@ -64,7 +64,7 @@ const TrustLogos: React.FC = () => {
     return (
       <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
         {logos.map(({ file, name, hGrid }) => (
-          <div key={name} className="flex items-center justify-center p-4">
+          <div key={name} className="flex items-center justify-center bg-white rounded-2xl p-5">
             <img
               src={`/assets/Client logos/${file}`}
               alt={name}
@@ -237,12 +237,12 @@ const VersionA: React.FC<{
 
     {/* Hero */}
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
-      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-3">For businesses serious about growth</p>
+      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-1">For businesses serious about growth</p>
       <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You are already spending on content.<br />
         <span style={{ color: '#47ff01', display: 'block', marginTop: '0.4em' }}>Is it working?</span>
       </h1>
-      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mb-10">
+      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-6 mb-10">
         Most businesses create content. Few have a system behind it. Sleeka builds the system.
       </p>
       <div className="flex justify-center">
@@ -260,11 +260,11 @@ const VersionA: React.FC<{
             { cost: 'Leads', pain: 'Content goes out. Enquiries do not come in.', icon: 'leads.png' },
             { cost: 'Revenue', pain: 'Working hard but growth stays inconsistent.', icon: 'revenue.png' },
           ].map(({ cost, pain, icon }) => (
-            <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50 text-center">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#47ff01' }}>
-                <img src={`/assets/icons/${icon}`} alt={cost} className="w-5 h-5 object-contain" />
+            <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50">
+              <div className="flex items-center gap-3 mb-2">
+                <img src={`/assets/icons/${icon}`} alt={cost} className="w-12 h-12 object-contain shrink-0" />
+                <p className="font-black text-[#5c0386] text-lg">Lost {cost}</p>
               </div>
-              <p className="font-black text-[#5c0386] text-lg mb-2">Lost {cost}</p>
               <p className="text-gray-500 text-sm leading-relaxed">{pain}</p>
             </div>
           ))}
@@ -309,8 +309,8 @@ const VersionA: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-2xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#47ff01' }}>
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-900 mb-6">Brands already running on our system</p>
+      <div className="max-w-2xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
     </section>
@@ -416,8 +416,8 @@ const VersionB: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-3xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#47ff01' }}>
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-900 mb-6">Brands already running on our system</p>
+      <div className="max-w-3xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
     </section>
