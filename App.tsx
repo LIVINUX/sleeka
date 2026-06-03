@@ -17,14 +17,19 @@ import { Preloader } from './components/Preloader';
 import { CaseStudyPage } from './pages/CaseStudyPage';
 import { CreativeInfrastructurePage } from './pages/CreativeInfrastructurePage';
 import { FAQPage } from './pages/FAQPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { ConsentBanner } from './components/ConsentBanner';
 import { PackagesPage } from './pages/PackagesPage';
 
-type Page = 'home' | 'case-study' | 'creative-infrastructure' | 'faq' | 'packages';
+type Page = 'home' | 'case-study' | 'creative-infrastructure' | 'faq' | 'packages' | 'privacy' | 'terms';
 
 // Derive initial page from URL path
 function getPageFromPath(path: string): Page {
   if (path.startsWith('/creative-infrastructure')) return 'creative-infrastructure';
   if (path.startsWith('/packages')) return 'packages';
+  if (path.startsWith('/privacy')) return 'privacy';
+  if (path.startsWith('/terms')) return 'terms';
   if (path.startsWith('/faq')) return 'faq';
   if (path.startsWith('/case-study')) return 'case-study';
   return 'home';
@@ -43,6 +48,8 @@ function App() {
       'creative-infrastructure': '/creative-infrastructure',
       'faq': '/faq',
       'packages': '/packages',
+      'privacy': '/privacy',
+      'terms': '/terms',
       'case-study': window.location.pathname.startsWith('/case-study')
         ? window.location.pathname
         : '/case-study',
@@ -79,6 +86,32 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
+  const navigateToPrivacy = () => {
+    savedScrollPos.current = window.scrollY;
+    setCurrentPage('privacy');
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
+  const goBackFromPrivacy = () => {
+    setCurrentPage('home');
+    requestAnimationFrame(() => requestAnimationFrame(() =>
+      window.scrollTo({ top: savedScrollPos.current, behavior: 'instant' as ScrollBehavior })
+    ));
+  };
+
+  const navigateToTerms = () => {
+    savedScrollPos.current = window.scrollY;
+    setCurrentPage('terms');
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
+  const goBackFromTerms = () => {
+    setCurrentPage('home');
+    requestAnimationFrame(() => requestAnimationFrame(() =>
+      window.scrollTo({ top: savedScrollPos.current, behavior: 'instant' as ScrollBehavior })
+    ));
+  };
+
   const navigateToFAQ = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('faq');
@@ -110,8 +143,10 @@ function App() {
   };
 
   if (currentPage === 'case-study') return <CaseStudyPage />;
+  if (currentPage === 'privacy') return <PrivacyPage onBack={goBackFromPrivacy} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromPrivacy} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToTerms={navigateToTerms} />;
+  if (currentPage === 'terms') return <TermsPage onBack={goBackFromTerms} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromTerms} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} />;
   if (currentPage === 'packages') return <PackagesPage onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
-  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} />;
+  if (currentPage === 'faq') return <FAQPage onBack={goBackFromFAQ} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} onNavigateToTerms={navigateToTerms} />;
   if (currentPage === 'creative-infrastructure') {
     return <CreativeInfrastructurePage onBack={goBackFromCreativeInfra} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
   }
@@ -139,7 +174,8 @@ function App() {
           <HomeFAQ onNavigateToFAQ={navigateToFAQ} />
           <CTASection />
         </main>
-        <Footer onNavigateToFAQ={navigateToFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} />
+        <Footer onNavigateToFAQ={navigateToFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} onNavigateToTerms={navigateToTerms} />
+        <ConsentBanner onNavigateToPrivacy={navigateToPrivacy} />
       </div>
     </>
   );
