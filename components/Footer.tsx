@@ -5,19 +5,23 @@ interface FooterProps {
   onNavigateToFAQ?: () => void;
   onNavigateToSection?: (sectionId: string) => void;
   onNavigateToPackages?: () => void;
+  onNavigateToPrivacy?: () => void;
+  onNavigateToTerms?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigateToFAQ,
   onNavigateToSection,
   onNavigateToPackages,
+  onNavigateToPrivacy,
+  onNavigateToTerms,
 }) => {
 
   const handleSection = (sectionId: string) => {
     if (onNavigateToSection) {
       onNavigateToSection(sectionId);
     } else {
-      // Already on home — just scroll
+      // Already on home: just scroll
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -34,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Your creative partner for content that drives results.
+              Your creative partner for content that drives measurable results.
             </p>
           </div>
 
@@ -105,10 +109,10 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">© 2025 Sleeka. All rights reserved</p>
+          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Sleeka. All rights reserved</p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</a>
+            <button onClick={onNavigateToPrivacy} className="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</button>
+            <button onClick={onNavigateToTerms} className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</button>
           </div>
         </div>
       </div>
