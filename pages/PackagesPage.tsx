@@ -260,8 +260,8 @@ const VersionA: React.FC<{
             { cost: 'Leads', pain: 'Content goes out. Enquiries do not come in.', icon: 'leads.png' },
             { cost: 'Revenue', pain: 'Working hard but growth stays inconsistent.', icon: 'revenue.png' },
           ].map(({ cost, pain, icon }) => (
-            <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50">
-              <div className="flex items-center gap-3 mb-2">
+            <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50 flex flex-col items-center text-center">
+              <div className="flex items-center justify-center gap-3 mb-2">
                 <img src={`/assets/icons/${icon}`} alt={cost} className="w-9 h-9 object-contain shrink-0" />
                 <p className="font-black text-[#5c0386] text-lg">Lost {cost}</p>
               </div>
