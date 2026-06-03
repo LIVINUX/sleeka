@@ -262,7 +262,7 @@ const VersionA: React.FC<{
           ].map(({ cost, pain, icon }) => (
             <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50">
               <div className="flex items-center gap-3 mb-2">
-                <img src={`/assets/icons/${icon}`} alt={cost} className="w-12 h-12 object-contain shrink-0" />
+                <img src={`/assets/icons/${icon}`} alt={cost} className="w-9 h-9 object-contain shrink-0" />
                 <p className="font-black text-[#5c0386] text-lg">Lost {cost}</p>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed">{pain}</p>
