@@ -73,7 +73,7 @@ const faqData: FAQSection[] = [
     items: [
       {
         question: "What's the next stage after the discovery call?",
-        answer: "After the discovery call, you decide if you want to move forward. If you're ready, you send us an email confirming your chosen plan. We then send a 6-month agreement and begin onboarding once it's signed."
+        answer: "After the discovery call, you decide if you want to move forward. If you are ready, you send us an email confirming your chosen plan. We then send a 6-month agreement and begin onboarding once it is signed."
       },
       {
         question: "Can I change my decision after the discovery call?",
@@ -83,7 +83,7 @@ const faqData: FAQSection[] = [
         question: "What does onboarding look like?",
         answer: (
           <div className="space-y-3">
-            <p>Onboarding lasts about one week. During this period, you'll meet your team, get introduced to our systems, and learn how communication and workflows work — done through Slack updates and occasional video calls.</p>
+            <p>Onboarding lasts about one week. During this period, you will meet your team, get introduced to our systems, and learn how communication and workflows work, through Slack updates and occasional video calls.</p>
             <p>Behind the scenes, we also audit your current marketing, analyze your market and competitors, and define your strategy and positioning.</p>
             <p>By the end of onboarding, we present your content ideas and direction, strategic recommendations, and a monthly execution plan.</p>
           </div>
@@ -93,7 +93,7 @@ const faqData: FAQSection[] = [
         question: "How does the content system work?",
         answer: (
           <div className="space-y-3">
-            <p>We use a content operating system which you'll also have access to. All monthly content is logged so you can see what's in progress, under review, completed, or posted.</p>
+            <p>We use a content operating system which you will also have access to. All monthly content is logged so you can see what's in progress, under review, completed, or posted.</p>
             <p>We also track performance metrics like leads generated per content, engagement rates, best-performing content, and overall content performance. At the end of each month, you get a clear performance report with insights and next steps.</p>
           </div>
         )
@@ -129,7 +129,7 @@ const faqData: FAQSection[] = [
               <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-geko-accent mt-2 shrink-0"></span><span><strong>Growth Infrastructure:</strong> 6 requests/month, 1 active task at a time</span></li>
               <li className="flex items-start gap-2"><span className="w-1.5 h-1.5 rounded-full bg-geko-accent mt-2 shrink-0"></span><span><strong>Authority Infrastructure:</strong> 12 requests/month, up to 2 active tasks at a time</span></li>
             </ul>
-            <p className="text-gray-400 text-sm italic">Unused requests don't roll over to the next month.</p>
+            <p className="text-gray-400 text-sm italic">Unused requests do not roll over to the next month.</p>
           </div>
         )
       },
@@ -271,7 +271,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
           Questions &<br />Answers
         </h1>
         <p className="text-white/70 text-lg max-w-xl mx-auto leading-relaxed">
-          Everything you need to know about working with Sleeka. Can't find what you're looking for? Book a discovery call.
+          Everything you need to know about working with Sleeka. Can't find what you are looking for? Book a discovery call.
         </p>
       </section>
 
@@ -318,7 +318,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
               Let's talk it through.
             </h3>
             <p className="text-gray-600 mb-8 max-w-sm mx-auto">
-              Book a free discovery call and we'll answer every question you have — no pressure, no obligation.
+              Book a free discovery call and we will answer every question you have: no pressure, no obligation.
             </p>
             <a
               href="https://calendar.app.google/2nWbeLXuC52dvZtq5"

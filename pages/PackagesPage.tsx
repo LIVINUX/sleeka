@@ -31,11 +31,11 @@ const BackToHome: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome 
 );
 
 // ─── SHARED: Minimal Header ────────────────────────────────────────────────
-const MinimalHeader: React.FC = () => (
+const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome }) => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-[#5c0386] px-6 py-4 flex items-center justify-between shadow-lg">
-    <a href="https://sleekahq.vercel.app" target="_blank" rel="noopener noreferrer">
-      <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
-    </a>
+    <button onClick={onNavigateHome} className="flex items-center">
+      <img src="/assets/Logo white.png" alt="Sleeka" className="h-8 w-auto" />
+    </button>
     <a
       href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
       target="_blank"
@@ -53,10 +53,10 @@ const MinimalHeader: React.FC = () => (
 const trustLayout: 'grid' | 'row' = 'grid';
 
 const logos = [
-  { file: '1.png', name: 'Bluechip',    hGrid: 80, hRow: 70 },
-  { file: '4.png', name: 'PBN',         hGrid: 72, hRow: 62 },
-  { file: '5.png', name: 'Felicia',     hGrid: 48, hRow: 40 },
-  { file: '6.png', name: 'Socialander', hGrid: 80, hRow: 70 },
+  { file: '1.png', name: 'Bluechip', hGrid: 80, hRow: 70 },
+  { file: '3.png', name: 'Ems',      hGrid: 72, hRow: 62 },
+  { file: '4.png', name: 'PBN',      hGrid: 72, hRow: 62 },
+  { file: '5.png', name: 'Felicia',  hGrid: 48, hRow: 40 },
 ];
 
 const TrustLogos: React.FC = () => {
@@ -64,7 +64,7 @@ const TrustLogos: React.FC = () => {
     return (
       <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
         {logos.map(({ file, name, hGrid }) => (
-          <div key={name} className="flex items-center justify-center bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div key={name} className="flex items-center justify-center p-4">
             <img
               src={`/assets/Client logos/${file}`}
               alt={name}
@@ -233,14 +233,14 @@ const VersionA: React.FC<{
   onNavigateHome?: () => void;
 }> = ({ active, onHover, onClick, onNavigateHome }) => (
   <div className="min-h-screen bg-white">
-    <MinimalHeader />
+    <MinimalHeader onNavigateHome={onNavigateHome} />
 
     {/* Hero */}
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
-      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-6">For businesses serious about growth</p>
-      <h1 className="font-black text-white leading-none mb-6 px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em' }}>
+      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-3">For businesses serious about growth</p>
+      <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You are already spending on content.<br />
-        <span style={{ color: '#47ff01' }}>Is it working?</span>
+        <span style={{ color: '#47ff01', display: 'block', marginTop: '0.4em' }}>Is it working?</span>
       </h1>
       <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mb-10">
         Most businesses create content. Few have a system behind it. Sleeka builds the system.
@@ -256,12 +256,14 @@ const VersionA: React.FC<{
         <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8 text-center">What inconsistent marketing actually costs you</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {[
-            { cost: 'Visibility', pain: 'Competitors stay top of mind. You do not.', icon: '👁️' },
-            { cost: 'Leads', pain: 'Content goes out. Enquiries do not come in.', icon: '📉' },
-            { cost: 'Revenue', pain: 'Working hard but growth stays inconsistent.', icon: '💸' },
+            { cost: 'Visibility', pain: 'Competitors stay top of mind. You do not.', icon: 'visibility.png' },
+            { cost: 'Leads', pain: 'Content goes out. Enquiries do not come in.', icon: 'leads.png' },
+            { cost: 'Revenue', pain: 'Working hard but growth stays inconsistent.', icon: 'revenue.png' },
           ].map(({ cost, pain, icon }) => (
             <div key={cost} className="p-5 rounded-2xl border border-gray-100 bg-gray-50 text-center">
-              <div className="text-3xl mb-3">{icon}</div>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#47ff01' }}>
+                <img src={`/assets/icons/${icon}`} alt={cost} className="w-5 h-5 object-contain" />
+              </div>
               <p className="font-black text-[#5c0386] text-lg mb-2">Lost {cost}</p>
               <p className="text-gray-500 text-sm leading-relaxed">{pain}</p>
             </div>
@@ -274,7 +276,7 @@ const VersionA: React.FC<{
           <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
             A dedicated creative team. Strategy, Design, Video, and Execution. Structured as a monthly system that builds and compounds over time.
           </p>
-          <p className="text-white/60 text-sm">No freelancer chaos. No in house overhead. No agency delays.</p>
+          <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
         </div>
       </div>
     </section>
@@ -286,7 +288,7 @@ const VersionA: React.FC<{
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[
             'Dedicated Project Manager',
-            'Monthly content strategy and planning',
+            'Monthly content strategy and execution',
             'Brand graphics and campaign visuals',
             'Short-form video editing',
             'Motion graphics and animation',
@@ -307,8 +309,8 @@ const VersionA: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-2xl mx-auto p-6 rounded-2xl bg-gray-50 text-center">
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Already running on Sleeka infrastructure</p>
+      <div className="max-w-2xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#47ff01' }}>
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-900 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
     </section>
@@ -347,7 +349,7 @@ const VersionB: React.FC<{
   onNavigateHome?: () => void;
 }> = ({ active, onHover, onClick, onNavigateHome }) => (
   <div className="min-h-screen bg-white">
-    <MinimalHeader />
+    <MinimalHeader onNavigateHome={onNavigateHome} />
 
     {/* Hook */}
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
@@ -414,8 +416,8 @@ const VersionB: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-3xl mx-auto p-6 rounded-2xl bg-gray-50 border border-gray-100 text-center">
-        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Brands already running on Sleeka infrastructure</p>
+      <div className="max-w-3xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#47ff01' }}>
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-900 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
     </section>
