@@ -1,8 +1,27 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
+const heroStyle = `
+  .slk-hero-btn {
+    box-shadow: 0 0 0 0 rgba(71,255,1,0.6);
+    animation: heroButtonPop 2.2s ease-in-out infinite;
+  }
+  .slk-hero-btn:hover {
+    animation: none;
+    box-shadow: 0 8px 28px rgba(71,255,1,0.45);
+    transform: scale(1.05);
+  }
+  @keyframes heroButtonPop {
+    0%   { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); }
+    60%  { box-shadow: 0 0 0 12px rgba(71,255,1,0); }
+    100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); }
+  }
+`;
+
 export const Hero: React.FC = () => {
   return (
+    <>
+    <style>{heroStyle}</style>
     <section className="relative bg-geko-dark text-white md:pt-32 pb-0 overflow-hidden py-28 md:min-h-screen flex flex-col justify-between">
       <div className="container mx-auto px-4 md:px-12 text-center relative z-10 flex-grow flex flex-col justify-center pt- md:pt-20">
 
@@ -24,7 +43,7 @@ export const Hero: React.FC = () => {
             href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 w-full sm:w-auto justify-center"
+            className="slk-hero-btn px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group w-full sm:w-auto justify-center"
             style={{ backgroundColor: '#47ff01', color: '#000' }}
           >
             Book a Discovery Call
@@ -40,5 +59,6 @@ export const Hero: React.FC = () => {
       </div>
       <div className="w-full h-16 bg-geko-dark absolute bottom-0 z-0"></div>
     </section>
+  </>
   );
 };

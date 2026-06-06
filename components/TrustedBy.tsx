@@ -5,8 +5,8 @@ const logoConfig = [
   { file: "1.png", name: "Bluechip",     height: 93 },
   { file: "2.png", name: "JHDC",         height: 100 },
   { file: "3.png", name: "Citisquare",   height: 110 },
-  { file: "4.png", name: "PBN",          height:  96 },
-  { file: "5.png", name: "Felicia",      height:  50 },
+  { file: "4.png", name: "PBN",          height:  82 },
+  { file: "5.png", name: "Felicia",      height:  65 },
   { file: "6.png", name: "Socialander",  height: 110 },
   { file: "7.png", name: "Presta",       height:  90 },
 ];

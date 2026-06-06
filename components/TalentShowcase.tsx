@@ -3,9 +3,9 @@ import React from 'react';
 const talents = [
   {
     name: "Livinus Ekeh",
-    role: "Content Strategist & Lead Generation Specialist",
+    role: "Content Strategist & Lead Specialist",
     image: "/assets/Livinus Ekeh.jpg",
-    skills: "Strategy • Lead Generation • Growth Hacking",
+    skills: "Strategy • Lead Generation • Growth",
     available: true
   },
   {
@@ -41,8 +41,7 @@ export const TalentShowcase: React.FC = () => {
             The Creative Engine
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl">
-            Real people, structured into a system that delivers consistent creative output
-            and drives results for your business.
+            Trained in graphics design, video editing and animation, all in one.
           </p>
         </div>
 

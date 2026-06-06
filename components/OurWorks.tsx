@@ -27,13 +27,15 @@ const works = [
   },
 ];
 
-export const OurWorks: React.FC = () => {
+interface OurWorksProps { onNavigateToCaseStudy?: (id: string) => void; }
+
+export const OurWorks: React.FC<OurWorksProps> = ({ onNavigateToCaseStudy }) => {
   const [clickedId, setClickedId] = useState<string | null>(null);
 
   const handleCardClick = (id: string) => {
     setClickedId(id);
     setTimeout(() => {
-      window.location.hash = `#/case-study/${id}`;
+      if (onNavigateToCaseStudy) onNavigateToCaseStudy(id);
       setClickedId(null);
     }, 220);
   };
