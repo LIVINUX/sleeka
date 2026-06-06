@@ -80,6 +80,20 @@ function App() {
     }, 100);
   };
 
+  const goBackFromCaseStudy = () => {
+    setCurrentPage('home');
+    requestAnimationFrame(() => requestAnimationFrame(() =>
+      window.scrollTo({ top: savedScrollPos.current, behavior: 'instant' as ScrollBehavior })
+    ));
+  };
+
+  const navigateToCaseStudy = (id: string) => {
+    savedScrollPos.current = window.scrollY;
+    setCurrentPage('case-study');
+    window.history.pushState({}, '', `/case-study/${id}`);
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
   const navigateToPackages = () => {
     savedScrollPos.current = window.scrollY;
     setCurrentPage('packages');
@@ -142,7 +156,7 @@ function App() {
     });
   };
 
-  if (currentPage === 'case-study') return <CaseStudyPage />;
+  if (currentPage === 'case-study') return <CaseStudyPage onBack={goBackFromCaseStudy} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCaseStudy} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} onNavigateToTerms={navigateToTerms} />;
   if (currentPage === 'privacy') return <PrivacyPage onBack={goBackFromPrivacy} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromPrivacy} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToTerms={navigateToTerms} />;
   if (currentPage === 'terms') return <TermsPage onBack={goBackFromTerms} onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromTerms} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} />;
   if (currentPage === 'packages') return <PackagesPage onNavigateToFAQ={navigateToFAQ} onNavigateHome={goBackFromCreativeInfra} onNavigateToSection={navigateHomeToSection} />;
@@ -163,7 +177,7 @@ function App() {
             <TrustedBy />
           </div>
           <div id="about"><AgencyDescription /></div>
-          <div id="work"><OurWorks /></div>
+          <div id="work"><OurWorks onNavigateToCaseStudy={navigateToCaseStudy} /></div>
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
