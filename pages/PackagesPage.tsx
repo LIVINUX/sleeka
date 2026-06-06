@@ -11,7 +11,7 @@ const HeroButton: React.FC = () => (
     href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
     target="_blank"
     rel="noopener noreferrer"
-    className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center gap-2 md:gap-3 group shadow-xl hover:shadow-2xl hover:scale-105 duration-300 whitespace-nowrap"
+    className="slk-pkg-btn px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center gap-2 md:gap-3 group whitespace-nowrap"
     style={{ backgroundColor: '#47ff01', color: '#000' }}
   >
     Book a Discovery Call
@@ -99,6 +99,19 @@ const PackageAccordion: React.FC<{
 }> = ({ active, onHover, onClick }) => (
   <div>
     <style>{`
+      .slk-pkg-btn {
+        animation: slkBobble 2.2s ease-in-out infinite;
+      }
+      .slk-pkg-btn:hover {
+        animation: none;
+        box-shadow: 0 8px 28px rgba(71,255,1,0.45);
+        transform: scale(1.05);
+      }
+      @keyframes slkBobble {
+        0%   { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); }
+        60%  { box-shadow: 0 0 0 12px rgba(71,255,1,0); }
+        100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); }
+      }
       .pkg-panel { overflow: hidden; transition: max-height 0.5s ease-in-out, opacity 0.35s ease-in-out; }
       .pkg-panel.open   { max-height: 2400px; opacity: 1; }
       .pkg-panel.closed { max-height: 0; opacity: 0; }

@@ -249,6 +249,11 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
 
   return (
     <div className="min-h-screen bg-white">
+      <style>{`
+        .slk-faq-btn { animation: slkFaqBobble 2.2s ease-in-out infinite; }
+        .slk-faq-btn:hover { animation: none; box-shadow: 0 8px 28px rgba(71,255,1,0.45); transform: scale(1.05); }
+        @keyframes slkFaqBobble { 0% { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); } 60% { box-shadow: 0 0 0 12px rgba(71,255,1,0); } 100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); } }
+      `}</style>
       <PagePreloader />
       <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
 
