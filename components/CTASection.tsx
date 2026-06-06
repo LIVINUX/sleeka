@@ -59,7 +59,7 @@ export const CTASection: React.FC = () => {
                 gap: 10px;
                 white-space: nowrap;
                 box-shadow: 0 0 0 0 rgba(71,255,1,0.5);
-                animation: borderPop 2s ease-in-out infinite;
+                animation: slkBobble 2.2s ease-in-out infinite;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                 text-decoration: none;
               }
@@ -68,7 +68,12 @@ export const CTASection: React.FC = () => {
                 animation: none;
                 box-shadow: 0 0 0 6px rgba(71,255,1,0.3), 0 20px 40px rgba(0,0,0,0.15);
               }
-              @keyframes borderPop {
+              @keyframes slkBobble {
+          0%   { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); }
+          60%  { box-shadow: 0 0 0 12px rgba(71,255,1,0); }
+          100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); }
+        }
+        @keyframes borderPop {
                 0%   { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); }
                 60%  { box-shadow: 0 0 0 12px rgba(71,255,1,0); }
                 100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); }

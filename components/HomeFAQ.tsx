@@ -4,19 +4,19 @@ import { ArrowRight } from 'lucide-react';
 const faqs = [
   {
     question: "How does Sleeka work?",
-    answer: "Sleeka gives your business access to a dedicated creative team that works like an extension of your internal team. We handle strategy, design, video, and content execution through a structured monthly system — so your marketing runs consistently without you managing freelancers or building an in-house team."
+    answer: "Sleeka gives your business access to a dedicated creative team that works like an extension of your internal team. We handle strategy, design, video, and content execution through a structured monthly system so your marketing runs consistently without you managing freelancers or building an in-house team."
   },
   {
-    question: "What's included in the monthly subscription?",
-    answer: "Every plan includes a dedicated Project Manager, monthly content strategy and planning, brand graphics and marketing visuals, short-form video editing, motion graphics, and a monthly performance report. The Authority plan adds expanded capacity, faster turnaround, and lead generation support."
+    question: "What is included in the monthly subscription?",
+    answer: "Every plan includes a dedicated Project Manager, monthly content strategy and execution, brand graphics and marketing visuals, short-form video editing, motion graphics, and a monthly performance report. The Authority plan adds expanded capacity, faster turnaround, and lead generation support."
   },
   {
-    question: "How long before we start seeing results?",
-    answer: "Most clients notice improvements in clarity, consistency, and engagement within the first 30 to 60 days. Stronger outcomes like leads and conversions build over time as the system compounds — which is why we recommend staying at least two months to properly evaluate results."
+    question: "How does the content system work?",
+    answer: "We use a content operating system that you also have access to. All monthly content is logged so you can see what is in progress, under review, completed, or posted. We track performance metrics like leads generated, engagement rates, and best-performing content. At the end of each month, you get a clear performance report with insights and next steps."
   },
   {
-    question: "Do I need to sign a contract?",
-    answer: "Yes. We work with a 6-month agreement to ensure proper execution and measurable results. Either party can exit with at least 1 week's notice. The discovery call is completely free and no-pressure — it's just for clarity."
+    question: "How long before I start seeing results?",
+    answer: "Most clients notice improvements in clarity, consistency, and engagement within the first 30 to 60 days. Stronger outcomes like leads and conversions build over time as the system compounds. We recommend staying at least two months to properly evaluate results."
   },
 ];
 
@@ -46,7 +46,7 @@ export const HomeFAQ: React.FC<HomeFAQProps> = ({ onNavigateToFAQ }) => {
             Frequently asked<br />questions
           </h2>
           <p className="text-gray-500 text-lg">
-            Your most important questions before committing — answered here.
+            Your most important questions before committing: answered here.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export const HomeFAQ: React.FC<HomeFAQProps> = ({ onNavigateToFAQ }) => {
                   </div>
                 </button>
 
-                {/* Answer — smooth expand */}
+                {/* Answer: smooth expand */}
                 <div
                   style={{
                     overflow: 'hidden',

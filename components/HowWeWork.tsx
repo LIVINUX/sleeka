@@ -112,8 +112,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Creative Talent Outsourcing
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
-              Scale faster with vetted, multi skilled creative professionals trained in graphics
-              design and video production, all in one.
+              Trained in graphics design, video editing and animation, all in one.
             </p>
             <p className="text-white/80 text-base leading-relaxed mb-10">
               Our talents combine technical expertise, AI enabled workflows, and soft skills,
