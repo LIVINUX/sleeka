@@ -34,7 +34,7 @@ const BackToHome: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome 
 const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHome }) => (
   <header className="fixed top-0 left-0 right-0 z-50 bg-[#5c0386] px-6 py-4 flex items-center justify-between shadow-lg">
     <button onClick={onNavigateHome} className="flex items-center">
-      <img src="/assets/1.png" alt="Sleeka" className="h-10 w-auto" />
+      <img src="/assets/1.png" alt="Sleeka" className="h-12 md:h-16 w-auto" />
     </button>
     <a
       href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
