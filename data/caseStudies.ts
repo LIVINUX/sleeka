@@ -1,6 +1,6 @@
-// ─────────────────────────────────────────────────────────────────────────────
+// ─
 // ASSET UPLOAD PATHS (confirmed from your file screenshots)
-// ─────────────────────────────────────────────────────────────────────────────
+// ─
 // PBN  →  /public/assets/works/pbn/
 //   pbn-intro.mp4   pbn-final.mp4
 //   sketch-1.jpg    sketch-2.jpg    style-1.jpg    style-2.jpg
@@ -12,7 +12,7 @@
 //   ems-kinetic.mp4
 //   ems-giveaway.jpg   ems-milestone.jpg   ems-dday.jpg   ems-countdown.jpg
 //   (Big5Annoucement.jpg already exists at /assets/works/Big5Annoucement.jpg)
-// ─────────────────────────────────────────────────────────────────────────────
+// ─
 
 export interface VideoAsset {
   label: string;
@@ -38,19 +38,19 @@ export interface CaseStudy {
   additionalSections?: {
     title: string;
     description: string;
-    images: string[];        // always stacked one per row — no grid
+    images: string[];        // always stacked one per row: no grid
   }[];
 }
 
 export const caseStudies: CaseStudy[] = [
 
-  // ── Premia Business Network ──────────────────────────────────────────────
+  //  Premia Business Network 
   {
     id: 'premiabn',
     title: 'Premia Business Network',
     subtitle: 'Clarifying a talent outsourcing proposition for a pan-African executive community',
     tags: 'Illustration, Animated explainer video',
-    image: '/assets/works/pbn/style-1.jpg', // fallback only — hero image is hidden
+    image: '/assets/works/pbn/style-1.jpg', // fallback only: hero image is hidden
     showHeroImage: false,                   // NO hero image; intro video is the first visual
 
     introVideo: {
@@ -63,7 +63,7 @@ export const caseStudies: CaseStudy[] = [
     problem:
       'PBN needed a clear, credible way to communicate the value of PBN Outsource, its talent outsourcing arm, to both companies and top professionals. The goal was to simplify the offering, build trust, and position PBN Outsource as a reliable talent solution across the continent.',
     solution:
-      'Sleeka produced a concise animated explainer video that simplified the offering and clearly communicated trust, quality, and scale. The creative approach focused on strong visual storytelling — highlighting the reliability, expertise, and network reach of PBN Outsource — making the content easily digestible for corporate decision makers.',
+      'Sleeka produced a concise animated explainer video that simplified the offering and clearly communicated trust, quality, and scale. The creative approach focused on strong visual storytelling: highlighting the reliability, expertise, and network reach of PBN Outsource: making the content easily digestible for corporate decision makers.',
     results: [
       '900+ executives reached through digital distribution of the explainer video',
       '75% average video view completion rate, showing high engagement among the target audience',
@@ -74,7 +74,7 @@ export const caseStudies: CaseStudy[] = [
     businessImpact:
       'The explainer video strengthened credibility, clarified the value proposition, and became a core communication asset across digital and presentation channels. It successfully positioned PBN Outsource as a trusted pan-African talent solution, resulting in measurable leads and expanded brand awareness across its target markets.',
 
-    // Brand materials — stacked one by one in this order
+    // Brand materials: stacked one by one in this order
     additionalSections: [
       {
         title: 'Sketches + Styleframes',
@@ -94,14 +94,14 @@ export const caseStudies: CaseStudy[] = [
     },
   },
 
-  // ── Bluechip Technologies ────────────────────────────────────────────────
+  //  Bluechip Technologies 
   {
     id: 'bluechip-technologies',
     title: 'Bluechip Technologies',
     subtitle: 'Driving visibility for the Bluechip AI and Data Summit',
     tags: 'Motion, Video editing',
     image: '/assets/works/bluechip/bluechip-summit.jpg',
-    showHeroImage: false, // No hero image — videos are the first visuals
+    showHeroImage: false, // No hero image: videos are the first visuals
 
     // Two videos stacked: Event Video then Founder Video
     videos: [
@@ -134,7 +134,7 @@ export const caseStudies: CaseStudy[] = [
     // No additional brand materials for Bluechip
   },
 
-  // ── EmsXchange ───────────────────────────────────────────────────────────
+  //  EmsXchange ─
   {
     id: 'emsxchange',
     title: 'EmsXchange',
@@ -164,12 +164,12 @@ export const caseStudies: CaseStudy[] = [
     businessImpact:
       "The anniversary campaign transformed EmsXchange's 5 year milestone into a high engagement marketing moment, expanding brand visibility, activating community participation, and strengthening the company's presence across social media.",
 
-    // Brand materials — stacked one by one
+    // Brand materials: stacked one by one
     additionalSections: [
       {
         title: 'Campaign Designs',
         description:
-          '9 promotional designs built momentum across every phase of the anniversary — from announcement through to D-Day.',
+          '9 promotional designs built momentum across every phase of the anniversary: from announcement through to D-Day.',
         images: [
           '/assets/works/Big5Annoucement.jpg',
           '/assets/works/ems/ems-giveaway.jpg',
@@ -181,16 +181,16 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-  // ── Felicia Transport (unchanged) ────────────────────────────────────────
+  //  Felicia Transport (unchanged) 
   {
     id: 'felicia-transport',
     title: 'Felicia Transport',
     subtitle: 'Building Public Trust and Market Credibility from Day One',
     tags: 'Branding, Identity design, Merchandise',
-    image: '/assets/works/VanDesign.jpg',
+    image: '/assets/works/1.jpg',
     showHeroImage: true,
     overview:
-      'Felicia Transport is a Nigerian public transportation company focused on delivering safe, reliable, and modern mobility at scale. As a new company, Felicia needed more than visibility — it needed instant credibility, public trust, and a brand system capable of supporting long-term growth.',
+      'Felicia Transport is a Nigerian public transportation company focused on delivering safe, reliable, and modern mobility at scale. As a new company, Felicia needed more than visibility: it needed instant credibility, public trust, and a brand system capable of supporting long-term growth.',
     problem:
       'Entering a highly competitive and trust-sensitive market, Felicia faced a critical risk: without a strong and coherent brand system, the company could struggle to earn public confidence, attract early adopters, and position itself as a serious operator from launch. For a transport company, perception directly impacts adoption. Trust is not optional.',
     solution:
