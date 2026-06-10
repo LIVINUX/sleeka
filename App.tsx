@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { VideoSection } from './components/VideoSection';
@@ -191,6 +192,7 @@ function App() {
         <Footer onNavigateToFAQ={navigateToFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} onNavigateToTerms={navigateToTerms} />
         <ConsentBanner onNavigateToPrivacy={navigateToPrivacy} />
       </div>
+      <Analytics />
     </>
   );
 }
