@@ -170,7 +170,7 @@ function App() {
     <>
       <Preloader />
       <div className="min-h-screen bg-white">
-        <Navbar onNavigateToFAQ={navigateToFAQ} />
+        <Navbar onNavigateToFAQ={navigateToFAQ} onNavigateToPackages={navigateToPackages} />
         <main>
           <div id="home" className="relative">
             <Hero />
