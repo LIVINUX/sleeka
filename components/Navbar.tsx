@@ -3,8 +3,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'Our Talent', href: '#talent' },
+  { label: 'Case Studies', href: '#work' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
 ];
@@ -15,9 +14,10 @@ interface NavbarProps {
   onNavigateToFAQ?: () => void;
   onNavigateHome?: () => void;
   onNavigateToSection?: (sectionId: string) => void;
+  onNavigateToPackages?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigateToFAQ, onNavigateHome, onNavigateToSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigateToFAQ, onNavigateHome, onNavigateToSection, onNavigateToPackages }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -43,16 +43,39 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigate
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={onNavigateToSection ? (e) => { e.preventDefault(); onNavigateToSection(link.href.replace('#', '')); } : undefined}
-              className="text-sm font-medium hover:text-geko-accent transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label === 'Services') {
+              return (
+                <React.Fragment key="services-and-packages">
+                  <a
+                    href={link.href}
+                    onClick={onNavigateToSection ? (e) => { e.preventDefault(); onNavigateToSection(link.href.replace('#', '')); } : undefined}
+                    className="text-sm font-medium hover:text-geko-accent transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                  {onNavigateToPackages && (
+                    <button
+                      onClick={onNavigateToPackages}
+                      className="text-sm font-medium hover:text-geko-accent transition-colors"
+                    >
+                      Packages
+                    </button>
+                  )}
+                </React.Fragment>
+              );
+            }
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={onNavigateToSection ? (e) => { e.preventDefault(); onNavigateToSection(link.href.replace('#', '')); } : undefined}
+                className="text-sm font-medium hover:text-geko-accent transition-colors"
+              >
+                {link.label}
+              </a>
+            );
+          })}
           {onNavigateToFAQ && (
             <button
               onClick={onNavigateToFAQ}
@@ -107,21 +130,42 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigate
         }`}
       >
         <div className="p-6 flex flex-col gap-4">
-          {navLinks.map((link, index) => (
-            <a
-              key={link.label}
-              href={onNavigateHome ? `/${link.href}` : link.href}
-              className="text-white text-lg font-medium py-2 transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
-              style={{
-                transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
-                transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
-                opacity: isMobileMenuOpen ? 1 : 0,
-              }}
-              onClick={() => { setIsMobileMenuOpen(false); if (onNavigateToSection) onNavigateToSection(link.href.replace('#', '')); }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link, index) => {
+            const linkEl = (
+              <a
+                key={link.label}
+                href={onNavigateHome ? `/${link.href}` : link.href}
+                className="text-white text-lg font-medium py-2 transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
+                style={{
+                  transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
+                  transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                }}
+                onClick={() => { setIsMobileMenuOpen(false); if (onNavigateToSection) onNavigateToSection(link.href.replace('#', '')); }}
+              >
+                {link.label}
+              </a>
+            );
+            if (link.label === 'Services' && onNavigateToPackages) {
+              return (
+                <React.Fragment key="services-and-packages-mobile">
+                  {linkEl}
+                  <button
+                    className="text-white text-lg font-medium py-2 text-left transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
+                    style={{
+                      transitionDelay: isMobileMenuOpen ? `${(index + 0.5) * 50}ms` : '0ms',
+                      transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                      opacity: isMobileMenuOpen ? 1 : 0,
+                    }}
+                    onClick={() => { setIsMobileMenuOpen(false); onNavigateToPackages(); }}
+                  >
+                    Packages
+                  </button>
+                </React.Fragment>
+              );
+            }
+            return linkEl;
+          })}
           {onNavigateToFAQ && (
             <button
               className="text-white text-lg font-medium py-2 text-left transform transition-all duration-300 hover:translate-x-2 hover:text-geko-accent"
