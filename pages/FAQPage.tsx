@@ -255,7 +255,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
         @keyframes slkFaqBobble { 0% { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); } 60% { box-shadow: 0 0 0 12px rgba(71,255,1,0); } 100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); } }
       `}</style>
       <PagePreloader />
-      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
+      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} onNavigateToPackages={onNavigateToPackages} />
 
       {/* Hero */}
       <section className="bg-geko-dark pt-32 pb-20 px-6 text-center">

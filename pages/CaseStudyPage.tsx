@@ -61,6 +61,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         onNavigateToFAQ={onNavigateToFAQ}
         onNavigateHome={onNavigateHome}
         onNavigateToSection={onNavigateToSection}
+        onNavigateToPackages={onNavigateToPackages}
       />
       <CaseStudyDetail
         title={caseStudy.title}

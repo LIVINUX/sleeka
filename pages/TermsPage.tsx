@@ -23,7 +23,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title
 export const TermsPage: React.FC<TermsPageProps> = ({ onBack, onNavigateToFAQ, onNavigateHome, onNavigateToSection, onNavigateToPackages, onNavigateToPrivacy }) => (
   <div className="min-h-screen bg-white">
     <PagePreloader />
-    <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
+    <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} onNavigateToPackages={onNavigateToPackages} />
 
     {/* Hero */}
     <section className="pt-32 pb-16 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>

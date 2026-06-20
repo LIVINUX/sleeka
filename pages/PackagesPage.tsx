@@ -48,28 +48,28 @@ const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHo
   </header>
 );
 
-// ─── SHARED: Trust Logos — two layout versions ────────────────────────────
+// ─── SHARED: Trust Logos — colored logos, no card background ─────────────
 // Change trustLayout below: 'grid' = 2x2, 'row' = single row standalone
 const trustLayout: 'grid' | 'row' = 'grid';
 
 const logos = [
-  { file: '1.png', name: 'Bluechip', hGrid: 80, hRow: 70 },
-  { file: '3.png', name: 'Ems',      hGrid: 72, hRow: 62 },
-  { file: '4.png', name: 'PBN',      hGrid: 72, hRow: 62 },
-  { file: '5.png', name: 'Felicia',  hGrid: 48, hRow: 40 },
+  { file: 'bluechip.png', name: 'Bluechip', hGrid: 64, hRow: 56 },
+  { file: 'premiabn.png', name: 'PremiaBN', hGrid: 56, hRow: 48 },
+  { file: 'felicia.png',  name: 'Felicia',  hGrid: 56, hRow: 48 },
+  { file: 'citisquare.png', name: 'Citisquare', hGrid: 56, hRow: 48 },
 ];
 
 const TrustLogos: React.FC = () => {
   if (trustLayout === 'grid') {
     return (
-      <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
+      <div className="grid grid-cols-2 gap-8 max-w-xs mx-auto">
         {logos.map(({ file, name, hGrid }) => (
-          <div key={name} className="flex items-center justify-center bg-white rounded-2xl p-5">
+          <div key={name} className="flex items-center justify-center">
             <img
-              src={`/assets/Client logos/${file}`}
+              src={`/assets/Client logos/colored/${file}`}
               alt={name}
               style={{ height: `${hGrid}px` }}
-              className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              className="w-auto object-contain"
             />
           </div>
         ))}
@@ -81,10 +81,10 @@ const TrustLogos: React.FC = () => {
       {logos.map(({ file, name, hRow }) => (
         <img
           key={name}
-          src={`/assets/Client logos/${file}`}
+          src={`/assets/Client logos/colored/${file}`}
           alt={name}
           style={{ height: `${hRow}px` }}
-          className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+          className="w-auto object-contain"
         />
       ))}
     </div>
@@ -322,7 +322,7 @@ const VersionA: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-2xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
+      <div className="max-w-2xl mx-auto p-8 text-center">
         <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
@@ -429,7 +429,7 @@ const VersionB: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-3xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
+      <div className="max-w-3xl mx-auto p-8 text-center">
         <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
