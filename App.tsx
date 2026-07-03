@@ -8,6 +8,9 @@ import { AgencyDescription } from './components/AgencyDescription';
 import { OurWorks } from './components/OurWorks';
 import { HowWeWork } from './components/HowWeWork';
 import { ToolsAndWorkflows } from './components/ToolsAndWorkflows';
+import { PlugIntoSection } from './components/PlugIntoSection';
+import { InternalTeamSection } from './components/InternalTeamSection';
+import { ContentOSSection } from './components/ContentOSSection';
 import { TalentShowcase } from './components/TalentShowcase';
 import { Testimonials } from './components/Testimonials';
 import { WhyChooseUs } from './components/WhyChooseUs';
@@ -177,16 +180,27 @@ function App() {
             <VideoSection />
             <TrustedBy />
           </div>
-          <div id="about"><AgencyDescription /></div>
+          {/* 3. Plug Into a Complete Creative Department */}
+          <div id="about"><PlugIntoSection /></div>
+          {/* 4. Real Results */}
           <div id="work"><OurWorks onNavigateToCaseStudy={navigateToCaseStudy} /></div>
+          {/* 5. Already Have An Internal Team? */}
+          <InternalTeamSection />
+          {/* 6. Content Operating System */}
+          <ContentOSSection />
+          {/* 7. The Creative Engine */}
+          <div id="talent"><TalentShowcase /></div>
+          {/* 8. Testimonials */}
+          <Testimonials />
+          {/* 9 & 10. Sleeka Advantage + Sleeka vs Alternatives */}
+          <WhyChooseUs />
+          {/* 11. Packages & Pricing */}
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
-          <ToolsAndWorkflows />
-          <div id="talent"><TalentShowcase /></div>
-          <Testimonials />
-          <WhyChooseUs />
+          {/* 12. FAQ */}
           <HomeFAQ onNavigateToFAQ={navigateToFAQ} />
+          {/* 13. Final CTA */}
           <CTASection />
         </main>
         <Footer onNavigateToFAQ={navigateToFAQ} onNavigateToSection={navigateHomeToSection} onNavigateToPackages={navigateToPackages} onNavigateToPrivacy={navigateToPrivacy} onNavigateToTerms={navigateToTerms} />
