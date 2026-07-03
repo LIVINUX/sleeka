@@ -20,7 +20,7 @@ export const TrustedBy: React.FC = () => {
     <section className="bg-geko-dark pb-24 pt-0 relative z-10 overflow-hidden">
       <div className="container mx-auto px-6 mb-12">
         <p className="text-center text-white/50 text-xs uppercase tracking-[0.2em] font-medium">
-          Trusted by world class brands
+          Trusted by ambitious brands
         </p>
       </div>
 

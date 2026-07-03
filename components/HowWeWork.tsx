@@ -62,10 +62,9 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
     <div className="container mx-auto px-6 md:px-12">
 
       <div className="mb-12">
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-geko-dark">How We Work</h2>
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-geko-dark">Packages</h2>
         <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed">
-          We help growing businesses build creative capacity through flexible, outcome driven
-          solutions that power visibility, authority, and revenue.
+          Flexible monthly plans built for businesses that need more content, faster execution, and better marketing results.
         </p>
       </div>
 
@@ -80,28 +79,26 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
             style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
-              Creative Infrastructure
+              Risk-Free Model
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
-              Your full creative department on a flexible monthly subscription, delivering
-              design and video systems that fuel marketing campaigns and brand growth.
+              Work with your dedicated creative department throughout the month, experience the value delivered, and pay at month end.
             </p>
             <p className="text-white/80 text-base leading-relaxed mb-10">
-              Perfect for startups and growing businesses that need consistent, high quality
-              creative output without the cost or complexity of building an in house team.
+              No recruitment costs. No long-term commitments. Just a flexible model designed to grow with your business.
             </p>
             <button
               onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
               className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center"
               style={{ backgroundColor: '#47ff01', color: '#000' }}
             >
-              Learn More!
+              View Packages
             </button>
           </div>
         </Card>
 
-        {/* Card 2 */}
-        <Card>
+        {/* Card 2 — Talent Outsourcing hidden for now */}
+        <div style={{ display: 'none' }}><Card>
           <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
             <img src="/assets/talent-outsourcing.jpg" alt="Creative Talent Outsourcing"
               className="w-full h-full object-cover object-top block" />
@@ -124,7 +121,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
               Coming Soon
             </button>
           </div>
-        </Card>
+        </Card></div>
 
       </div>
     </div>
