@@ -173,7 +173,7 @@ function App() {
     <>
       <Preloader />
       <div className="min-h-screen bg-white">
-        <Navbar onNavigateToFAQ={navigateToFAQ} onNavigateToPackages={navigateToPackages} />
+        <Navbar onNavigateToFAQ={navigateToFAQ} />
         <main>
           <div id="home" className="relative">
             <Hero />
@@ -194,7 +194,7 @@ function App() {
           <Testimonials />
           {/* 9 & 10. Sleeka Advantage + Sleeka vs Alternatives */}
           <WhyChooseUs />
-          {/* 11. Packages & Pricing */}
+          {/* 11. Packages */}
           <div id="services">
             <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
           </div>
