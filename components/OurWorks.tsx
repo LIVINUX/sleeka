@@ -53,11 +53,8 @@ export const OurWorks: React.FC<OurWorksProps> = ({ onNavigateToCaseStudy }) => 
 
       <div className="container mx-auto px-6 md:px-12 mb-12">
         <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Real Results</h2>
-        <p className="text-lg text-gray-600 font-normal mb-3">
+        <p className="text-lg text-gray-600 font-normal">
           Campaigns, assets, and content systems produced through our creative system.
-        </p>
-        <p className="text-sm text-gray-400 font-normal">
-          Tap any case study below to see the results.
         </p>
       </div>
 
