@@ -1,5 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+// ── Shared slide-reveal hook used across sections ─────────────────────────
+export const useSlideReveal = (rootMargin = '-8% 0px -8% 0px') => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState<'below' | 'visible' | 'above'>('below');
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setState('visible');
+        } else {
+          const rect = el.getBoundingClientRect();
+          setState(rect.top < 0 ? 'above' : 'below');
+        }
+      },
+      { threshold: 0.12, rootMargin }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [rootMargin]);
+
+  const style: React.CSSProperties = {
+    transition: 'opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)',
+    willChange: 'opacity, transform',
+    opacity: state === 'visible' ? 1 : 0,
+    transform: state === 'visible' ? 'translateY(0)' : state === 'above' ? 'translateY(-36px)' : 'translateY(44px)',
+  };
+
+  return { ref, style };
+};
+
+// ── Slide wrapper ─────────────────────────────────────────────────────────
+export const Slide: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({ children, delay = 0, className = '' }) => {
+  const { ref, style } = useSlideReveal();
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{ ...style, transitionDelay: `${delay}s` }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const cards = [
   {
     number: '01',
@@ -31,169 +78,81 @@ const cards = [
   },
 ];
 
-// ── Scroll-fade hook ──────────────────────────────────────────────────────
-function useScrollFade(threshold = 0.5) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [opacity, setOpacity] = useState(0);
-  const [translateY, setTranslateY] = useState(30);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const update = () => {
-      const rect = el.getBoundingClientRect();
-      const winH = window.innerHeight;
-      const center = rect.top + rect.height / 2;
-      const distFromCenter = Math.abs(center - winH / 2);
-      const maxDist = winH * 0.55;
-      const progress = Math.max(0, 1 - distFromCenter / maxDist);
-      setOpacity(progress);
-      setTranslateY((1 - progress) * 30);
-    };
-
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
-    };
-  }, []);
-
-  return { ref, opacity, translateY };
-}
-
-// ── Fade element wrapper ──────────────────────────────────────────────────
-const FadeEl: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({ children, delay = 0, className = '' }) => {
-  const { ref, opacity, translateY } = useScrollFade();
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity,
-        transform: `translateY(${translateY}px)`,
-        transition: `opacity 0.55s ease ${delay}s, transform 0.55s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-        willChange: 'opacity, transform',
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
-// ── Single card ───────────────────────────────────────────────────────────
-const PlugCard: React.FC<{ card: typeof cards[0] }> = ({ card }) => {
-  const { ref, opacity, translateY } = useScrollFade();
-
-  return (
-    <div
-      ref={ref}
-      className="w-full max-w-2xl mx-auto"
-      style={{
-        opacity,
-        transform: `translateY(${translateY}px)`,
-        transition: 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)',
-        willChange: 'opacity, transform',
-      }}
-    >
-      <div
-        className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12"
-        style={{
-          background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
-          boxShadow: '0 32px 80px rgba(92,3,134,0.25)',
-        }}
-      >
-        {/* Large background number */}
-        <span
-          className="absolute right-6 top-2 font-black select-none pointer-events-none leading-none"
-          style={{ fontSize: 'clamp(6rem, 18vw, 10rem)', color: 'rgba(255,255,255,0.06)', letterSpacing: '-0.04em' }}
-        >
-          {card.number}
-        </span>
-
-        {/* Icon */}
-        <div className="relative z-10 mb-6 flex justify-center">
-          <div
-            className="w-20 h-20 rounded-2xl flex items-center justify-center"
-            style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
-          >
-            <img
-              src={`/assets/icons/plug-into/${card.iconFile}`}
-              alt={card.iconLabel}
-              className="w-12 h-12 object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Badge */}
-        <div className="flex justify-center mb-5 relative z-10">
-          <span
-            className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
-            style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
-          >
-            {card.iconLabel}
-          </span>
-        </div>
-
-        {/* Text */}
-        <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight text-center relative z-10">
-          {card.title}
-        </h3>
-        <p className="text-white/70 text-base md:text-lg leading-relaxed text-center relative z-10">
-          {card.body}
-        </p>
-
-        {/* Accent line */}
-        <div className="mt-8 h-px w-full relative z-10" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${opacity * 100}%`,
-              backgroundColor: '#47ff01',
-              transition: 'width 0.3s ease',
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ── Main export ───────────────────────────────────────────────────────────
 export const PlugIntoSection: React.FC = () => (
-  <section className="bg-white py-12 px-6">
+  <section className="bg-white px-6 py-20">
     <div className="max-w-2xl mx-auto text-center">
 
-      {/* Label fades in first */}
-      <FadeEl delay={0}>
-        <span className="text-xs font-black uppercase tracking-widest text-black">
+      <Slide delay={0}>
+        <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#000' }}>
           How It Works
         </span>
-      </FadeEl>
+      </Slide>
 
-      {/* Headline fades in second */}
-      <FadeEl delay={0.05} className="mt-4">
-        <h2 className="text-4xl md:text-6xl font-bold text-geko-dark leading-tight">
+      <Slide delay={0.08} className="mt-4">
+        <h2 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#000' }}>
           Plug Into a Complete<br className="hidden md:block" /> Creative Department
         </h2>
-      </FadeEl>
+      </Slide>
 
-      {/* Subtext fades in third */}
-      <FadeEl delay={0.1} className="mt-5 mb-20">
-        <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto">
+      <Slide delay={0.14} className="mt-5 mb-20">
+        <p className="text-lg md:text-xl leading-relaxed max-w-xl mx-auto" style={{ color: '#000' }}>
           Instead of juggling freelancers or building an expensive in-house team, businesses get access to a dedicated team that delivers measurable results through a flexible monthly subscription.
         </p>
-      </FadeEl>
+      </Slide>
 
-      {/* Cards — each one fades in/out independently as you scroll */}
-      <div className="flex flex-col gap-16 pb-12">
+      <div className="flex flex-col gap-14">
         {cards.map((card, i) => (
-          <PlugCard key={i} card={card} />
+          <Slide key={i} delay={0}>
+            <div
+              className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12 text-center"
+              style={{
+                background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
+                boxShadow: '0 32px 80px rgba(92,3,134,0.2)',
+              }}
+            >
+              <span
+                className="absolute right-4 top-0 font-black select-none pointer-events-none leading-none"
+                style={{ fontSize: 'clamp(6rem, 20vw, 10rem)', color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em' }}
+              >
+                {card.number}
+              </span>
+
+              <div className="relative z-10 flex justify-center mb-5">
+                <div
+                  className="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center"
+                  style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
+                >
+                  <img
+                    src={`/assets/icons/plug-into/${card.iconFile}`}
+                    alt={card.iconLabel}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-center mb-4 relative z-10">
+                <span
+                  className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+                  style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
+                >
+                  {card.iconLabel}
+                </span>
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight relative z-10">
+                {card.title}
+              </h3>
+              <p className="text-white/70 text-base md:text-lg leading-relaxed relative z-10">
+                {card.body}
+              </p>
+
+              <div className="mt-8 h-px w-full relative z-10" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                <div className="h-full w-1/3 rounded-full" style={{ backgroundColor: '#47ff01' }} />
+              </div>
+            </div>
+          </Slide>
         ))}
       </div>
-
     </div>
   </section>
 );
