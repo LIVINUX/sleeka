@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Slide } from './PlugIntoSection';
 
 const works = [
   {
@@ -52,33 +53,41 @@ export const OurWorks: React.FC<OurWorksProps> = ({ onNavigateToCaseStudy }) => 
       `}</style>
 
       <div className="container mx-auto px-6 md:px-12 mb-12">
-        <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Real Results</h2>
-        <p className="text-lg text-gray-600 font-normal">
-          Campaigns, assets, and content systems produced through our creative system.
-        </p>
+        <Slide delay={0}>
+          <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Real Results</h2>
+        </Slide>
+        <Slide delay={0.08}>
+          <p className="text-lg text-gray-600 font-normal mb-2">
+            Campaigns, assets, and content systems produced through our creative system.
+          </p>
+        </Slide>
+        <Slide delay={0.14}>
+          <p className="text-sm text-gray-400">Tap any case study below to see the results.</p>
+        </Slide>
       </div>
 
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {works.map((work, index) => (
-            <div
-              key={work.id}
-              onClick={() => handleCardClick(work.id)}
-              className={`group cursor-pointer ${clickedId === work.id ? 'card-popping' : ''}`}
-              style={{ animationDelay: `${(index + 1) * 150}ms` }}
-            >
-              <div className="rounded-3xl overflow-hidden mb-6 shadow-lg hover:shadow-2xl transition-all duration-300">
-                <img
-                  src={work.image}
-                  alt={work.title}
-                  className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+            <Slide key={work.id} delay={index * 0.08}>
+              <div
+                onClick={() => handleCardClick(work.id)}
+                className={`group cursor-pointer ${clickedId === work.id ? 'card-popping' : ''}`}
+                style={{ animationDelay: `${(index + 1) * 150}ms` }}
+              >
+                <div className="rounded-3xl overflow-hidden mb-6 shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#5c0386] transition-colors duration-300">
+                  {work.title}
+                </h3>
+                <p className="text-xs text-gray-400">- {work.tags}</p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#5c0386] transition-colors duration-300">
-                {work.title}
-              </h3>
-              <p className="text-xs text-gray-400">- {work.tags}</p>
-            </div>
+            </Slide>
           ))}
         </div>
       </div>

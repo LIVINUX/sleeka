@@ -89,7 +89,7 @@ export const PlugIntoSection: React.FC = () => (
       </Slide>
 
       <Slide delay={0.08} className="mt-4">
-        <h2 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#000' }}>
+        <h2 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#5c0386' }}>
           Plug Into a Complete<br className="hidden md:block" /> Creative Department
         </h2>
       </Slide>
@@ -106,13 +106,14 @@ export const PlugIntoSection: React.FC = () => (
             <div
               className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12 text-center"
               style={{
-                background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
-                boxShadow: '0 32px 80px rgba(92,3,134,0.2)',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+                border: '1px solid rgba(0,0,0,0.06)',
               }}
             >
               <span
                 className="absolute right-4 top-0 font-black select-none pointer-events-none leading-none"
-                style={{ fontSize: 'clamp(6rem, 20vw, 10rem)', color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em' }}
+                style={{ fontSize: 'clamp(6rem, 20vw, 10rem)', color: 'rgba(92,3,134,0.06)', letterSpacing: '-0.04em' }}
               >
                 {card.number}
               </span>
@@ -120,7 +121,7 @@ export const PlugIntoSection: React.FC = () => (
               <div className="relative z-10 flex justify-center mb-5">
                 <div
                   className="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
+                  style={{ backgroundColor: 'rgba(92,3,134,0.08)', border: '1px solid rgba(92,3,134,0.15)' }}
                 >
                   <img
                     src={`/assets/icons/plug-into/${card.iconFile}`}
@@ -133,21 +134,21 @@ export const PlugIntoSection: React.FC = () => (
               <div className="flex justify-center mb-4 relative z-10">
                 <span
                   className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
-                  style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
+                  style={{ backgroundColor: 'rgba(92,3,134,0.08)', color: '#5c0386', border: '1px solid rgba(92,3,134,0.2)' }}
                 >
                   {card.iconLabel}
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight relative z-10">
+              <h3 className="text-2xl md:text-3xl font-black mb-4 leading-tight relative z-10" style={{ color: '#5c0386' }}>
                 {card.title}
               </h3>
-              <p className="text-white/70 text-base md:text-lg leading-relaxed relative z-10">
+              <p className="text-base md:text-lg leading-relaxed relative z-10" style={{ color: '#4b5563' }}>
                 {card.body}
               </p>
 
-              <div className="mt-8 h-px w-full relative z-10" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                <div className="h-full w-1/3 rounded-full" style={{ backgroundColor: '#47ff01' }} />
+              <div className="mt-8 h-px w-full relative z-10" style={{ backgroundColor: 'rgba(92,3,134,0.08)' }}>
+                
               </div>
             </div>
           </Slide>
