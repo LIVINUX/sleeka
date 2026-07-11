@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Slide } from './PlugIntoSection';
 
 interface HowWeWorkProps {
@@ -38,29 +38,20 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
         </p>
       </Slide>
 
-      {/* Card — plug-into style */}
+      {/* Card — purple gradient like PlugInto, no number, no green accent line */}
       <Slide delay={0.14}>
         <div
           className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12 text-center"
           style={{
-            backgroundColor: '#ffffff',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-            border: '1px solid rgba(0,0,0,0.06)',
+            background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
+            boxShadow: '0 32px 80px rgba(92,3,134,0.2)',
           }}
         >
-          {/* Faded background text */}
-          <span
-            className="absolute right-4 top-0 font-black select-none pointer-events-none leading-none"
-            style={{ fontSize: 'clamp(5rem, 16vw, 9rem)', color: 'rgba(92,3,134,0.04)', letterSpacing: '-0.04em' }}
-          >
-            01
-          </span>
-
           {/* Icon */}
           <div className="relative z-10 flex justify-center mb-5">
             <div
               className="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(92,3,134,0.08)', border: '1px solid rgba(92,3,134,0.15)' }}
+              style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
             >
               <img
                 src="/assets/icons/packages/money.png"
@@ -74,25 +65,22 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           <div className="flex justify-center mb-4 relative z-10">
             <span
               className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
-              style={{ backgroundColor: 'rgba(92,3,134,0.08)', color: '#5c0386', border: '1px solid rgba(92,3,134,0.2)' }}
+              style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
             >
               Risk-Free Model
             </span>
           </div>
 
           {/* Title */}
-          <h3
-            className="text-2xl md:text-3xl font-black mb-4 leading-tight relative z-10"
-            style={{ color: '#5c0386' }}
-          >
+          <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight relative z-10">
             Creative Infrastructure
           </h3>
 
-          {/* Subtext — same style difference as original */}
-          <p className="text-gray-700 text-base leading-relaxed mb-3 relative z-10">
+          {/* Two-tier subtext — same style difference as original */}
+          <p className="text-white/90 text-base leading-relaxed mb-3 relative z-10">
             Work with your dedicated creative department throughout the month, experience the value delivered, and pay at month end.
           </p>
-          <p className="text-gray-500 text-base leading-relaxed mb-10 relative z-10">
+          <p className="text-white/70 text-base leading-relaxed mb-10 relative z-10">
             No recruitment costs. No long-term commitments. Just a flexible model designed to grow with your business.
           </p>
 
