@@ -8,42 +8,43 @@ const navItems = [
   { iconFile: 'chat.png',      label: 'Chat',      id: 'chat'      },
 ];
 
+// ── Screens ───────────────────────────────────────────────────────────────
 const DashboardScreen = () => (
-  <div className="flex flex-col h-full">
-    <div className="flex items-center justify-between px-4 pt-4 pb-3 bg-white border-b border-gray-100">
+  <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex items-center justify-between px-4 pt-3 pb-2 bg-white border-b border-gray-100 shrink-0">
       <div>
-        <p className="text-xs font-black" style={{ color: '#5c0386' }}>Good morning 👋</p>
-        <p className="text-xs text-gray-400">TechNaija Solutions</p>
+        <p className="font-semibold text-gray-800" style={{ fontSize: '11px' }}>Good morning 👋</p>
+        <p className="text-gray-400" style={{ fontSize: '10px' }}>TechNaija Solutions</p>
       </div>
-      <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-black" style={{ backgroundColor: '#5c0386' }}>TN</div>
+      <div className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold" style={{ backgroundColor: '#5c0386', fontSize: '10px' }}>TN</div>
     </div>
-    <div className="px-3 pt-3 grid grid-cols-2 gap-2 mb-3">
+    <div className="px-3 pt-2 grid grid-cols-2 gap-1.5 shrink-0">
       {[
-        { label: 'Active Clients', value: '4',     sub: '+25%',   color: '#5c0386' },
-        { label: 'Leads',          value: '4',     sub: '+8%',    color: '#16a34a' },
-        { label: 'Total Reach',    value: '13.8K', sub: 'Jun 25', color: '#7c3aed' },
-        { label: 'Engagement',     value: '14.4%', sub: 'Above avg', color: '#d97706' },
+        { label: 'Active Clients', value: '4',    sub: '+25%',     color: '#5c0386' },
+        { label: 'Leads',          value: '45',   sub: '+8%',      color: '#16a34a' },
+        { label: 'Total Reach',    value: '13.8K',sub: 'Jun 2026', color: '#7c3aed' },
+        { label: 'Engagement',     value: '14.4%',sub: 'Above avg',color: '#d97706' },
       ].map(({ label, value, sub, color }) => (
-        <div key={label} className="bg-gray-50 rounded-2xl p-3 border border-gray-100">
-          <p className="text-sm font-black text-gray-800">{value}</p>
-          <p className="text-xs text-gray-500 mt-0.5">{label}</p>
-          <p className="text-xs font-semibold mt-0.5" style={{ color }}>{sub}</p>
+        <div key={label} className="bg-gray-50 rounded-xl p-2.5 border border-gray-100">
+          <p className="font-black text-gray-800" style={{ fontSize: '13px' }}>{value}</p>
+          <p className="text-gray-500 mt-0.5" style={{ fontSize: '9px' }}>{label}</p>
+          <p className="font-medium mt-0.5" style={{ fontSize: '9px', color }}>{sub}</p>
         </div>
       ))}
     </div>
-    <div className="px-3">
-      <p className="text-xs font-bold text-gray-700 mb-2">Recent Activity</p>
+    <div className="px-3 pt-2 flex-1 min-h-0">
+      <p className="font-semibold text-gray-700 mb-1.5" style={{ fontSize: '10px' }}>Recent Activity</p>
       <div className="space-y-1.5">
         {[
           { title: 'Mama Cass Case Study', status: 'Live',      dot: '#16a34a' },
           { title: 'SME Cloud Tools post', status: 'Posted',    dot: '#5c0386' },
           { title: 'Product Squad reel',   status: 'In Review', dot: '#d97706' },
         ].map(({ title, status, dot }) => (
-          <div key={title} className="flex items-center justify-between bg-white rounded-xl px-3 py-2 border border-gray-100">
-            <p className="text-xs font-medium text-gray-700">{title}</p>
-            <div className="flex items-center gap-1 shrink-0 ml-2">
-              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: dot }} />
-              <span className="text-xs font-semibold" style={{ color: dot }}>{status}</span>
+          <div key={title} className="flex items-center justify-between bg-white rounded-xl px-2.5 py-2 border border-gray-100">
+            <p className="text-gray-700 font-medium" style={{ fontSize: '10px' }}>{title}</p>
+            <div className="flex items-center gap-1 shrink-0 ml-1">
+              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: dot }} />
+              <span className="font-medium" style={{ fontSize: '9px', color: dot }}>{status}</span>
             </div>
           </div>
         ))}
@@ -53,33 +54,33 @@ const DashboardScreen = () => (
 );
 
 const ContentScreen = () => (
-  <div className="flex flex-col h-full">
-    <div className="px-4 pt-4 pb-2 bg-white border-b border-gray-100">
-      <p className="text-xs font-black text-gray-800">Content Pipeline</p>
-      <p className="text-xs text-gray-400 mb-2">TechNaija Solutions</p>
-      <div className="flex gap-1.5">
+  <div className="flex flex-col h-full overflow-hidden">
+    <div className="px-4 pt-3 pb-2 bg-white border-b border-gray-100 shrink-0">
+      <p className="font-semibold text-gray-800" style={{ fontSize: '11px' }}>Content Pipeline</p>
+      <p className="text-gray-400 mb-1.5" style={{ fontSize: '10px' }}>TechNaija Solutions</p>
+      <div className="flex gap-1">
         {['All', 'Live', 'Scheduled', 'Review'].map((t, i) => (
-          <span key={t} className="text-xs px-2.5 py-1 rounded-full font-semibold" style={{ backgroundColor: i === 0 ? '#5c0386' : '#f3f4f6', color: i === 0 ? '#fff' : '#6b7280' }}>{t}</span>
+          <span key={t} className="rounded-full font-medium px-2 py-0.5" style={{ backgroundColor: i === 0 ? '#5c0386' : '#f3f4f6', color: i === 0 ? '#fff' : '#6b7280', fontSize: '9px' }}>{t}</span>
         ))}
       </div>
     </div>
-    <div className="px-3 pt-3 space-y-2">
+    <div className="px-3 pt-2 flex-1 min-h-0 space-y-1.5 overflow-hidden">
       {[
-        { id: 'SLE-001', title: 'Why SMEs Need Cloud Tools',  platform: 'LinkedIn',  status: 'Live',       color: '#16a34a' },
-        { id: 'SLE-002', title: 'Meet the Team: Product Squad', platform: 'Instagram', status: 'Posted',     color: '#5c0386' },
-        { id: 'SLE-003', title: 'Mama Cass Success Story',    platform: 'LinkedIn',  status: 'Scheduled',  color: '#d97706' },
-        { id: 'SLE-004', title: '5 Signs You\'ve Outgrown Excel', platform: 'Instagram', status: 'In Review', color: '#7c3aed' },
+        { id: 'SLE-001', title: 'Why SMEs Need Cloud Tools',     platform: 'LinkedIn',  status: 'Live',       color: '#16a34a' },
+        { id: 'SLE-002', title: 'Meet the Team: Product Squad',  platform: 'Instagram', status: 'Posted',     color: '#5c0386' },
+        { id: 'SLE-003', title: 'Mama Cass Success Story',       platform: 'LinkedIn',  status: 'Scheduled',  color: '#d97706' },
+        { id: 'SLE-004', title: 'Signs You\'ve Outgrown Excel',  platform: 'Instagram', status: 'In Review',  color: '#7c3aed' },
       ].map(({ id, title, platform, status, color }) => (
-        <div key={id} className="bg-white rounded-xl border border-gray-100 px-3 py-2.5">
+        <div key={id} className="bg-white rounded-xl border border-gray-100 px-2.5 py-2">
           <div className="flex items-center justify-between mb-0.5">
-            <span className="text-xs text-gray-400">{id}</span>
+            <span className="text-gray-400" style={{ fontSize: '9px' }}>{id}</span>
             <div className="flex items-center gap-1">
-              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: color }} />
-              <span className="text-xs font-semibold" style={{ color }}>{status}</span>
+              <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+              <span className="font-medium" style={{ fontSize: '9px', color }}>{status}</span>
             </div>
           </div>
-          <p className="text-xs font-semibold text-gray-800 leading-tight">{title}</p>
-          <span className="text-xs text-gray-400">{platform}</span>
+          <p className="font-medium text-gray-800 leading-tight" style={{ fontSize: '10px' }}>{title}</p>
+          <span className="text-gray-400" style={{ fontSize: '9px' }}>{platform}</span>
         </div>
       ))}
     </div>
@@ -87,25 +88,48 @@ const ContentScreen = () => (
 );
 
 const ReportsScreen = () => (
-  <div className="flex flex-col h-full">
-    <div className="px-4 pt-4 pb-3 bg-white border-b border-gray-100">
-      <p className="text-xs font-black text-gray-800">Monthly Report</p>
-      <p className="text-xs text-gray-400">Jun 2025 · TechNaija Solutions</p>
+  <div className="flex flex-col h-full overflow-hidden">
+    <div className="px-4 pt-3 pb-2 bg-white border-b border-gray-100 shrink-0">
+      <p className="font-semibold text-gray-800" style={{ fontSize: '11px' }}>Monthly Report</p>
+      <p className="text-gray-400" style={{ fontSize: '10px' }}>Jun 2026 · TechNaija Solutions</p>
     </div>
-    <div className="px-3 pt-3">
-      <div className="rounded-2xl p-4 mb-3 text-white" style={{ backgroundColor: '#5c0386' }}>
-        <p className="text-xs font-bold mb-1" style={{ color: '#47ff01' }}>Rating: Excellent</p>
-        <p className="text-xs text-white/80 leading-relaxed">5 posts · 13,880 reach · 45 leads · 14.47% engagement</p>
+    <div className="px-3 pt-2 flex-1 min-h-0 overflow-hidden">
+      {/* Executive summary */}
+      <div className="bg-gray-50 rounded-xl p-2.5 mb-2 border border-gray-100">
+        <p className="font-semibold text-gray-700 mb-1" style={{ fontSize: '10px' }}>Executive Summary</p>
+        <p className="text-gray-600 leading-relaxed" style={{ fontSize: '9.5px' }}>
+          In Jun 2026, we published <span className="font-bold">5 pieces of content</span> reaching <span className="font-bold">13,880 accounts</span>, generating <span className="font-bold">45 qualified leads</span> at a <span className="font-bold text-[#5c0386]">14.47% engagement rate</span> — above industry average of 3.5%.
+        </p>
       </div>
-      <p className="text-xs font-bold text-gray-700 mb-2">Top Content</p>
+      {/* Metrics row */}
+      <div className="grid grid-cols-3 gap-1.5 mb-2">
+        {[
+          { label: 'Reach',       value: '13,880' },
+          { label: 'Leads',       value: '45'     },
+          { label: 'Engagement',  value: '14.47%' },
+        ].map(({ label, value }) => (
+          <div key={label} className="bg-white rounded-xl p-2 border border-gray-100 text-center">
+            <p className="font-black text-[#5c0386]" style={{ fontSize: '11px' }}>{value}</p>
+            <p className="text-gray-400" style={{ fontSize: '8.5px' }}>{label}</p>
+          </div>
+        ))}
+      </div>
+      {/* Rating */}
+      <div className="rounded-xl p-2.5 mb-2 text-white" style={{ backgroundColor: '#5c0386' }}>
+        <p className="font-bold mb-0.5" style={{ fontSize: '9px', color: '#47ff01' }}>Rating: Excellent</p>
+        <p className="text-white/80" style={{ fontSize: '9px' }}>5 posts · 997 likes · 588 saves · 424 comments</p>
+      </div>
+      {/* Top content */}
+      <p className="font-semibold text-gray-700 mb-1" style={{ fontSize: '10px' }}>Top Content</p>
       {[
-        'Mama Cass Case Study — 6,120 reach',
-        'Cloud Tools post — 4,820 reach',
-        'Product Squad reel — 2,940 reach',
-      ].map((item, i) => (
-        <div key={item} className="flex items-center gap-2 mb-2">
-          <span className="text-xs font-black w-5" style={{ color: '#5c0386' }}>#{i + 1}</span>
-          <p className="text-xs text-gray-700">{item}</p>
+        { rank: '#1', title: 'Mama Cass Case Study', reach: '6,120', leads: '28' },
+        { rank: '#2', title: 'Cloud Tools post',      reach: '4,820', leads: '14' },
+        { rank: '#3', title: 'Product Squad reel',    reach: '2,940', leads: '3'  },
+      ].map(({ rank, title, reach, leads }) => (
+        <div key={rank} className="flex items-center gap-2 mb-1.5">
+          <span className="font-black w-5 shrink-0" style={{ fontSize: '9px', color: '#5c0386' }}>{rank}</span>
+          <p className="text-gray-700 flex-1" style={{ fontSize: '9.5px' }}>{title}</p>
+          <span className="text-gray-400 shrink-0" style={{ fontSize: '9px' }}>{reach} · {leads} leads</span>
         </div>
       ))}
     </div>
@@ -113,62 +137,105 @@ const ReportsScreen = () => (
 );
 
 const ChatScreen = () => (
-  <div className="flex flex-col h-full">
-    <div className="px-4 pt-4 pb-3 bg-white border-b border-gray-100">
-      <p className="text-xs font-black text-gray-800">Team Chat</p>
-      <p className="text-xs text-gray-400">TechNaija Solutions</p>
+  <div className="flex flex-col h-full overflow-hidden">
+    {/* Chat header */}
+    <div className="px-3 pt-3 pb-2 bg-white border-b border-gray-100 shrink-0">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '9px' }}>TN</div>
+        <div>
+          <p className="font-semibold text-gray-800" style={{ fontSize: '11px' }}>TechNaija Team</p>
+          <p className="text-gray-400" style={{ fontSize: '9px' }}>Livinus, Dusom + you</p>
+        </div>
+      </div>
     </div>
-    <div className="flex-1 px-3 pt-3 space-y-2 overflow-hidden">
-      {/* PM message */}
-      <div className="flex gap-2">
-        <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5" style={{ backgroundColor: '#5c0386' }}>PM</div>
-        <div className="bg-white rounded-2xl rounded-tl-none px-3 py-2 border border-gray-100 max-w-[75%]">
-          <p className="text-xs font-semibold text-gray-500 mb-0.5">Project Manager</p>
-          <p className="text-xs text-gray-700">Hey! Your June content calendar is ready for review. Check the pipeline tab.</p>
-          <p className="text-xs text-gray-400 mt-1">9:32 AM</p>
+    {/* Messages */}
+    <div className="flex-1 overflow-hidden px-2 pt-2 space-y-2 flex flex-col">
+      {/* Livinus message */}
+      <div className="flex gap-1.5 items-end">
+        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '7px', fontWeight: 700 }}>LE</div>
+        <div>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · PM</p>
+          <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 max-w-[160px]">
+            <p className="text-gray-700" style={{ fontSize: '9.5px' }}>Hey! Your June content calendar is ready. Check the pipeline tab 👍</p>
+            <p className="text-gray-400 mt-0.5 text-right" style={{ fontSize: '8px' }}>9:32 AM ✓</p>
+          </div>
         </div>
       </div>
       {/* Client reply */}
-      <div className="flex gap-2 justify-end">
-        <div className="rounded-2xl rounded-tr-none px-3 py-2 max-w-[75%]" style={{ backgroundColor: '#5c0386' }}>
-          <p className="text-xs text-white/90">Looks great! Can we swap post 3 and 4?</p>
-          <p className="text-xs text-white/50 mt-1">9:45 AM</p>
+      <div className="flex gap-1.5 items-end justify-end">
+        <div className="rounded-2xl rounded-br-none px-2.5 py-1.5 max-w-[160px]" style={{ backgroundColor: '#5c0386' }}>
+          <p className="text-white" style={{ fontSize: '9.5px' }}>Looks great! Can we swap post 3 and 4?</p>
+          <p className="text-white/50 mt-0.5 text-right" style={{ fontSize: '8px' }}>9:45 AM ✓✓</p>
         </div>
-        <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5" style={{ backgroundColor: '#47ff01' }}>
-          <span style={{ color: '#000' }}>TN</span>
+        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#47ff01', fontSize: '7px', fontWeight: 700, color: '#000' }}>TN</div>
+      </div>
+      {/* Dusom message */}
+      <div className="flex gap-1.5 items-end">
+        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#7c3aed', fontSize: '7px', fontWeight: 700 }}>DS</div>
+        <div>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Dusom · Designer</p>
+          <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 max-w-[160px]">
+            <p className="text-gray-700" style={{ fontSize: '9.5px' }}>Done! Updated the order. Graphics coming in 2hrs 🎨</p>
+            <p className="text-gray-400 mt-0.5 text-right" style={{ fontSize: '8px' }}>9:48 AM ✓</p>
+          </div>
         </div>
       </div>
-      {/* PM response */}
-      <div className="flex gap-2">
-        <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5" style={{ backgroundColor: '#5c0386' }}>PM</div>
-        <div className="bg-white rounded-2xl rounded-tl-none px-3 py-2 border border-gray-100 max-w-[75%]">
-          <p className="text-xs text-gray-700">Done! Updated the order. Designer is on the graphics now.</p>
-          <p className="text-xs text-gray-400 mt-1">9:47 AM</p>
-        </div>
-      </div>
-      {/* Status */}
-      <div className="flex gap-2 justify-end">
-        <div className="rounded-2xl rounded-tr-none px-3 py-2 max-w-[75%]" style={{ backgroundColor: '#5c0386' }}>
-          <p className="text-xs text-white/90">Perfect. Thanks!</p>
-          <p className="text-xs text-white/50 mt-1">9:48 AM</p>
-        </div>
-        <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ backgroundColor: '#47ff01' }}>
-          <span style={{ color: '#000' }}>TN</span>
+      {/* Voice note from Livinus */}
+      <div className="flex gap-1.5 items-end">
+        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '7px', fontWeight: 700 }}>LE</div>
+        <div>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · PM</p>
+          <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 flex items-center gap-1.5" style={{ minWidth: '130px' }}>
+            <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#5c0386' }}>
+              <span className="text-white" style={{ fontSize: '10px' }}>▶</span>
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-0.5 mb-0.5">
+                {[3,5,4,6,3,5,4,3,6,5,4,3].map((h, i) => (
+                  <div key={i} className="w-0.5 rounded-full" style={{ height: `${h * 2}px`, backgroundColor: i < 5 ? '#5c0386' : '#d1d5db' }} />
+                ))}
+              </div>
+              <p className="text-gray-400" style={{ fontSize: '8px' }}>0:23</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    {/* Input bar */}
-    <div className="px-3 py-2 border-t border-gray-100 bg-white">
-      <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-100">
-        <p className="text-xs text-gray-400 flex-1">Type a message...</p>
-        <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: '#5c0386' }}>
-          <span className="text-white" style={{ fontSize: '10px' }}>↑</span>
+    {/* WhatsApp-style input bar */}
+    <div className="px-2 py-2 bg-white border-t border-gray-100 shrink-0">
+      <div className="flex items-center gap-1.5">
+        {/* Attachment icon */}
+        <button className="w-7 h-7 flex items-center justify-center text-gray-400 shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
+          </svg>
+        </button>
+        {/* Text input */}
+        <div className="flex-1 bg-gray-100 rounded-full px-3 py-1.5">
+          <p className="text-gray-400" style={{ fontSize: '10px' }}>Message</p>
         </div>
+        {/* Camera */}
+        <button className="w-7 h-7 flex items-center justify-center text-gray-400 shrink-0">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </button>
+        {/* Mic */}
+        <button className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#5c0386' }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="1">
+            <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+            <path d="M19 10v2a7 7 0 01-14 0v-2" fill="none" strokeWidth="2"/>
+            <line x1="12" y1="19" x2="12" y2="23" strokeWidth="2"/>
+            <line x1="8" y1="23" x2="16" y2="23" strokeWidth="2"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
 );
 
+// ── Main ──────────────────────────────────────────────────────────────────
 export const ContentOSSection: React.FC = () => {
   const [activeNav, setActiveNav] = useState('dashboard');
 
@@ -210,25 +277,25 @@ export const ContentOSSection: React.FC = () => {
                 width: '260px',
                 height: '520px',
                 borderRadius: '3rem',
-                border: '6px solid #ffffff',
+                border: '7px solid #ffffff',
                 backgroundColor: '#1a1a2e',
                 boxShadow: '0 40px 100px rgba(0,0,0,0.5)',
               }}
             >
-              {/* Front camera notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 pt-1">
-                <div className="w-14 h-4 rounded-b-xl" style={{ backgroundColor: '#1a1a2e' }} />
+              {/* Notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
+                <div className="w-16 h-4 rounded-b-xl" style={{ backgroundColor: '#1a1a2e' }} />
               </div>
 
               {/* Screen */}
               <div className="absolute inset-0 bg-gray-50 flex flex-col" style={{ borderRadius: '2.6rem' }}>
-                {/* Status bar */}
-                <div className="flex items-center justify-between px-4 pt-7 pb-2 bg-white border-b border-gray-100 shrink-0">
+                {/* Status bar with logo */}
+                <div className="flex items-center justify-between px-4 pt-6 pb-2 bg-white border-b border-gray-100 shrink-0">
                   <div className="flex items-center gap-1.5">
                     <img src="/assets/favicon/favicon.png" alt="SleekaOS" className="w-4 h-4 object-contain rounded" />
-                    <span className="text-xs font-black" style={{ color: '#5c0386' }}>SleekaOS</span>
+                    <span className="font-medium" style={{ color: '#5c0386', fontSize: '11px', letterSpacing: '-0.01em' }}>SleekaOS</span>
                   </div>
-                  <span className="text-xs text-gray-400">9:41</span>
+                  <span className="text-gray-400" style={{ fontSize: '10px' }}>9:41</span>
                 </div>
 
                 {/* Active screen */}
@@ -236,16 +303,16 @@ export const ContentOSSection: React.FC = () => {
                   {screens[activeNav]}
                 </div>
 
-                {/* Bottom nav */}
-                <div className="bg-white border-t border-gray-100 pt-2 pb-3 shrink-0">
-                  <div className="flex items-center justify-around px-4">
+                {/* Bottom nav — WhatsApp style flat icons */}
+                <div className="bg-white border-t border-gray-100 pt-1.5 pb-2 shrink-0">
+                  <div className="flex items-center justify-around px-2">
                     {navItems.map(({ iconFile, label, id }) => {
                       const isActive = activeNav === id;
                       return (
                         <button
                           key={id}
                           onClick={() => setActiveNav(id)}
-                          className="flex flex-col items-center gap-0.5 py-1 min-w-0"
+                          className="flex flex-col items-center gap-0.5 py-1"
                           style={{ flex: 1 }}
                         >
                           <img
@@ -255,12 +322,15 @@ export const ContentOSSection: React.FC = () => {
                             style={{
                               filter: isActive
                                 ? 'invert(11%) sepia(99%) saturate(7492%) hue-rotate(273deg) brightness(70%) contrast(114%)'
-                                : 'invert(50%) sepia(10%) saturate(500%) hue-rotate(240deg) brightness(80%)',
+                                : 'invert(60%) sepia(5%) saturate(300%) hue-rotate(240deg) brightness(85%)',
                             }}
                           />
                           <span
-                            className="text-center font-semibold leading-tight"
-                            style={{ fontSize: '9px', color: '#000' }}
+                            style={{
+                              fontSize: '9px',
+                              fontWeight: 400,
+                              color: isActive ? '#5c0386' : '#6b7280',
+                            }}
                           >
                             {label}
                           </span>
@@ -274,11 +344,9 @@ export const ContentOSSection: React.FC = () => {
           </div>
         </Slide>
 
-        {/* Instruction text */}
-        <Slide delay={0.26} className="mt-6">
-          <p className="text-white/40 text-xs">
-            Tap the icons to explore the interface
-          </p>
+        {/* Instruction */}
+        <Slide delay={0.26} className="mt-5">
+          <p className="text-white/40 text-xs">Tap the icons to explore the interface</p>
         </Slide>
 
       </div>

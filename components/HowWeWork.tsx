@@ -1,5 +1,4 @@
 import React from 'react';
-import { Slide } from './PlugIntoSection';
 
 interface HowWeWorkProps {
   onNavigateToInfrastructure: () => void;
@@ -28,72 +27,61 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
     <GlobalStyles />
     <div className="container mx-auto px-6 md:px-12 max-w-2xl">
 
-      {/* Header */}
-      <Slide delay={0} className="mb-4">
-        <h2 className="text-4xl md:text-6xl font-bold text-geko-dark">Packages</h2>
-      </Slide>
-      <Slide delay={0.08} className="mb-12">
-        <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed">
-          Flexible monthly plans built for businesses that need more content, faster execution, and better marketing results.
-        </p>
-      </Slide>
+      {/* Header — no Slide transition */}
+      <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Packages</h2>
+      <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed mb-12">
+        Flexible monthly plans built for businesses that need more content, faster execution, and better marketing results.
+      </p>
 
-      {/* Card — purple gradient like PlugInto, no number, no green accent line */}
-      <Slide delay={0.14}>
-        <div
-          className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12 text-center"
-          style={{
-            background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
-            boxShadow: '0 32px 80px rgba(92,3,134,0.2)',
-          }}
-        >
-          {/* Icon */}
-          <div className="relative z-10 flex justify-center mb-5">
-            <div
-              className="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
-            >
-              <img
-                src="/assets/icons/packages/money.png"
-                alt="Packages"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Badge */}
-          <div className="flex justify-center mb-4 relative z-10">
-            <span
-              className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
-              style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
-            >
-              Risk-Free Model
-            </span>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight relative z-10">
-            Creative Infrastructure
-          </h3>
-
-          {/* Two-tier subtext — same style difference as original */}
-          <p className="text-white/90 text-base leading-relaxed mb-3 relative z-10">
-            Work with your dedicated creative department throughout the month, experience the value delivered, and pay at month end.
-          </p>
-          <p className="text-white/70 text-base leading-relaxed mb-10 relative z-10">
-            No recruitment costs. No long-term commitments. Just a flexible model designed to grow with your business.
-          </p>
-
-          {/* Button */}
-          <button
-            onClick={onNavigateToInfrastructure}
-            className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center relative z-10"
-            style={{ backgroundColor: '#47ff01', color: '#000' }}
+      {/* Card — purple gradient, no number, no green accent line, no Slide */}
+      <div
+        className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-12 text-center"
+        style={{
+          background: 'linear-gradient(135deg, #5c0386 0%, #4a0270 100%)',
+          boxShadow: '0 32px 80px rgba(92,3,134,0.2)',
+        }}
+      >
+        {/* Icon */}
+        <div className="relative z-10 flex justify-center mb-5">
+          <div
+            className="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(71,255,1,0.12)', border: '1px solid rgba(71,255,1,0.25)' }}
           >
-            View Packages
-          </button>
+            <img
+              src="/assets/icons/packages/money.png"
+              alt="Packages"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
-      </Slide>
+
+        {/* Badge label only — no title header */}
+        <div className="flex justify-center mb-6 relative z-10">
+          <span
+            className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+            style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
+          >
+            Risk-Free Model
+          </span>
+        </div>
+
+        {/* Subtext — spaced out since no header above */}
+        <p className="text-white/90 text-base leading-relaxed mb-4 relative z-10">
+          Work with your dedicated creative department throughout the month, experience the value delivered, and pay at month end.
+        </p>
+        <p className="text-white/70 text-base leading-relaxed mb-12 relative z-10">
+          No recruitment costs. No long-term commitments. Just a flexible model designed to grow with your business.
+        </p>
+
+        {/* Button */}
+        <button
+          onClick={onNavigateToInfrastructure}
+          className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center relative z-10"
+          style={{ backgroundColor: '#47ff01', color: '#000' }}
+        >
+          View Packages
+        </button>
+      </div>
 
     </div>
   </section>
