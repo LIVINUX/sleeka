@@ -98,7 +98,7 @@ const ReportsScreen = () => (
       <div className="bg-gray-50 rounded-xl p-2.5 mb-2 border border-gray-100">
         <p className="font-semibold text-gray-700 mb-1" style={{ fontSize: '10px' }}>Executive Summary</p>
         <p className="text-gray-600 leading-relaxed" style={{ fontSize: '9.5px' }}>
-          In Jun 2026, we published <span className="font-bold">5 pieces of content</span> reaching <span className="font-bold">13,880 accounts</span>, generating <span className="font-bold">45 qualified leads</span> at a <span className="font-bold text-[#5c0386]">14.47% engagement rate</span> — above industry average of 3.5%.
+          In Jun 2026, we published <span className="font-bold">22 pieces of content</span> reaching <span className="font-bold">13,880 accounts</span>, generating <span className="font-bold">45 qualified leads</span> at a <span className="font-bold text-[#5c0386]">14.47% engagement rate</span> — above industry average of 3.5%.
         </p>
       </div>
       {/* Metrics row */}
@@ -144,7 +144,7 @@ const ChatScreen = () => (
         <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '9px' }}>TN</div>
         <div>
           <p className="font-semibold text-gray-800" style={{ fontSize: '11px' }}>TechNaija Team</p>
-          <p className="text-gray-400" style={{ fontSize: '9px' }}>Livinus, Dusom + you</p>
+          <p className="text-gray-400" style={{ fontSize: '9px' }}>Livinus, Dusom, 2 others · 5 members</p>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@ const ChatScreen = () => (
       <div className="flex gap-1.5 items-end">
         <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '7px', fontWeight: 700 }}>LE</div>
         <div>
-          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · PM</p>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · Content Strategist</p>
           <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 max-w-[160px]">
             <p className="text-gray-700" style={{ fontSize: '9.5px' }}>Hey! Your June content calendar is ready. Check the pipeline tab 👍</p>
             <p className="text-gray-400 mt-0.5 text-right" style={{ fontSize: '8px' }}>9:32 AM ✓</p>
@@ -173,7 +173,7 @@ const ChatScreen = () => (
       <div className="flex gap-1.5 items-end">
         <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#7c3aed', fontSize: '7px', fontWeight: 700 }}>DS</div>
         <div>
-          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Dusom · Designer</p>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Dusom · Project Manager</p>
           <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 max-w-[160px]">
             <p className="text-gray-700" style={{ fontSize: '9.5px' }}>Done! Updated the order. Graphics coming in 2hrs 🎨</p>
             <p className="text-gray-400 mt-0.5 text-right" style={{ fontSize: '8px' }}>9:48 AM ✓</p>
@@ -184,7 +184,7 @@ const ChatScreen = () => (
       <div className="flex gap-1.5 items-end">
         <div className="w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#5c0386', fontSize: '7px', fontWeight: 700 }}>LE</div>
         <div>
-          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · PM</p>
+          <p className="text-gray-500 mb-0.5 ml-1" style={{ fontSize: '8px' }}>Livinus · Content Strategist</p>
           <div className="bg-white rounded-2xl rounded-bl-none px-2.5 py-1.5 border border-gray-100 flex items-center gap-1.5" style={{ minWidth: '130px' }}>
             <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#5c0386' }}>
               <span className="text-white" style={{ fontSize: '10px' }}>▶</span>
@@ -291,9 +291,9 @@ export const ContentOSSection: React.FC = () => {
               <div className="absolute inset-0 bg-gray-50 flex flex-col" style={{ borderRadius: '2.6rem' }}>
                 {/* Status bar with logo */}
                 <div className="flex items-center justify-between px-4 pt-6 pb-2 bg-white border-b border-gray-100 shrink-0">
-                  <div className="flex items-center gap-1.5">
-                    <img src="/assets/favicon/favicon.png" alt="SleekaOS" className="w-4 h-4 object-contain rounded" />
-                    <span className="font-medium" style={{ color: '#5c0386', fontSize: '11px', letterSpacing: '-0.01em' }}>SleekaOS</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <img src="/assets/favicon/favicon.png" alt="SleekaOS" style={{ width: '14px', height: '14px', objectFit: 'contain', borderRadius: '3px', display: 'block' }} />
+                    <span style={{ color: '#5c0386', fontSize: '11px', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1, display: 'block' }}>SleekaOS</span>
                   </div>
                   <span className="text-gray-400" style={{ fontSize: '10px' }}>9:41</span>
                 </div>
