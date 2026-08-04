@@ -40,7 +40,7 @@ export const Hero: React.FC = () => {
 
         <div className="flex justify-center mb-8 md:mb-12 px-4">
           <a
-            href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+            href="https://calendly.com/hello-sleekahq/discovery-call"
             target="_blank"
             rel="noopener noreferrer"
             className="slk-hero-btn px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all flex items-center gap-2 md:gap-3 group w-full sm:w-auto justify-center"

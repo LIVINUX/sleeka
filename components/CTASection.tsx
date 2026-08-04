@@ -81,7 +81,7 @@ export const CTASection: React.FC = () => {
             `}</style>
 
             <a
-              href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+              href="https://calendly.com/hello-sleekahq/discovery-call"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-btn group"
