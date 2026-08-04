@@ -7,13 +7,15 @@ export const VideoSection: React.FC = () => {
       {/* Container that overlaps slightly with the Hero's bottom curve area */}
       <div className="container mx-auto px-6 md:px-12 -mt-12 md:-mt-16 relative z-30">
         <div className="w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative group aspect-video bg-black">
-            {/* Video Player */}
+            {/* Video Player — lazy loaded, metadata-only preload for fast page load */}
             <video 
                 src="/assets/Sleeka Showreel.mp4" 
+                poster="/assets/Sleeka Showreel Poster.jpg"
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 className="w-full h-full object-cover"
             />
             

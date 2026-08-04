@@ -17,7 +17,6 @@ export const InternalTeamSection: React.FC = () => (
         </p>
       </Slide>
 
-      {/* White card */}
       <Slide delay={0.14}>
         <div
           className="rounded-[2.5rem] overflow-hidden"
@@ -25,14 +24,12 @@ export const InternalTeamSection: React.FC = () => (
         >
           <div className="p-10 md:p-14">
 
-            {/* Transition 1 — first paragraph */}
             <Slide delay={0}>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 Your marketing team does not need replacing. They need more creative capacity, specialized expertise, and strategic support to execute consistently at a high level.
               </p>
             </Slide>
 
-            {/* Transition 2 — bold paragraph + muted text together */}
             <Slide delay={0.1}>
               <div>
                 <p className="font-semibold text-lg leading-relaxed mb-6" style={{ color: '#5c0386' }}>
@@ -44,7 +41,7 @@ export const InternalTeamSection: React.FC = () => (
               </div>
             </Slide>
 
-            {/* Transition 3 — icons */}
+            {/* Icons — purple background, purple icon, purple text */}
             <Slide delay={0.18}>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
@@ -55,14 +52,14 @@ export const InternalTeamSection: React.FC = () => (
                   <div
                     key={label}
                     className="flex items-center gap-3 rounded-2xl px-5 py-4"
-                    style={{ backgroundColor: 'rgba(92,3,134,0.05)', border: '1px solid rgba(92,3,134,0.1)' }}
+                    style={{ backgroundColor: 'rgba(92,3,134,0.08)', border: '1px solid rgba(92,3,134,0.15)' }}
                   >
                     <img
                       src={`/assets/icons/internal-team/${iconFile}`}
                       alt={label}
                       className="w-8 h-8 object-contain shrink-0"
                     />
-                    <span className="font-semibold text-sm" style={{ color: '#5c0386' }}>{label}</span>
+                    <span className="font-bold text-sm" style={{ color: '#5c0386' }}>{label}</span>
                   </div>
                 ))}
               </div>

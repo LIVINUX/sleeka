@@ -108,6 +108,8 @@ export const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({
               <img
                 src={image}
                 alt={title}
+                loading="eager"
+                decoding="async"
                 className="w-full h-64 md:h-96 object-cover block"
               />
             </div>
@@ -205,6 +207,8 @@ export const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({
                   <img
                     src={img}
                     alt={`${section.title} ${iIdx + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-auto object-cover block"
                   />
                 </div>
