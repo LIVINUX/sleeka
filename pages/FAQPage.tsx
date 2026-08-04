@@ -255,7 +255,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
         @keyframes slkFaqBobble { 0% { box-shadow: 0 0 0 0 rgba(71,255,1,0.6); } 60% { box-shadow: 0 0 0 12px rgba(71,255,1,0); } 100% { box-shadow: 0 0 0 0 rgba(71,255,1,0); } }
       `}</style>
       <PagePreloader />
-      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} onNavigateToPackages={onNavigateToPackages} />
+      <Navbar forceColored onNavigateToFAQ={onNavigateToFAQ} onNavigateHome={onNavigateHome} onNavigateToSection={onNavigateToSection} />
 
       {/* Hero */}
       <section className="bg-geko-dark pt-32 pb-20 px-6 text-center">
@@ -326,7 +326,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
               Book a free discovery call and we will answer every question you have: no pressure, no obligation.
             </p>
             <a
-              href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+              href="https://calendly.com/hello-sleekahq/discovery-call"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-bold text-base transition-all hover:scale-105 duration-300 group"

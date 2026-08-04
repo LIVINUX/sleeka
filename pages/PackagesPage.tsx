@@ -8,7 +8,7 @@ type ActivePackage = 'growth' | 'authority' | null;
 // ─── SHARED: Exact Hero Button ─────────────────────────────────────────────
 const HeroButton: React.FC = () => (
   <a
-    href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+    href="https://calendly.com/hello-sleekahq/discovery-call"
     target="_blank"
     rel="noopener noreferrer"
     className="slk-pkg-btn px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center gap-2 md:gap-3 group whitespace-nowrap"
@@ -37,7 +37,7 @@ const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHo
       <img src="/assets/1.png" alt="Sleeka" className="h-12 md:h-16 w-auto" />
     </button>
     <a
-      href="https://calendar.app.google/2nWbeLXuC52dvZtq5"
+      href="https://calendly.com/hello-sleekahq/discovery-call"
       target="_blank"
       rel="noopener noreferrer"
       className="px-5 py-2 rounded-full font-bold text-sm transition-all hover:scale-105 duration-300 whitespace-nowrap"
@@ -48,28 +48,28 @@ const MinimalHeader: React.FC<{ onNavigateHome?: () => void }> = ({ onNavigateHo
   </header>
 );
 
-// ─── SHARED: Trust Logos — colored logos, no card background ─────────────
+// ─── SHARED: Trust Logos — two layout versions ────────────────────────────
 // Change trustLayout below: 'grid' = 2x2, 'row' = single row standalone
 const trustLayout: 'grid' | 'row' = 'grid';
 
 const logos = [
-  { file: 'bluechip.png', name: 'Bluechip', hGrid: 64, hRow: 56 },
-  { file: 'premiabn.png', name: 'PremiaBN', hGrid: 56, hRow: 48 },
-  { file: 'felicia.png',  name: 'Felicia',  hGrid: 56, hRow: 48 },
-  { file: 'citisquare.png', name: 'Citisquare', hGrid: 56, hRow: 48 },
+  { file: '1.png', name: 'Bluechip', hGrid: 80, hRow: 70 },
+  { file: '3.png', name: 'Ems',      hGrid: 72, hRow: 62 },
+  { file: '4.png', name: 'PBN',      hGrid: 72, hRow: 62 },
+  { file: '5.png', name: 'Felicia',  hGrid: 48, hRow: 40 },
 ];
 
 const TrustLogos: React.FC = () => {
   if (trustLayout === 'grid') {
     return (
-      <div className="grid grid-cols-2 gap-8 max-w-xs mx-auto">
+      <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
         {logos.map(({ file, name, hGrid }) => (
-          <div key={name} className="flex items-center justify-center">
+          <div key={name} className="flex items-center justify-center bg-white rounded-2xl p-5">
             <img
-              src={`/assets/Client logos/colored/${file}`}
+              src={`/assets/Client logos/${file}`}
               alt={name}
               style={{ height: `${hGrid}px` }}
-              className="w-auto object-contain"
+              className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             />
           </div>
         ))}
@@ -81,10 +81,10 @@ const TrustLogos: React.FC = () => {
       {logos.map(({ file, name, hRow }) => (
         <img
           key={name}
-          src={`/assets/Client logos/colored/${file}`}
+          src={`/assets/Client logos/${file}`}
           alt={name}
           style={{ height: `${hRow}px` }}
-          className="w-auto object-contain"
+          className="w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
         />
       ))}
     </div>
@@ -322,7 +322,7 @@ const VersionA: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-2xl mx-auto p-8 text-center">
+      <div className="max-w-2xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
         <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
@@ -429,7 +429,7 @@ const VersionB: React.FC<{
 
     {/* Trust logos */}
     <section className="pb-10 px-6 bg-white">
-      <div className="max-w-3xl mx-auto p-8 text-center">
+      <div className="max-w-3xl mx-auto p-8 rounded-2xl text-center" style={{ backgroundColor: '#e3fed8' }}>
         <p className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">Brands already running on our system</p>
         <TrustLogos />
       </div>
