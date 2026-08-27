@@ -30,7 +30,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
       {/* Header — no Slide transition */}
       <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Packages</h2>
       <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed mb-12">
-        Flexible monthly plans built for businesses that need more content, faster execution, and better marketing results.
+        Flexible monthly plans built for you if you need more content, faster execution, and better marketing results.
       </p>
 
       {/* Card — purple gradient, no number, no green accent line, no Slide */}

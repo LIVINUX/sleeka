@@ -53,7 +53,7 @@ const cards = [
     iconFile: 'dedicated.png',
     iconLabel: 'Dedicated Team',
     title: 'Dedicated To Your Business',
-    body: 'Unlike traditional agencies where teams are shared across multiple clients, Sleeka assigns a dedicated team focused entirely on your business. They learn your brand, understand your goals, and work as a seamless extension of your internal team.',
+    body: 'Unlike traditional agencies where teams are shared across multiple clients, we assign a dedicated team focused entirely on your business. They learn your brand, understand your goals, and work as a seamless extension of your internal team.',
   },
   {
     number: '02',
@@ -96,7 +96,7 @@ export const PlugIntoSection: React.FC = () => (
 
       <Slide delay={0.14} className="mt-5 mb-20">
         <p className="text-lg md:text-xl leading-relaxed max-w-xl mx-auto" style={{ color: '#000' }}>
-          Instead of juggling freelancers or building an expensive in-house team, businesses get access to a dedicated team that delivers measurable results through a flexible monthly subscription.
+          Instead of juggling freelancers or building an expensive in-house team, you get access to a dedicated team that delivers measurable results through a flexible monthly subscription.
         </p>
       </Slide>
 

@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "How long before I start seeing results?",
-    answer: "Most clients notice improvements in clarity, consistency, and engagement within the first 30 to 60 days. Stronger outcomes like leads and conversions build over time as the system compounds. We recommend staying at least two months to properly evaluate results."
+    answer: "You'll likely notice improvements in clarity, consistency, and engagement within the first 30 to 60 days. Stronger outcomes like leads and conversions build over time as the system compounds. We recommend staying at least two months to properly evaluate results."
   },
 ];
 

@@ -9,10 +9,10 @@ export const AgencyDescription: React.FC = () => {
             Built for Modern Marketing
           </h2>
           <p className="text-lg md:text-xl md:leading-relaxed text-gray-600 font-normal max-w-4xl mb-6">
-            At Sleeka, we provide the creative infrastructure that helps businesses turn content into a predictable system for visibility, lead generation, and revenue growth.
+            At Sleeka, we provide the creative infrastructure that helps you turn content into a predictable system for visibility, lead generation, and revenue growth.
           </p>
           <p className="text-lg md:text-xl md:leading-relaxed text-gray-600 font-normal max-w-4xl">
-            Instead of juggling freelancers or building an expensive in-house team, businesses get access to a dedicated team that delivers measurable results through a flexible monthly subscription.
+            Instead of juggling freelancers or building an expensive in-house team, you get access to a dedicated team that delivers measurable results through a flexible monthly subscription.
           </p>
         </div>
       </div>

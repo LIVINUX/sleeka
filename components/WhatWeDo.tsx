@@ -20,7 +20,7 @@ export const WhatWeDo: React.FC = () => {
             video, and animation systems that power consistent marketing.
           </p>
           <p className="text-xl md:text-2xl text-gray-600 font-light max-w-4xl leading-relaxed mt-6">
-            We help businesses stay visible, communicate clearly, and turn attention into revenue
+            We help you stay visible, communicate clearly, and turn attention into revenue
             — all through a flexible monthly subscription, without the cost or complexity of
             building an in-house creative team.
           </p>

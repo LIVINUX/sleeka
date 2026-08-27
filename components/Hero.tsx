@@ -34,8 +34,9 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-4">
-          Unlock consistent visibility, stronger brand authority, and revenue growth with a
-          flexible on demand creative team powered by top African talent.
+          From strategy to execution, you get a dedicated team that helps you attract the right
+          customers and turn your content into a system for growth without the cost and stress
+          of building a full in-house marketing team.
         </p>
 
         <div className="flex justify-center mb-8 md:mb-12 px-4">
