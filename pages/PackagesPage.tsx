@@ -250,13 +250,13 @@ const VersionA: React.FC<{
 
     {/* Hero */}
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
-      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-1">For businesses serious about growth</p>
+      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-1">Built for growth-focused teams</p>
       <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You are already spending on content.<br />
         <span style={{ color: '#47ff01', display: 'block', marginTop: '0.4em' }}>Is it working?</span>
       </h1>
       <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-6 mb-10">
-        Most businesses create content. Few have a system behind it. Sleeka builds the system.
+        You're probably already creating content. Few have a system behind it. Sleeka builds the system.
       </p>
       <div className="flex justify-center">
         <HeroButton />
@@ -384,7 +384,7 @@ const VersionB: React.FC<{
     {/* Problem */}
     <section className="py-16 px-6 bg-white">
       <div className="max-w-2xl mx-auto">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#5c0386] mb-6">The problem most businesses face</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-[#5c0386] mb-6">The problem you're probably facing</p>
         <div className="space-y-4">
           {[
             { label: 'Freelancers', text: 'Unreliable, inconsistent, and always juggling other clients. Quality drops. Deadlines slip.' },
