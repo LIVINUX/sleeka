@@ -33,8 +33,10 @@ export const Hero: React.FC = () => {
           Your creative<br />department<br className="hidden sm:block" /> on demand
         </h1>
 
-        <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-4">
-          From strategy to execution, you get a dedicated team that helps you attract the right customers and turn your content into a system for growth.
+        <p className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-2 sm:px-4">
+          From strategy to execution, you get a dedicated team that helps you attract the right
+          customers and turn your content into a system for growth without the cost and stress
+          of building a full in-house marketing team.
         </p>
 
         <div className="flex justify-center mb-8 md:mb-12 px-4">
