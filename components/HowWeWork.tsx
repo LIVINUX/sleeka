@@ -80,12 +80,15 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
             style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
-              Dedicated To Your Business
+              Creative Infrastructure
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
-              Unlike traditional agencies where teams are shared across multiple clients, you get a
-              team of marketing specialists focused entirely on your business. They learn your
-              business, understand your goals, and work as a seamless extension of your internal team.
+              Your full creative department on a flexible monthly subscription, delivering
+              design, video, and animation systems that fuel marketing campaigns and brand growth.
+            </p>
+            <p className="text-white/80 text-base leading-relaxed mb-10">
+              Perfect for startups and growing businesses that need consistent, high quality
+              creative output without the cost or complexity of building an in house team.
             </p>
             <button
               onClick={(e) => { e.stopPropagation(); onNavigateToInfrastructure(); }}
@@ -106,43 +109,21 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10"
             style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">
-              Work Directly With Your Team
+              Creative Talent Outsourcing
             </h3>
             <p className="text-white/90 text-base leading-relaxed mb-3">
-              Collaborate directly with your Project Manager, Growth and Performance Marketer, Lead
-              Generation Specialist, Content Strategist, Graphic Designer and Video Editor in one
-              shared workspace. No long email chains. No communication bottlenecks. Just faster
-              feedback, smoother collaboration, and consistent execution.
+              Scale faster with vetted, multi skilled creative professionals trained in graphics
+              design, animation, and video production, all in one.
+            </p>
+            <p className="text-white/80 text-base leading-relaxed mb-10">
+              Our talents combine technical expertise, AI enabled workflows, and soft skills,
+              integrating seamlessly with your team to execute work efficiently and effectively.
             </p>
             <button disabled
               className="slk-btn-soon px-8 py-4 rounded-full font-bold text-lg w-fit cursor-not-allowed"
               style={{ backgroundColor: '#47ff01', color: '#000' }}>
               Coming Soon
             </button>
-          </div>
-        </Card>
-
-        {/* Card 3 */}
-        <Card>
-          <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
-            <img src="/assets/creative-infrastructure.jpg" alt="SleekaOS operating system" className="w-full h-full object-cover object-top block" />
-          </div>
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10" style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
-            <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">Operating System<br />Powered By SleekaOS</h3>
-            <p className="text-white/90 text-base leading-relaxed mb-10">Track what&apos;s planned, what&apos;s in progress and how your marketing activities are performing, with clear visibility into the work being done. Your marketing stays organized, measurable, and focused on driving business results.</p>
-            <button disabled className="slk-btn-soon px-8 py-4 rounded-full font-bold text-lg w-fit cursor-not-allowed" style={{ backgroundColor: '#47ff01', color: '#000' }}>Coming Soon</button>
-          </div>
-        </Card>
-
-        {/* Card 4 */}
-        <Card>
-          <div style={{ height: 'clamp(260px, 45vw, 380px)' }}>
-            <img src="/assets/talent-outsourcing.jpg" alt="Marketing team scaling" className="w-full h-full object-cover object-top block" />
-          </div>
-          <div className="bg-[#5c0386] px-8 md:px-12 pb-12 pt-8 relative z-10" style={{ marginTop: '-2rem', borderRadius: '2rem 2rem 0 0' }}>
-            <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-5 tracking-tight leading-tight">Scale Without Hiring</h3>
-            <p className="text-white/90 text-base leading-relaxed mb-10">Access the capabilities of a full marketing department without recruitment costs, payroll overhead, or management stress of building one yourself. Simply plug in and get the execution your business needs.</p>
-            <button disabled className="slk-btn-soon px-8 py-4 rounded-full font-bold text-lg w-fit cursor-not-allowed" style={{ backgroundColor: '#47ff01', color: '#000' }}>Coming Soon</button>
           </div>
         </Card>
 
