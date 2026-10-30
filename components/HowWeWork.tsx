@@ -62,10 +62,10 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
     <div className="container mx-auto px-6 md:px-12">
 
       <div className="mb-12">
-        <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">How we work</h2>
+        <h2 className="text-5xl md:text-7xl font-bold mb-6 text-geko-dark">Plug Into a Complete Marketing Department</h2>
         <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
-          We help growing businesses build creative capacity through flexible, outcome driven
-          solutions that power visibility, authority, and revenue.
+          Instead of juggling freelancers or building an expensive in-house team, you get access to
+          a dedicated team that delivers measurable results through a flexible monthly subscription.
         </p>
       </div>
 
