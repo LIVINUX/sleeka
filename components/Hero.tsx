@@ -11,12 +11,12 @@ export const Hero: React.FC = () => {
           className="font-black leading-none mb-6 md:mb-8 px-2"
           style={{ fontSize: 'clamp(2.8rem, 9vw, 9rem)', letterSpacing: '-0.02em' }}
         >
-          Your full marketing team,<br className="hidden sm:block" /> on demand
+          Your creative<br />department<br className="hidden sm:block" /> on demand
         </h1>
 
         <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-4">
-          Get the people, strategy and execution you need to attract the right customers, generate
-          leads and turn your marketing into a consistent system for growth.
+          Unlock consistent visibility, stronger brand authority, and revenue growth with a
+          flexible on demand creative team powered by top African talent.
         </p>
 
         <div className="flex justify-center mb-8 md:mb-12 px-4">
