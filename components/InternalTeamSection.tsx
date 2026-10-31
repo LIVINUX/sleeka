@@ -26,14 +26,14 @@ export const InternalTeamSection: React.FC = () => (
 
             <Slide delay={0}>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Your marketing team does not need replacing. They need more creative capacity, specialized expertise, and strategic support to execute consistently at a high level.
+                Your team may have the ideas and direction but lack the capacity, specialized skills or execution needed to keep marketing moving.
               </p>
             </Slide>
 
             <Slide delay={0.1}>
               <div>
                 <p className="font-semibold text-lg leading-relaxed mb-6" style={{ color: '#5c0386' }}>
-                  Sleeka works alongside your existing team, not against it, helping you launch campaigns faster, produce more content, and drive better results without increasing headcount.
+                  Sleeka works alongside your existing team, bringing additional marketing expertise and execution across strategy, campaigns, lead generation and creative production.
                 </p>
                 <p className="text-gray-400 text-base leading-relaxed mb-10">
                   Think of us as the missing piece between your team's current capacity and your growth goals.
@@ -41,25 +41,26 @@ export const InternalTeamSection: React.FC = () => (
               </div>
             </Slide>
 
-            {/* Icons — purple background, purple icon, purple text */}
+            {/* Icons — black background, green icon, white text */}
             <Slide delay={0.18}>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
-                  { iconFile: 'launch-faster.png',  label: 'Launch faster' },
-                  { iconFile: 'more-content.png',   label: 'More content output' },
-                  { iconFile: 'better-results.png', label: 'Better results' },
+                  { iconFile: 'launch-faster.png',  label: 'Launch Campaigns Faster' },
+                  { iconFile: 'more-content.png',   label: 'Get More Done' },
+                  { iconFile: 'better-results.png', label: 'Scale Smarter' },
                 ].map(({ iconFile, label }) => (
                   <div
                     key={label}
                     className="flex items-center gap-3 rounded-2xl px-5 py-4"
-                    style={{ backgroundColor: 'rgba(92,3,134,0.08)', border: '1px solid rgba(92,3,134,0.15)' }}
+                    style={{ backgroundColor: '#000000', border: '1px solid #000000' }}
                   >
                     <img
                       src={`/assets/icons/internal-team/${iconFile}`}
                       alt={label}
                       className="w-8 h-8 object-contain shrink-0"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(96%) saturate(1041%) hue-rotate(46deg) brightness(105%) contrast(103%)' }}
                     />
-                    <span className="font-bold text-sm" style={{ color: '#5c0386' }}>{label}</span>
+                    <span className="font-bold text-sm" style={{ color: '#ffffff' }}>{label}</span>
                   </div>
                 ))}
               </div>
