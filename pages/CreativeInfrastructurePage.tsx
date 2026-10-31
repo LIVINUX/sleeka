@@ -3,7 +3,6 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CTASection } from '../components/CTASection';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { PagePreloader } from '../components/PagePreloader';
 
 interface Props {
   onBack: () => void;
