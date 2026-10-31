@@ -53,28 +53,28 @@ const cards = [
     iconFile: 'dedicated.png',
     iconLabel: 'Dedicated Team',
     title: 'Dedicated To Your Business',
-    body: 'Unlike traditional agencies where teams are shared across multiple clients, we assign a dedicated team focused entirely on your business. They learn your brand, understand your goals, and work as a seamless extension of your internal team.',
+    body: 'Unlike traditional agencies where teams are shared across multiple clients, you get a team of marketing specialists focused entirely on your business. They learn your business, understand your goals, and work as a seamless extension of your internal team.',
   },
   {
     number: '02',
     iconFile: 'direct-access.png',
     iconLabel: 'Direct Access',
-    title: 'Direct Access To Your Team',
-    body: 'Collaborate directly with your Project Manager, Content Strategist, Graphic Designer, and Video Editor in one shared workspace. No long email chains. No communication bottlenecks. Just faster feedback, smoother collaboration, and consistent execution.',
+    title: 'Work Directly With Your Team',
+    body: 'Collaborate directly with your Project Manager, Growth and Performance Marketer, Lead Generation Specialist, Content Strategist, Graphic Designer and Video Editor in one shared workspace. No long email chains. No communication bottlenecks. Just faster feedback, smoother collaboration, and consistent execution.',
   },
   {
     number: '03',
     iconFile: 'content-system.png',
-    iconLabel: 'Content System',
-    title: 'Powered By A Proven Content System',
-    body: 'Every deliverable is managed through our Content OS, giving you complete visibility into what is planned, in production, ready for review, and published. Your content stays organized, measurable, and focused on driving business results.',
+    iconLabel: 'Operating System',
+    title: 'Powered By SleekaOS',
+    body: "Track what's planned, what's in progress and how your marketing activities are performing, with clear visibility into the work being done. Your marketing stays organized, measurable, and focused on driving business results.",
   },
   {
     number: '04',
     iconFile: 'scale.png',
     iconLabel: 'Scale Up',
     title: 'Scale Without Hiring',
-    body: 'Access the creative capacity of a full department without recruitment costs, payroll overhead, or management stress. Simply plug in and start executing.',
+    body: 'Access the capabilities of a full marketing department without recruitment costs, payroll overhead, or management stress of building one yourself. Simply plug in and get the execution your business needs.'
   },
 ];
 
@@ -90,7 +90,7 @@ export const PlugIntoSection: React.FC = () => (
 
       <Slide delay={0.08} className="mt-4">
         <h2 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#5c0386' }}>
-          Plug Into a Complete<br className="hidden md:block" /> Creative Department
+          Plug Into a Complete<br className="hidden md:block" /> Marketing Department
         </h2>
       </Slide>
 
