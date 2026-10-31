@@ -58,7 +58,7 @@ export const OurWorks: React.FC<OurWorksProps> = ({ onNavigateToCaseStudy }) => 
         </Slide>
         <Slide delay={0.08}>
           <p className="text-lg text-gray-600 font-normal mb-2">
-            Campaigns, assets, and content systems produced through our creative system.
+            See how we help brands turn marketing strategy into consistent execution and growth.
           </p>
         </Slide>
         <Slide delay={0.14}>

@@ -184,9 +184,9 @@ function App() {
           <div id="work"><OurWorks onNavigateToCaseStudy={navigateToCaseStudy} /></div>
           {/* 5. Already Have An Internal Team? */}
           <InternalTeamSection />
-          {/* 6. Content Operating System */}
+          {/* 6. Powered By SleekaOS */}
           <ContentOSSection />
-          {/* 7. The Creative Engine */}
+          {/* 7. The People Behind Your Marketing */}
           <div id="talent"><TalentShowcase /></div>
           {/* 8. Testimonials */}
           <Testimonials />

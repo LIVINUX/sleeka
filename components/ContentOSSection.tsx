@@ -252,7 +252,7 @@ export const ContentOSSection: React.FC = () => {
 
         <Slide delay={0}>
           <span className="inline-block text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#47ff01', backgroundColor: 'rgba(255,255,255,0.1)', padding: '6px 18px', borderRadius: '999px', border: '1px solid rgba(71,255,1,0.2)' }}>
-            Content Operating System
+            Operating System
           </span>
         </Slide>
 

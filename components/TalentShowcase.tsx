@@ -105,12 +105,12 @@ export const TalentShowcase: React.FC = () => (
       <div className="mb-14">
         <Slide delay={0}>
           <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-6">
-            The Creative Engine
+            The People Behind Your Marketing
           </h2>
         </Slide>
         <Slide delay={0.08}>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl">
-            Trained in graphics design, video editing and animation, all in one.
+            Strategy, growth and creative execution working together.
           </p>
         </Slide>
       </div>
