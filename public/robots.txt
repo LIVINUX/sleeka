@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sleekahq.vercel.app/sitemap.xml
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.sleekahq.com/sitemap.xml

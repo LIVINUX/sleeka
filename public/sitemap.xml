@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sleekahq.vercel.app/</loc>
+    <loc>https://www.sleekahq.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/packages</loc>
+    <loc>https://www.sleekahq.com/packages</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/faq</loc>
+    <loc>https://www.sleekahq.com/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/privacy</loc>
+    <loc>https://www.sleekahq.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/terms</loc>
+    <loc>https://www.sleekahq.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/case-study/premiabn</loc>
+    <loc>https://www.sleekahq.com/case-study/premiabn</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/case-study/bluechip-technologies</loc>
+    <loc>https://www.sleekahq.com/case-study/bluechip-technologies</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/case-study/emsxchange</loc>
+    <loc>https://www.sleekahq.com/case-study/emsxchange</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sleekahq.vercel.app/case-study/felicia-transport</loc>
+    <loc>https://www.sleekahq.com/case-study/felicia-transport</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
