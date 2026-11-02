@@ -4,15 +4,15 @@ import { Zap, TrendingUp, Check, X } from 'lucide-react';
 const features = [
   {
     icon: Zap,
-    title: 'Scalable Content Engine for Growth',
+    title: 'Scalable Marketing Team',
     description:
-      "We act as your full creative department, delivering content exactly when you need them. With our scalable model, you can adjust creative capacity based on campaign demand, without the stress of hiring, management, or delays.",
+      'We act as your dedicated marketing team, delivering strategy and execution exactly when you need them. With our flexible model, you can scale your marketing capacity based on business and campaign demands, without the stress of hiring or management.',
   },
   {
     icon: TrendingUp,
-    title: 'Revenue-Focused Creative Systems',
+    title: 'Strategy-Led Marketing Systems',
     description:
-      "We don’t just create content, we build structured systems that turn content into leads and revenue, where every piece is intentionally designed to attract attention, build trust, and convert into customers, eliminating random posting and guesswork.",
+      "We don't just execute marketing activities; we build structured systems that turn marketing into a consistent source of leads and growth. Every activity is intentionally designed to attract attention, build trust, and convert potential customers, eliminating random marketing and guesswork.",
   },
 ];
 
@@ -62,7 +62,7 @@ export const WhyChooseUs: React.FC = () => {
             Why Businesses Choose Sleeka
           </h2>
           <p className="text-white/70 text-lg">
-            Scalable creative infrastructure built to drive performance, leads, and revenue growth.
+            A dedicated marketing team and structured systems built to drive performance, generate leads, and support business growth.
           </p>
         </div>
 
