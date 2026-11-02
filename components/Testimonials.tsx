@@ -9,7 +9,7 @@ const reviews = [
     videoUrl: ""
   },
   {
-    text: "After working with Sleeka, our content became more consistent and our engagement improved significantly. The turnaround time, communication, and creative execution felt like having an internal creative department.",
+    text: "Working with Sleeka brought more structure and consistency to our marketing. From strategy to execution, everything became more coordinated, communication improved and having a dedicated team made managing our marketing much easier.",
     author: "Joy Chinwe",
     role: "Growth Manager, Atas",
     videoUrl: ""
