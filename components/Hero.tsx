@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-200 font-light leading-relaxed mb-10 md:mb-16 px-2 sm:px-4">
-          Get the people, strategy and execution you need to attract the right customers, generate leads and turn your marketing into a consistent system for growth.
+          Get the people, strategy and execution you need to attract the right customers and turn your marketing into a consistent system for growth.
         </p>
 
         <div className="flex justify-center mb-8 md:mb-12 px-4">
