@@ -60,7 +60,7 @@ const cards = [
     iconFile: 'direct-access.png',
     iconLabel: 'Direct Access',
     title: 'Work Directly With Your Team',
-    body: 'Collaborate directly with your Project Manager, Growth and Performance Marketer, Lead Generation Specialist, Content Strategist, Graphic Designer and Video Editor in one shared workspace. No long email chains. No communication bottlenecks. Just faster feedback, smoother collaboration, and consistent execution.',
+    body: 'Collaborate directly with your Project Manager, Growth and Performance Marketer, Lead Generation Specialist, Content Strategist, Graphic Designer and Video Editor in one shared workspace. No long email chains. No communication bottlenecks. Just faster feedback and consistent execution.',
   },
   {
     number: '03',

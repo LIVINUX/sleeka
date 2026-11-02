@@ -6,13 +6,13 @@ export const InternalTeamSection: React.FC = () => (
     <div className="container mx-auto max-w-4xl">
 
       <Slide delay={0}>
-        <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-4" style={{ color: '#5c0386' }}>
+        <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ color: '#5c0386' }}>
           Already Have An Internal Team?
         </h2>
       </Slide>
 
       <Slide delay={0.08}>
-        <p className="text-lg md:text-xl font-semibold mb-12" style={{ color: '#000' }}>
+        <p className="text-base md:text-lg font-semibold mb-12" style={{ color: '#000' }}>
           We Don't Replace Great Teams. We Help Them Do More.
         </p>
       </Slide>
