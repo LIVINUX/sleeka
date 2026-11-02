@@ -1,15 +1,15 @@
 import React from 'react';
-import { Zap, TrendingUp, Check, X } from 'lucide-react';
+import { Users, Target, Check, X } from 'lucide-react';
 
 const features = [
   {
-    icon: Zap,
+    icon: Users,
     title: 'Scalable Marketing Team',
     description:
       'We act as your dedicated marketing team, delivering strategy and execution exactly when you need them. With our flexible model, you can scale your marketing capacity based on business and campaign demands, without the stress of hiring or management.',
   },
   {
-    icon: TrendingUp,
+    icon: Target,
     title: 'Strategy-Led Marketing Systems',
     description:
       "We don't just execute marketing activities; we build structured systems that turn marketing into a consistent source of leads and growth. Every activity is intentionally designed to attract attention, build trust, and convert potential customers, eliminating random marketing and guesswork.",

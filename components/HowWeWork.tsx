@@ -30,7 +30,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
       {/* Header — no Slide transition */}
       <h2 className="text-4xl md:text-6xl font-bold text-geko-dark mb-4">Packages</h2>
       <p className="text-lg md:text-xl text-gray-600 font-normal max-w-3xl leading-relaxed mb-12">
-        Flexible monthly plans built for you if you need more content, faster execution, and better marketing results.
+        Flexible monthly plans built around your business, giving you the people, strategy and execution to manage marketing more effectively.
       </p>
 
       {/* Card — purple gradient, no number, no green accent line, no Slide */}
@@ -61,16 +61,16 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
             className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
             style={{ backgroundColor: 'rgba(71,255,1,0.15)', color: '#47ff01', border: '1px solid rgba(71,255,1,0.3)' }}
           >
-            Risk-Free Model
+            Scalable Model
           </span>
         </div>
 
         {/* Subtext — spaced out since no header above */}
         <p className="text-white/90 text-base leading-relaxed mb-4 relative z-10">
-          Work with your dedicated creative department throughout the month, experience the value delivered, and pay at month end.
+          Get a dedicated marketing team without recruitment costs, long-term contracts, or the burden of managing multiple professionals.
         </p>
         <p className="text-white/70 text-base leading-relaxed mb-12 relative z-10">
-          No recruitment costs. No long-term commitments. Just a flexible model designed to grow with your business.
+          Choose a plan and scale your marketing support as your business grows.
         </p>
 
         {/* Button */}
@@ -79,7 +79,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
           className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center relative z-10"
           style={{ backgroundColor: '#47ff01', color: '#000' }}
         >
-          View Packages
+          View packages
         </button>
       </div>
 
