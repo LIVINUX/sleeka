@@ -97,10 +97,10 @@ export const Footer: React.FC<FooterProps> = ({
           <div>
             <h4 className="font-bold text-gray-900 mb-4">Follow Us</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
+              <a href="https://www.instagram.com/sleekahq" target="_blank" rel="noreferrer" aria-label="Sleeka on Instagram" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
+              <a href="https://www.linkedin.com/company/sleeka/" target="_blank" rel="noreferrer" aria-label="Sleeka on LinkedIn" className="w-10 h-10 rounded-full bg-[#5c0386] flex items-center justify-center text-white hover:bg-[#7a04b3] transition-all hover:scale-110">
                 <Linkedin size={20} />
               </a>
             </div>
