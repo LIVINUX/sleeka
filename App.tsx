@@ -194,7 +194,7 @@ function App() {
           <WhyChooseUs />
           {/* 11. Packages */}
           <div id="services">
-            <HowWeWork onNavigateToInfrastructure={navigateToCreativeInfra} />
+            <HowWeWork onNavigateToInfrastructure={navigateToPackages} />
           </div>
           {/* 12. FAQ */}
           <HomeFAQ onNavigateToFAQ={navigateToFAQ} />
