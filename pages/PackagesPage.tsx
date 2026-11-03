@@ -334,16 +334,6 @@ const VersionA: React.FC<{
       </div>
     </section>
 
-    {/* Tailored support highlight */}
-    <section className="pb-4 px-6">
-      <div className="max-w-3xl mx-auto">
-        <div className="flex items-start gap-3 p-4 rounded-2xl border border-[#47ff01]/30 bg-[#47ff01]/5">
-          <div className="w-2 h-2 rounded-full bg-[#47ff01] shrink-0 mt-1.5"></div>
-          <p className="text-sm text-gray-700 leading-relaxed">Your team, the services included and the level of support are tailored to your business needs. We determine the right setup after understanding your goals during a discovery call.</p>
-        </div>
-      </div>
-    </section>
-
     {/* Urgency */}
     <section className="pb-6 px-6">
       <div className="max-w-3xl mx-auto">
