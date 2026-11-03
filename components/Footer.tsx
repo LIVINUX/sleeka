@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
               <img src="/assets/Logo_2.png" alt="Sleeka" className="h-8 w-auto" />
             </a>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Your creative partner for content that drives measurable results.
+              Your marketing team on demand, built to drive your business growth.
             </p>
           </div>
 

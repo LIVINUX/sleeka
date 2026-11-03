@@ -38,8 +38,8 @@ const tableRows = [
     isSleeka: false,
   },
   {
-    option: 'Sleeka Creative Infrastructure',
-    challenge: 'Dedicated creative department, predictable delivery, structured creative workflow, and strategic creative support that integrates seamlessly with your marketing team.',
+    option: 'Sleeka Marketing Team on Demand',
+    challenge: 'Dedicated marketing team, strategic direction, consistent execution, structured workflows, and performance-focused marketing support that integrates seamlessly with your business.',
     isSleeka: true,
   },
 ];
