@@ -76,7 +76,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ onNavigateToInfrastructure
         {/* Button */}
         <button
           onClick={onNavigateToInfrastructure}
-          className="slk-btn-learn w-full sm:w-auto max-w-full px-6 sm:px-8 py-4 rounded-full font-bold text-base whitespace-normal text-center inline-flex items-center justify-center relative z-10"
+          className="slk-btn-learn px-8 py-4 rounded-full font-bold text-base whitespace-nowrap inline-flex items-center justify-center relative z-10"
           style={{ backgroundColor: '#47ff01', color: '#000' }}
         >
           View packages
