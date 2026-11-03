@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 const faqs = [
   {
     question: "How does Sleeka work?",
-    answer: "Sleeka gives your business access to a dedicated creative team that works like an extension of your internal team. We handle strategy, design, video, and content execution through a structured monthly system so your marketing runs consistently without you managing freelancers or building an in-house team."
+    answer: "Sleeka gives your business access to a dedicated marketing team that works like an extension of your internal team. They handle marketing strategy, lead generation and content execution through a structured monthly system so your marketing runs consistently without you managing freelancers or building an in-house team."
   },
   {
     question: "What is included in the monthly subscription?",

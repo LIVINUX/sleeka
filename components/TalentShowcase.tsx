@@ -3,22 +3,22 @@ import { Slide } from './PlugIntoSection';
 
 const talents = [
   {
+    name: "Chanor James",
+    role: "Growth and Performance Marketer",
+    image: "/assets/Chanor James.png",
+    skills: "Growth Strategy • Customer Acquisition • Performance",
+  },
+  {
     name: "Livinus Ekeh",
     role: "Content Strategist & Lead Specialist",
     image: "/assets/Livinus Ekeh.jpg",
-    skills: "Strategy • Lead Generation • Growth",
+    skills: "Strategy • Lead Generation • Conversion",
   },
   {
     name: "Dusom Oputa",
     role: "Project Manager & Content Operations",
     image: "/assets/Dusom Oputa.jpg",
     skills: "Content Systems • Coordination",
-  },
-  {
-    name: "Blossom Uzoho",
-    role: "Creative Generalist",
-    image: "/assets/Blossom Uzoho.jpg",
-    skills: "Design • Video Editing • Animation",
   },
   {
     name: "Peter Samuel",

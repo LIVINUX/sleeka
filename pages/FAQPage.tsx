@@ -20,7 +20,7 @@ const faqData: FAQSection[] = [
     items: [
       {
         question: "How does Sleeka work?",
-        answer: "Sleeka gives businesses access to a dedicated creative team that works seamlessly like an extension of their internal team. We help businesses turn content into a structured system for visibility, leads, customers, and revenue growth."
+        answer: "Sleeka gives your business access to a dedicated marketing team that works like an extension of your internal team. They handle marketing strategy, lead generation and content execution through a structured monthly system so your marketing runs consistently without you managing freelancers or building an in-house team."
       },
       {
         question: "What plans does Sleeka offer?",
@@ -93,7 +93,7 @@ const faqData: FAQSection[] = [
         question: "How does the content system work?",
         answer: (
           <div className="space-y-3">
-            <p>We use a content operating system which you will also have access to. All monthly content is logged so you can see what's in progress, under review, completed, or posted.</p>
+            <p>We use a content operating system that you will also have access to. All monthly content is logged so you can see what's in progress, under review, completed, or posted.</p>
             <p>We also track performance metrics like leads generated per content, engagement rates, best-performing content, and overall content performance. At the end of each month, you get a clear performance report with insights and next steps.</p>
           </div>
         )
