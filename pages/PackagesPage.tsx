@@ -11,7 +11,7 @@ const HeroButton: React.FC = () => (
     href="https://calendly.com/hello-sleekahq/discovery-call"
     target="_blank"
     rel="noopener noreferrer"
-    className="slk-pkg-btn px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center gap-2 md:gap-3 group whitespace-nowrap"
+    className="slk-pkg-btn w-full sm:w-auto max-w-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg transition-all inline-flex items-center justify-center gap-2 md:gap-3 group whitespace-normal text-center"
     style={{ backgroundColor: '#47ff01', color: '#000' }}
   >
     Book a Discovery Call

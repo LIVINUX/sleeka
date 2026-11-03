@@ -102,12 +102,28 @@
             font-display: swap;
         }
         
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         
         body {
+            margin: 0;
+            max-width: 100%;
+            overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
+        }
+
+        img,
+        video,
+        svg {
+            max-width: 100%;
         }
         
         h1,
@@ -131,7 +147,6 @@
     <script type="importmap">
         { "imports": { "react": "https://aistudiocdn.com/react@^19.2.0", "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/", "react/": "https://aistudiocdn.com/react@^19.2.0/", "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0" } }
     </script>
-    <link rel="stylesheet" href="/index.css">
 </head>
 
 <body>

@@ -329,7 +329,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onBack, onNavigateToFAQ, onNav
               href="https://calendly.com/hello-sleekahq/discovery-call"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-bold text-base transition-all hover:scale-105 duration-300 group"
+              className="w-full max-w-full sm:w-auto inline-flex items-center justify-center gap-2 whitespace-normal text-center rounded-full font-bold text-base transition-all hover:scale-105 duration-300 group"
               style={{ backgroundColor: '#47ff01', color: '#000', padding: '16px 32px' }}
             >
               Book a Discovery Call

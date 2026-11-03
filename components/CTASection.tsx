@@ -43,8 +43,13 @@ export const CTASection: React.FC = () => {
                 font-size: 1rem;
                 display: inline-flex;
                 align-items: center;
+                justify-content: center;
                 gap: 10px;
-                white-space: nowrap;
+                width: min(100%, 22rem);
+                max-width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                white-space: normal;
                 box-shadow: 0 0 0 0 rgba(71,255,1,0.5);
                 animation: slkBobble 2.2s ease-in-out infinite;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
