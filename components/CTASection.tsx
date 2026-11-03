@@ -14,17 +14,6 @@ export const CTASection: React.FC = () => {
         >
           <div className="px-10 md:px-14 py-12 md:py-16 flex flex-col items-center text-center">
 
-            <p
-              className="font-bold uppercase tracking-wide mb-4"
-              style={{
-                fontSize: 'clamp(0.85rem, 1.5vw, 1rem)',
-                color: '#1a1a2e',
-                letterSpacing: '0.08em',
-              }}
-            >
-              Stop Posting Without Results.
-            </p>
-
             <h2
               className="font-black leading-tight mb-8"
               style={{
@@ -39,9 +28,7 @@ export const CTASection: React.FC = () => {
               className="text-base md:text-lg leading-relaxed mb-10 max-w-xl"
               style={{ color: '#4a4a6a' }}
             >
-              Turn your content into a predictable engine for visibility, leads, and revenue 
-              without the cost of building an in-house team, the stress of managing creatives,
-              or dealing with inconsistent output.
+              Bring your marketing strategy, people and execution together to attract the right audience, generate leads and drive business growth without the cost of building an in-house team, the stress of managing multiple specialists, or dealing with inconsistent execution.
             </p>
 
             {/* Button with border pop effect */}
