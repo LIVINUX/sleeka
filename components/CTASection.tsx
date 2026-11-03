@@ -17,7 +17,7 @@ export const CTASection: React.FC = () => {
             <h2
               className="font-black leading-tight mb-8"
               style={{
-                fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)',
+                fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
                 color: '#5c0386',
               }}
             >

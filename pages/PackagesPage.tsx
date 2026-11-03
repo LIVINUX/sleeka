@@ -133,11 +133,10 @@ const PackageAccordion: React.FC<{
       </button>
       <div className={`pkg-panel ${active === 'growth' ? 'open' : 'closed'}`}>
         <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
-          <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦300,000 / Month</p>
+          <p className="text-white text-xl md:text-3xl font-black leading-tight mb-3">Creative Team on Demand</p>
           <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
             For businesses that need consistent, strategic content to strengthen their brand presence, communicate their value, and support their marketing goals.
           </p>
-          <p className="text-white font-bold text-base mb-6">Content Team on Demand</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
             {[
               { label: 'Your Team Includes', items: ['Content Strategist', 'Project Manager', 'Graphic Designer', 'Video Editor'] },
@@ -175,11 +174,10 @@ const PackageAccordion: React.FC<{
       </button>
       <div className={`pkg-panel ${active === 'authority' ? 'open' : 'closed'}`}>
         <div className="bg-[#5c0386] rounded-[2rem] p-6 md:p-10 text-white mt-3">
-          <p className="text-[#47ff01] text-xl md:text-3xl font-black mb-1">₦500,000 / Month</p>
+          <p className="text-white text-xl md:text-3xl font-black leading-tight mb-3">Marketing Team on Demand</p>
           <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
             For businesses that need more than content creation. A dedicated marketing team that brings strategy, execution, growth, and lead generation together.
           </p>
-          <p className="text-white font-bold text-base mb-6">Marketing Team on Demand</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
             {[
               { label: 'Your Team Includes', items: ['Growth & Performance Marketer', 'Lead Generation Specialist', 'Content Strategist', 'Project Manager', 'Graphic Designer', 'Video Editor'] },
@@ -244,10 +242,9 @@ const VersionA: React.FC<{
 
     {/* Hero */}
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
-      <p className="text-[#47ff01] text-xs font-bold uppercase tracking-widest mb-1">Built for ambitious businesses</p>
       <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You're already spending on marketing.<br />
-        <span style={{ color: '#47ff01', display: 'block', marginTop: '0.4em' }}>But is it moving your business forward?</span>
+        <span style={{ color: '#fff', display: 'block', marginTop: '0.4em', fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(1.45rem, 5vw, 3.2rem)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.01em' }}>But is it moving your business forward?</span>
       </h1>
       <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-6 mb-10">
         Without the right people, strategy and execution working together, your marketing struggles to deliver consistent results. Sleeka brings it all together.
