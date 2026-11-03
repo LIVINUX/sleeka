@@ -82,6 +82,8 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigate
           className="md:hidden transition-transform duration-300 hover:scale-110"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
           <div className="relative w-6 h-6">
             <Menu
@@ -102,6 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ forceColored = false, onNavigate
 
       {/* Mobile Menu */}
       <div
+        id="mobile-navigation"
         className={`md:hidden absolute top-full left-0 w-full bg-geko-dark border-t border-white/10 shadow-xl overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}

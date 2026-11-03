@@ -145,7 +145,7 @@ function App() {
 
   const navigateToCreativeInfra = () => {
     savedScrollPos.current = window.scrollY;
-    setCurrentPage('packages');
+    setCurrentPage('creative-infrastructure');
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   };
 
