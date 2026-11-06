@@ -41,26 +41,28 @@ export const InternalTeamSection: React.FC = () => (
               </div>
             </Slide>
 
-            {/* Icons — black background, green icon, white text */}
             <Slide delay={0.18}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="space-y-4">
                 {[
-                  { iconFile: 'launch-faster.png',  label: 'Launch Campaigns Faster' },
-                  { iconFile: 'more-content.png',   label: 'Get More Done' },
+                  { iconFile: 'launch-faster.png', label: 'Launch Campaigns Faster' },
+                  { iconFile: 'more-content.png', label: 'Get More Done' },
                   { iconFile: 'better-results.png', label: 'Scale Smarter' },
                 ].map(({ iconFile, label }) => (
                   <div
                     key={label}
-                    className="flex items-center gap-3 rounded-2xl px-5 py-4"
-                    style={{ backgroundColor: '#000000', border: '1px solid #000000' }}
+                    className="flex items-center gap-4 sm:gap-6 rounded-[2rem] px-5 py-5 sm:px-7 sm:py-6 text-white shadow-[0_16px_30px_rgba(92,3,134,0.14)]"
+                    style={{ backgroundColor: '#25004d' }}
                   >
-                    <img
-                      src={`/assets/icons/internal-team/${iconFile}`}
-                      alt={label}
-                      className="w-8 h-8 object-contain shrink-0"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(96%) saturate(1041%) hue-rotate(46deg) brightness(105%) contrast(103%)' }}
-                    />
-                    <span className="font-bold text-sm" style={{ color: '#ffffff' }}>{label}</span>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
+                      <img
+                        src={`/assets/icons/internal-team/${iconFile}`}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+                      />
+                    </div>
+                    <div className="h-12 sm:h-14 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
+                    <span className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">{label}</span>
                   </div>
                 ))}
               </div>
