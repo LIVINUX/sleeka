@@ -50,7 +50,7 @@ export const InternalTeamSection: React.FC = () => (
                 ].map(({ iconFile, label }) => (
                   <div
                     key={label}
-                    className="flex items-center gap-4 sm:gap-6 rounded-[2rem] px-5 py-5 sm:px-7 sm:py-6 text-white shadow-[0_16px_30px_rgba(92,3,134,0.14)]"
+                    className="flex w-full h-[132px] sm:h-[148px] md:h-[160px] items-center gap-4 sm:gap-6 overflow-hidden rounded-[2rem] px-5 sm:px-7 text-white shadow-[0_16px_30px_rgba(92,3,134,0.14)]"
                     style={{ backgroundColor: '#25004d' }}
                   >
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
