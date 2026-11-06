@@ -62,7 +62,7 @@ export const InternalTeamSection: React.FC = () => (
                       />
                     </div>
                     <div className="h-12 sm:h-14 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
-                    <span className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">{label}</span>
+                    <span className="text-base sm:text-xl md:text-2xl font-bold leading-tight">{label}</span>
                   </div>
                 ))}
               </div>
