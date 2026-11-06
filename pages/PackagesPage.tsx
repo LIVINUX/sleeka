@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { PagePreloader } from '../components/PagePreloader';
 import { Footer } from '../components/Footer';
 
@@ -244,9 +244,9 @@ const VersionA: React.FC<{
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
       <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You're already spending on marketing.<br />
-        <span style={{ color: '#fff', display: 'block', marginTop: '0.4em', fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(1.45rem, 5vw, 3.2rem)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.01em' }}>But is it moving your business forward?</span>
+        <span style={{ color: '#fff', display: 'block', marginTop: 'clamp(1rem, 3vw, 2rem)', fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(1.45rem, 5vw, 3.2rem)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.01em' }}>But is it moving your business forward?</span>
       </h1>
-      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-6 mb-10">
+      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-10 md:mt-12 mb-10">
         Without the right people, strategy and execution working together, your marketing struggles to deliver consistent results. Sleeka brings it all together.
       </p>
       <div className="flex justify-center">

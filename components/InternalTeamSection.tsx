@@ -41,26 +41,28 @@ export const InternalTeamSection: React.FC = () => (
               </div>
             </Slide>
 
-            {/* Icons — black background, green icon, white text */}
             <Slide delay={0.18}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="space-y-4">
                 {[
-                  { iconFile: 'launch-faster.png',  label: 'Launch Campaigns Faster' },
-                  { iconFile: 'more-content.png',   label: 'Get More Done' },
+                  { iconFile: 'launch-faster.png', label: 'Launch Campaigns Faster' },
+                  { iconFile: 'more-content.png', label: 'Get More Done' },
                   { iconFile: 'better-results.png', label: 'Scale Smarter' },
                 ].map(({ iconFile, label }) => (
                   <div
                     key={label}
-                    className="flex items-center gap-3 rounded-2xl px-5 py-4"
-                    style={{ backgroundColor: '#000000', border: '1px solid #000000' }}
+                    className="flex w-full h-[104px] sm:h-[116px] md:h-[128px] items-center gap-3 sm:gap-5 overflow-hidden rounded-[1.5rem] px-4 sm:px-6 text-white shadow-[0_12px_24px_rgba(92,3,134,0.14)]"
+                    style={{ backgroundColor: '#25004d' }}
                   >
-                    <img
-                      src={`/assets/icons/internal-team/${iconFile}`}
-                      alt={label}
-                      className="w-8 h-8 object-contain shrink-0"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(78%) sepia(96%) saturate(1041%) hue-rotate(46deg) brightness(105%) contrast(103%)' }}
-                    />
-                    <span className="font-bold text-sm" style={{ color: '#ffffff' }}>{label}</span>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
+                      <img
+                        src={`/assets/icons/internal-team/${iconFile}`}
+                        alt=""
+                        aria-hidden="true"
+                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                      />
+                    </div>
+                    <div className="h-8 sm:h-10 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
+                    <span className="text-base sm:text-xl md:text-2xl font-bold leading-tight">{label}</span>
                   </div>
                 ))}
               </div>
