@@ -50,18 +50,18 @@ export const InternalTeamSection: React.FC = () => (
                 ].map(({ iconFile, label }) => (
                   <div
                     key={label}
-                    className="flex w-full h-[132px] sm:h-[148px] md:h-[160px] items-center gap-4 sm:gap-6 overflow-hidden rounded-[2rem] px-5 sm:px-7 text-white shadow-[0_16px_30px_rgba(92,3,134,0.14)]"
+                    className="flex w-full h-[104px] sm:h-[116px] md:h-[128px] items-center gap-3 sm:gap-5 overflow-hidden rounded-[1.5rem] px-4 sm:px-6 text-white shadow-[0_12px_24px_rgba(92,3,134,0.14)]"
                     style={{ backgroundColor: '#25004d' }}
                   >
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
                       <img
                         src={`/assets/icons/internal-team/${iconFile}`}
                         alt=""
                         aria-hidden="true"
-                        className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                       />
                     </div>
-                    <div className="h-12 sm:h-14 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
+                    <div className="h-8 sm:h-10 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
                     <span className="text-base sm:text-xl md:text-2xl font-bold leading-tight">{label}</span>
                   </div>
                 ))}
