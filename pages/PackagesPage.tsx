@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { ArrowRight, BarChart3, Check, ChevronDown, ChevronUp, ClipboardCheck, Zap } from 'lucide-react';
 import { PagePreloader } from '../components/PagePreloader';
 import { Footer } from '../components/Footer';
 
@@ -244,9 +244,9 @@ const VersionA: React.FC<{
     <section className="pt-28 pb-20 px-6 text-center" style={{ backgroundColor: '#5c0386' }}>
       <h1 className="font-black text-white px-2" style={{ fontSize: 'clamp(2.4rem, 8vw, 6rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
         You're already spending on marketing.<br />
-        <span style={{ color: '#fff', display: 'block', marginTop: '0.4em', fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(1.45rem, 5vw, 3.2rem)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.01em' }}>But is it moving your business forward?</span>
+        <span style={{ color: '#fff', display: 'block', marginTop: 'clamp(1rem, 3vw, 2rem)', fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(1.45rem, 5vw, 3.2rem)', fontWeight: 500, lineHeight: 1.15, letterSpacing: '-0.01em' }}>But is it moving your business forward?</span>
       </h1>
-      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-6 mb-10">
+      <p className="text-white/70 text-lg max-w-lg mx-auto leading-relaxed mt-10 md:mt-12 mb-10">
         Without the right people, strategy and execution working together, your marketing struggles to deliver consistent results. Sleeka brings it all together.
       </p>
       <div className="flex justify-center">
@@ -274,13 +274,21 @@ const VersionA: React.FC<{
           ))}
         </div>
 
-        {/* Solution block */}
-        <div className="rounded-[2rem] p-8 text-white text-center" style={{ backgroundColor: '#5c0386' }}>
-          <p className="text-[#47ff01] font-bold text-xs uppercase tracking-widest mb-3">The Sleeka difference</p>
-          <p className="text-xl md:text-2xl font-bold leading-snug mb-4">
-            A dedicated marketing team. Strategy, Execution, and Growth. Structured as a monthly system that builds and compounds over time.
-          </p>
-          <p className="text-white/60 text-sm">No freelancer chaos. No in-house overhead. No agency delays.</p>
+        {/* Internal team benefits */}
+        <div className="space-y-5">
+          {[
+            { label: 'Launch Campaigns Faster', icon: Zap },
+            { label: 'Get More Done', icon: ClipboardCheck },
+            { label: 'Scale Smarter', icon: BarChart3 },
+          ].map(({ label, icon: Icon }) => (
+            <div key={label} className="flex items-center gap-5 sm:gap-7 rounded-[2rem] px-5 py-6 sm:px-8 sm:py-7 text-white shadow-[0_16px_30px_rgba(92,3,134,0.14)]" style={{ backgroundColor: '#25004d' }}>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#7117cf' }}>
+                <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" strokeWidth={2.25} />
+              </div>
+              <div className="h-12 sm:h-14 w-px bg-[#a65cff]/70 shrink-0" aria-hidden="true" />
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">{label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
